@@ -24,13 +24,13 @@ class Login extends StatelessWidget {
             ),
             FilledButton(
                 onPressed: () => {},
-                child: Text(
+                style: FilledButton.styleFrom(
+                  minimumSize: const Size(double.infinity, 0),
+                  padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 18),
+                ),
+                child: const Text(
                   "Login",
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                ),
-                style: FilledButton.styleFrom(
-                  minimumSize: Size(double.infinity, 0),
-                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 18),
                 )),
             Row(
               children: [
@@ -38,7 +38,7 @@ class Login extends StatelessWidget {
                   value: true,
                   onChanged: (value) => {},
                 ),
-                Text("I agree to term to terms of service and privacy policy")
+                const Text("I agree to term to terms of service and privacy policy")
               ],
             )
           ],

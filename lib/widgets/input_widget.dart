@@ -16,7 +16,7 @@ class InputWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(30),
