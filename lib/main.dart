@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:voyease_frontend/core/di/di.dart';
-import 'package:voyease_frontend/screens/landing.dart';
-import 'package:voyease_frontend/screens/splash_screen.dart';
+import 'package:voyease_frontend/screens/select_language.dart';
 
 void main() async {
   configureDependencies();
@@ -18,11 +17,12 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+          fontFamily: "Poppins"),
       // home: const Landing(),
-      home: const SplashScreen(),
+      // home: const SplashScreen(),
+      home: const SelectLanguage(),
     );
   }
 }

@@ -16,7 +16,10 @@ class SplashScreen extends StatelessWidget {
           repeat: false, fit: BoxFit.cover),
       pageTransitionType: PageTransitionType.fade,
       nextScreen: const Center(
-        child: Text("Hi Naman"),
+        child: Text(
+          "Hi Naman",
+          // style: TextStyle(fontFamily: "Roboto"),
+        ),
       ),
     );
   }
