@@ -5,7 +5,9 @@ import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
 
 class SplashScreen extends StatelessWidget {
-  const SplashScreen({super.key});
+  const SplashScreen({super.key, required this.nextScreen});
+
+  final Widget nextScreen;
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +17,8 @@ class SplashScreen extends StatelessWidget {
       splash: Lottie.asset("assets/lottie/splash.json",
           repeat: false, fit: BoxFit.cover),
       pageTransitionType: PageTransitionType.fade,
-      nextScreen: const Center(
-        child: Text(
-          "Hi Naman",
-          // style: TextStyle(fontFamily: "Roboto"),
-        ),
-      ),
+      // animationDuration: Duration(seconds: 20), // control lottie anination speed
+      nextScreen: nextScreen,
     );
   }
 }
