@@ -23,6 +23,8 @@ class AppMapState extends State<AppMap> {
   Widget build(BuildContext context) {
     return GoogleMap(
       mapType: MapType.normal,
+      myLocationButtonEnabled: false,
+      // myLocationEnabled: true,
       initialCameraPosition: _kGooglePlex,
       onMapCreated: (GoogleMapController controller) {
         _controller.complete(controller);
