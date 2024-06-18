@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:voyease_frontend/configs/theme/app_theme.dart';
 import 'package:voyease_frontend/core/di/di.dart';
 import 'package:voyease_frontend/screens/main.dart';
 
@@ -16,10 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-          fontFamily: "Poppins"),
+      theme: appTheme(),
       home: const Main(),
       // home: const SplashScreen(
       //   nextScreen: SelectLanguage(),

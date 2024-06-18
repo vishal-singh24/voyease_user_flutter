@@ -6,6 +6,5 @@ class AppColors {
   static Color secondary = const Color(0XFF285A84);
   static Color textLight = Colors.white;
   static Color white = Colors.white;
-
   static Color darkBlue = const Color(0XFF285A84);
 }
