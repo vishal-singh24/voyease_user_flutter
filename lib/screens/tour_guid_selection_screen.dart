@@ -96,32 +96,29 @@ class TourGuidSelection extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              child: GridView.count(
-                physics: const NeverScrollableScrollPhysics(),
-                padding:
-                    const EdgeInsets.symmetric(vertical: 20, horizontal: 24),
-                crossAxisCount: 3,
-                childAspectRatio: 2.5,
-                mainAxisSpacing: 25,
-                crossAxisSpacing: 40,
-                shrinkWrap: true,
-                children: List.generate(
-                  langugages.length,
-                  (index) {
-                    return Container(
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                          border: Border.all(width: 0.25),
-                          borderRadius: BorderRadius.circular(4)),
-                      child: Text(
-                        langugages[index],
-                        style: const TextStyle(
-                            fontSize: 12, fontWeight: FontWeight.w600),
-                      ),
-                    );
-                  },
-                ),
+            GridView.count(
+              physics: const NeverScrollableScrollPhysics(),
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 24),
+              crossAxisCount: 3,
+              childAspectRatio: 2.5,
+              mainAxisSpacing: 25,
+              crossAxisSpacing: 40,
+              shrinkWrap: true,
+              children: List.generate(
+                langugages.length,
+                (index) {
+                  return Container(
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                        border: Border.all(width: 0.25),
+                        borderRadius: BorderRadius.circular(4)),
+                    child: Text(
+                      langugages[index],
+                      style: const TextStyle(
+                          fontSize: 12, fontWeight: FontWeight.w600),
+                    ),
+                  );
+                },
               ),
             ),
             Container(
@@ -146,32 +143,29 @@ class TourGuidSelection extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              child: GridView.count(
-                physics: const NeverScrollableScrollPhysics(),
-                padding:
-                    const EdgeInsets.symmetric(vertical: 20, horizontal: 24),
-                crossAxisCount: 3,
-                childAspectRatio: 2.5,
-                mainAxisSpacing: 25,
-                crossAxisSpacing: 40,
-                shrinkWrap: true,
-                children: List.generate(
-                  groupSize.length,
-                  (index) {
-                    return Container(
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                          border: Border.all(width: 0.25),
-                          borderRadius: BorderRadius.circular(4)),
-                      child: Text(
-                        groupSize[index],
-                        style: const TextStyle(
-                            fontSize: 12, fontWeight: FontWeight.w600),
-                      ),
-                    );
-                  },
-                ),
+            GridView.count(
+              physics: const NeverScrollableScrollPhysics(),
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 24),
+              crossAxisCount: 3,
+              childAspectRatio: 2.5,
+              mainAxisSpacing: 25,
+              crossAxisSpacing: 40,
+              shrinkWrap: true,
+              children: List.generate(
+                groupSize.length,
+                (index) {
+                  return Container(
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                        border: Border.all(width: 0.25),
+                        borderRadius: BorderRadius.circular(4)),
+                    child: Text(
+                      groupSize[index],
+                      style: const TextStyle(
+                          fontSize: 12, fontWeight: FontWeight.w600),
+                    ),
+                  );
+                },
               ),
             ),
             Container(

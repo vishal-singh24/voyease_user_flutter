@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: SplashScreen(
         nextScreen: MaterialApp.router(
+          debugShowCheckedModeBanner: false,
           routerConfig: getIt<AppRouter>().config(),
         ),
       ),
