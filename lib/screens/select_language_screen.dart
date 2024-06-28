@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:voyease_frontend/configs/app_colors.dart';
 import 'package:voyease_frontend/widgets/language_card.dart';
 
-class SelectLanguage extends StatelessWidget {
-  const SelectLanguage({super.key});
+@RoutePage()
+class SelectLanguageScreen extends StatelessWidget {
+  const SelectLanguageScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +85,9 @@ class SelectLanguage extends StatelessWidget {
               height: 30,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                context.router.pushNamed("/landing");
+              },
               style:
                   ElevatedButton.styleFrom(backgroundColor: AppColors.primary),
               child: Text(

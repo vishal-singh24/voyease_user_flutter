@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-class Landing extends StatelessWidget {
-  const Landing({super.key});
+@RoutePage()
+class LandingScreen extends StatelessWidget {
+  const LandingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
