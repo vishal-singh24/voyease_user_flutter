@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:voyease_frontend/configs/theme/app_theme.dart';
 import 'package:voyease_frontend/core/di/di.dart';
-import 'package:voyease_frontend/screens/main.dart';
+import 'package:voyease_frontend/screens/login.dart';
+import 'package:voyease_frontend/screens/signup.dart';
 
 void main() async {
   configureDependencies();
@@ -18,11 +19,11 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: appTheme(),
-      home: const Main(),
+      //home: const Main(),
       // home: const SplashScreen(
       //   nextScreen: SelectLanguage(),
       // ),
-      // home: const SelectLanguage(),
+       home: const Signup(),
     );
   }
 }
