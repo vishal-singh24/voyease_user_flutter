@@ -1,16 +1,18 @@
 //Password visibility state bug left to be solved
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-class ForgotPswd3 extends StatefulWidget {
-  const ForgotPswd3({super.key});
+@RoutePage()
+class PasswordResetScreen extends StatefulWidget {
+  const PasswordResetScreen({super.key});
   @override
-  State<ForgotPswd3> createState() {
+  State<PasswordResetScreen> createState() {
     return _ForgotPswd3();
   }
 }
 
-class _ForgotPswd3 extends State<ForgotPswd3> {
+class _ForgotPswd3 extends State<PasswordResetScreen> {
   bool passwordVisible = false;
   @override
   void initState() {
@@ -48,7 +50,7 @@ class _ForgotPswd3 extends State<ForgotPswd3> {
                 color: const Color.fromRGBO(225, 255, 255, 0.5),
               ),
               child: Image.asset(
-                'assets/lock.png',
+                'assets/images/lock.png',
               ),
             ),
             const SizedBox(height: 20),
@@ -123,7 +125,9 @@ class _ForgotPswd3 extends State<ForgotPswd3> {
                       const EdgeInsets.symmetric(horizontal: 110, vertical: 10),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50))),
-              onPressed: () {},
+              onPressed: () {
+                context.router.pushNamed("/reset-done");
+              },
               child: const Text(
                 'Continue',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),

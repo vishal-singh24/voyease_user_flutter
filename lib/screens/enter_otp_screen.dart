@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
-class ForgotPswd2 extends StatelessWidget {
-  const ForgotPswd2({super.key});
+@RoutePage()
+class EnterOtpScreen extends StatelessWidget {
+  const EnterOtpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,7 @@ class ForgotPswd2 extends StatelessWidget {
                 color: const Color.fromRGBO(225, 255, 255, 0.5),
               ),
               child: Image.asset(
-                'assets/msg_icon.png',
+                'assets/images/msg_icon.png',
               ),
             ),
             const SizedBox(height: 20),
@@ -74,7 +76,9 @@ class ForgotPswd2 extends StatelessWidget {
                       const EdgeInsets.symmetric(horizontal: 110, vertical: 10),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50))),
-              onPressed: () {},
+              onPressed: () {
+                context.router.pushNamed("/password-reset");
+              },
               child: const Text(
                 'Continue',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),

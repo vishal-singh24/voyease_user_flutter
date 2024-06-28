@@ -105,14 +105,19 @@ class LoginScreen extends StatelessWidget {
                                 const Padding(
                                   padding: EdgeInsets.fromLTRB(100, 20, 0, 20),
                                 ),
-                                const Text(
-                                  'Forgot Password?',
-                                  style: TextStyle(
-                                    color: Color(0xFF3366CC),
-                                    fontSize: 12,
-                                    fontFamily: 'Poppins',
-                                    fontWeight: FontWeight.w400,
-                                    height: 0,
+                                new GestureDetector(
+                                  onTap: () {
+                                    context.router.pushNamed("/forgot-pswd");
+                                  },
+                                  child: const Text(
+                                    'Forgot Password?',
+                                    style: TextStyle(
+                                      color: Color(0xFF3366CC),
+                                      fontSize: 12,
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.w400,
+                                      height: 0,
+                                    ),
                                   ),
                                 ),
                               ],
