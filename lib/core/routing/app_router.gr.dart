@@ -21,10 +21,22 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const LandingScreen(),
       );
     },
+    LoginRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const LoginScreen(),
+      );
+    },
     SelectLanguageRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const SelectLanguageScreen(),
+      );
+    },
+    SignupRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const SignupScreen(),
       );
     },
   };
@@ -45,6 +57,20 @@ class LandingRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [LoginScreen]
+class LoginRoute extends PageRouteInfo<void> {
+  const LoginRoute({List<PageRouteInfo>? children})
+      : super(
+          LoginRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'LoginRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [SelectLanguageScreen]
 class SelectLanguageRoute extends PageRouteInfo<void> {
   const SelectLanguageRoute({List<PageRouteInfo>? children})
@@ -54,6 +80,20 @@ class SelectLanguageRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SelectLanguageRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [SignupScreen]
+class SignupRoute extends PageRouteInfo<void> {
+  const SignupRoute({List<PageRouteInfo>? children})
+      : super(
+          SignupRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SignupRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

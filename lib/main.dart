@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:voyease_frontend/app_router.dart';
+import 'package:voyease_frontend/core/routing/app_router.dart';
 import 'package:voyease_frontend/core/di/di.dart';
 import 'package:voyease_frontend/screens/splash_screen.dart';
 

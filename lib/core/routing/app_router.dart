@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:injectable/injectable.dart';
 import 'package:voyease_frontend/screens/landing_screen.dart';
+import 'package:voyease_frontend/screens/login_screen.dart';
 import 'package:voyease_frontend/screens/select_language_screen.dart';
+import 'package:voyease_frontend/screens/signup_screen.dart';
 
 part 'app_router.gr.dart';
 
@@ -14,6 +16,8 @@ class AppRouter extends _$AppRouter {
             path: "/select-language",
             page: SelectLanguageRoute.page,
             initial: true),
-        AutoRoute(path: "/landing", page: LandingRoute.page)
+        AutoRoute(path: "/landing", page: LandingRoute.page),
+        AutoRoute(path: "/login", page: LoginRoute.page),
+        AutoRoute(path: "/signup", page: SignupRoute.page),
       ];
 }

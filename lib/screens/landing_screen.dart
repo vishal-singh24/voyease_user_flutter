@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:voyease_frontend/configs/app_colors.dart';
 
 @RoutePage()
 class LandingScreen extends StatelessWidget {
@@ -22,54 +23,54 @@ class LandingScreen extends StatelessWidget {
                     fit: BoxFit.cover,
                     image: AssetImage("assets/images/running_car.gif"))),
           ),
-          const SafeArea(
+          SafeArea(
               child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 40),
+            padding: const EdgeInsets.symmetric(horizontal: 40),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text(
+                const Text(
                   "Voyease",
+                  textAlign: TextAlign.center,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                Text("Trips now easy"),
-                LandingButton(),
-                LandingButton()
+                const Text(
+                  "Trips now easy",
+                  textAlign: TextAlign.center,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    context.router.pushNamed("/login");
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.primary),
+                  child: Text(
+                    "Login",
+                    style: TextStyle(
+                        color: AppColors.textLight,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600),
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    context.router.pushNamed("/signup");
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.primary),
+                  child: Text(
+                    "Signup",
+                    style: TextStyle(
+                        color: AppColors.textLight,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600),
+                  ),
+                ),
               ],
             ),
           ))
         ],
       ),
-    );
-  }
-}
-
-class LandingButton extends StatelessWidget {
-  const LandingButton({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    // print("naman");
-    print(Theme.of(context).elevatedButtonTheme.style);
-
-    return Container(
-      margin: const EdgeInsets.only(bottom: 25),
-      child: FilledButton(
-        onPressed: () => {},
-        style: Theme.of(context).filledButtonTheme.style,
-        child: const Text("Login"),
-        // style: Theme.of(context).buttonBarTheme.alignment,
-        // style: ElevatedButton.styleFrom(minimumSize: Size(double.infinity, 0)),
-      ),
-      // child: FilledButton(
-      //   onPressed: () => {},
-      //   child: Text(
-      //     "Login",
-      //     // style: TextStyle(fontWeight: FontWeight.bold),
-      //   ),
-      //   // style: FilledButton.styleFrom(Theme.of(context).buttonTheme.copyWith().)
-      // ),
     );
   }
 }
