@@ -39,6 +39,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const LoginScreen(),
       );
     },
+    MainRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const MainScreen(),
+      );
+    },
     PasswordResetRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -55,6 +61,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const SelectLanguageScreen(),
+      );
+    },
+    SignUpVerifyRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const SignUpVerifyScreen(),
       );
     },
     SignupRoute.name: (routeData) {
@@ -123,6 +135,20 @@ class LoginRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [MainScreen]
+class MainRoute extends PageRouteInfo<void> {
+  const MainRoute({List<PageRouteInfo>? children})
+      : super(
+          MainRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MainRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [PasswordResetScreen]
 class PasswordResetRoute extends PageRouteInfo<void> {
   const PasswordResetRoute({List<PageRouteInfo>? children})
@@ -160,6 +186,20 @@ class SelectLanguageRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SelectLanguageRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [SignUpVerifyScreen]
+class SignUpVerifyRoute extends PageRouteInfo<void> {
+  const SignUpVerifyRoute({List<PageRouteInfo>? children})
+      : super(
+          SignUpVerifyRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SignUpVerifyRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

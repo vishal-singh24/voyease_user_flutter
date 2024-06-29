@@ -140,7 +140,9 @@ class SignupScreen extends StatelessWidget {
                           CustomButton(
                             label: 'Signup',
                             color: const Color(0xFFEF6F53),
-                            onPressed: () {},
+                            onPressed: () {
+                              context.router.pushNamed("/signup-verify");
+                            },
                           ),
                           const SizedBox(height: 30),
                           const Text(

@@ -1,6 +1,7 @@
 // login.dart
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:voyease_frontend/core/routing/app_router.dart';
 import 'package:voyease_frontend/widgets/common_widgets.dart';
 
 @RoutePage()
@@ -126,7 +127,9 @@ class LoginScreen extends StatelessWidget {
                           CustomButton(
                             label: 'Login',
                             color: const Color(0xFFEF6F53),
-                            onPressed: () {},
+                            onPressed: () {
+                              context.router.replaceAll([MainRoute()]);
+                            },
                           ),
                           const SizedBox(height: 10),
                           const SizedBox(

@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:voyease_frontend/configs/app_colors.dart';
@@ -5,8 +6,9 @@ import 'package:voyease_frontend/widgets/app_map.dart';
 import 'package:voyease_frontend/widgets/bottom_nav_bar.dart';
 import 'package:voyease_frontend/widgets/main_bottom_sheet.dart';
 
-class Main extends StatelessWidget {
-  const Main({super.key});
+@RoutePage()
+class MainScreen extends StatelessWidget {
+  const MainScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

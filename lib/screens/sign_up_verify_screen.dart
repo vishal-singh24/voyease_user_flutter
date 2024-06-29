@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-class SignUpVerify extends StatelessWidget {
-  const SignUpVerify({super.key});
+@RoutePage()
+class SignUpVerifyScreen extends StatelessWidget {
+  const SignUpVerifyScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
