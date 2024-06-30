@@ -63,6 +63,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const SelectLanguageScreen(),
       );
     },
+    SettingRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const SettingScreen(),
+      );
+    },
     SignUpVerifyRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -186,6 +192,20 @@ class SelectLanguageRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SelectLanguageRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [SettingScreen]
+class SettingRoute extends PageRouteInfo<void> {
+  const SettingRoute({List<PageRouteInfo>? children})
+      : super(
+          SettingRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SettingRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

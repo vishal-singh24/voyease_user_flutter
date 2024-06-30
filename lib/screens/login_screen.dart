@@ -106,7 +106,7 @@ class LoginScreen extends StatelessWidget {
                                 const Padding(
                                   padding: EdgeInsets.fromLTRB(100, 20, 0, 20),
                                 ),
-                                new GestureDetector(
+                                GestureDetector(
                                   onTap: () {
                                     context.router.pushNamed("/forgot-pswd");
                                   },
@@ -128,7 +128,7 @@ class LoginScreen extends StatelessWidget {
                             label: 'Login',
                             color: const Color(0xFFEF6F53),
                             onPressed: () {
-                              context.router.replaceAll([MainRoute()]);
+                              context.router.replaceAll([const MainRoute()]);
                             },
                           ),
                           const SizedBox(height: 10),

@@ -64,7 +64,8 @@ class EnterOtpScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Color.fromARGB(255, 255, 255, 255)),
+                  border: Border.all(
+                      color: const Color.fromARGB(255, 255, 255, 255)),
                 ),
               ),
             ),

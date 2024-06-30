@@ -89,6 +89,7 @@ class SelectLanguageScreen extends StatelessWidget {
               label: "Proceed",
               onClick: () {
                 context.router.pushNamed("/landing");
+                // context.router.pushNamed("/settings");
               },
             ),
           ],

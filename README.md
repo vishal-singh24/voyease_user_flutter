@@ -24,3 +24,7 @@ To update the native splash features run
 dart run flutter_native_splash:create
 ```
 
+```bash
+flutter packages pub run build_runner watch
+```
+

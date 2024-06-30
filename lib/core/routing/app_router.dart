@@ -8,6 +8,7 @@ import 'package:voyease_frontend/screens/forgot_pswd_screen.dart';
 import 'package:voyease_frontend/screens/landing_screen.dart';
 import 'package:voyease_frontend/screens/login_screen.dart';
 import 'package:voyease_frontend/screens/select_language_screen.dart';
+import 'package:voyease_frontend/screens/setting_screen.dart';
 import 'package:voyease_frontend/screens/sign_up_verify_screen.dart';
 import 'package:voyease_frontend/screens/signup_screen.dart';
 
@@ -31,5 +32,6 @@ class AppRouter extends _$AppRouter {
         AutoRoute(path: "/password-reset", page: PasswordResetRoute.page),
         AutoRoute(path: "/reset-done", page: ResetDoneRoute.page),
         AutoRoute(path: "/main", page: MainRoute.page),
+        AutoRoute(path: "/settings", page: SettingRoute.page),
       ];
 }
