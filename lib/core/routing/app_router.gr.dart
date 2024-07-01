@@ -39,6 +39,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ForgotPswdScreen(),
       );
     },
+    HomeRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const HomeScreen(),
+      );
+    },
     LandingRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -85,6 +91,18 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const SelectLanguageScreen(),
+      );
+    },
+    SettingsNavigationRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const SettingsNavigationScreen(),
+      );
+    },
+    SettingsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const SettingsScreen(),
       );
     },
     SignUpVerifyRoute.name: (routeData) {
@@ -160,6 +178,20 @@ class ForgotPswdRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ForgotPswdRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [HomeScreen]
+class HomeRoute extends PageRouteInfo<void> {
+  const HomeRoute({List<PageRouteInfo>? children})
+      : super(
+          HomeRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'HomeRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -272,6 +304,34 @@ class SelectLanguageRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SelectLanguageRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [SettingsNavigationScreen]
+class SettingsNavigationRoute extends PageRouteInfo<void> {
+  const SettingsNavigationRoute({List<PageRouteInfo>? children})
+      : super(
+          SettingsNavigationRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SettingsNavigationRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [SettingsScreen]
+class SettingsRoute extends PageRouteInfo<void> {
+  const SettingsRoute({List<PageRouteInfo>? children})
+      : super(
+          SettingsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SettingsRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

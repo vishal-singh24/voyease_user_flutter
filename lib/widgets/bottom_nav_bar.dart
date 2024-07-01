@@ -1,41 +1,49 @@
 import 'package:flutter/material.dart';
-import 'package:voyease_frontend/configs/app_colors.dart';
 import 'package:voyease_frontend/widgets/bottom_nav_item.dart';
 
-class BottomNavBar extends StatelessWidget {
+class BottomNavBar extends StatefulWidget {
   const BottomNavBar({
     super.key,
   });
 
   @override
+  State<BottomNavBar> createState() {
+    return _BottomNavBarState();
+  }
+}
+
+class _BottomNavBarState extends State<BottomNavBar> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(left: 40, right: 40, bottom: 10),
-      height: 90,
-      color: AppColors.primary,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          BottomNavItem(
-            title: "Today",
-            svgSrc: "assets/icons/home.svg",
-            isActive: true,
-            onPress: () {},
-          ),
-          BottomNavItem(
-            title: "All Excercises",
-            svgSrc: "assets/icons/shop.svg",
-            isActive: false,
-            onPress: () {},
-          ),
-          BottomNavItem(
-            title: "Settings",
-            svgSrc: "assets/icons/person.svg",
-            isActive: false,
-            onPress: () {},
-          )
-        ],
-      ),
+    return BottomNavigationBar(
+      selectedFontSize: 0,
+      unselectedFontSize: 0,
+      backgroundColor: const Color(0XFFEF6F53),
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
+      currentIndex: _selectedIndex,
+      onTap: _onItemTapped,
+      items: [
+        bottomNavItem(svgSrc: "assets/icons/home.svg"),
+        bottomNavItem(svgSrc: "assets/icons/shop.svg"),
+        bottomNavItem(svgSrc: "assets/icons/person.svg")
+      ],
+    );
+  }
+
+  BottomNavigationBarItem bottomNavItem({svgSrc}) {
+    return BottomNavigationBarItem(
+      icon: BottomNavItem(svgSrc: svgSrc),
+      activeIcon: BottomNavItem(svgSrc: svgSrc, isActive: true),
+      label: "",
     );
   }
 }

@@ -1,10 +1,12 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:voyease_frontend/configs/app_colors.dart';
 import 'package:voyease_frontend/widgets/app_map.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({
+@RoutePage()
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({
     super.key,
   });
 

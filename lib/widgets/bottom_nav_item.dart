@@ -3,35 +3,37 @@ import 'package:flutter_svg/svg.dart';
 import 'package:voyease_frontend/configs/app_colors.dart';
 
 class BottomNavItem extends StatelessWidget {
-  final String svgSrc;
-  final String title;
-  final bool isActive;
-  final VoidCallback? onPress;
   const BottomNavItem({
     super.key,
     required this.svgSrc,
-    required this.title,
-    required this.isActive,
-    this.onPress,
+    this.isActive = false,
   });
+
+  final String svgSrc;
+  final bool isActive;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPress,
+    return Padding(
+      padding: const EdgeInsets.only(top: 10),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          if (isActive) ...[
-            SvgPicture.asset(
-              svgSrc,
+          SvgPicture.asset(
+            svgSrc,
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Container(
+            height: 3,
+            width: 80,
+            decoration: ShapeDecoration(
+              color: isActive ? AppColors.darkBlue : null,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(13),
+              ),
             ),
-            Container(height: 3, width: 63, color: AppColors.darkBlue)
-          ] else ...[
-            SvgPicture.asset(
-              svgSrc,
-            ),
-          ]
+          )
         ],
       ),
     );

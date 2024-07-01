@@ -1,9 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:voyease_frontend/configs/app_colors.dart';
+import 'package:voyease_frontend/core/routing/app_router.dart';
 
-class SettingsPage extends StatelessWidget {
-  const SettingsPage({super.key});
+@RoutePage()
+class SettingsScreen extends StatelessWidget {
+  const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class SettingsPage extends StatelessWidget {
           {
             "title": "Account and User details",
             "onClick": () {
-              context.navigateNamedTo("/user-profile");
+              context.navigateNamedTo(UserProfileRoute.name);
             }
           }
         ]
@@ -27,7 +29,7 @@ class SettingsPage extends StatelessWidget {
           {
             "title": "Previous Bookings",
             "onClick": () {
-              context.navigateNamedTo("/previous-bookings");
+              context.navigateNamedTo(PreviousBookingsRoute.name);
             }
           },
           {
@@ -45,7 +47,7 @@ class SettingsPage extends StatelessWidget {
           {
             "title": "Raise an issue ticket",
             "onClick": () {
-              context.navigateNamedTo("/raise-issue");
+              context.navigateNamedTo(RaiseIssueRoute.name);
             }
           },
           {
@@ -121,7 +123,7 @@ class SettingsPage extends StatelessWidget {
                       child: SettingsCard(
                         title: "Feedback form",
                         onClick: () {
-                          context.navigateNamedTo("/feedback");
+                          context.navigateNamedTo(FeedbackFormRoute.name);
                         },
                       )),
                   const SizedBox(
@@ -132,7 +134,7 @@ class SettingsPage extends StatelessWidget {
                       child: SettingsCard(
                         title: "About us",
                         onClick: () {
-                          context.navigateNamedTo("/about-us");
+                          context.navigateNamedTo(AboutUsRoute.name);
                         },
                       )),
                 ],
