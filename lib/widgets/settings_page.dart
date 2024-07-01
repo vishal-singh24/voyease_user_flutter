@@ -44,6 +44,9 @@ class SettingsPage extends StatelessWidget {
         "elements": [
           {
             "title": "Raise an issue ticket",
+            "onClick": () {
+              context.navigateNamedTo("/raise-issue");
+            }
           },
           {
             "title": "Issue Ticket Status",
@@ -115,13 +118,23 @@ class SettingsPage extends StatelessWidget {
                 children: [
                   ClipRRect(
                       borderRadius: BorderRadius.circular(12),
-                      child: const SettingsCard(title: "Feedback form")),
+                      child: SettingsCard(
+                        title: "Feedback form",
+                        onClick: () {
+                          context.navigateNamedTo("/feedback");
+                        },
+                      )),
                   const SizedBox(
                     height: 10,
                   ),
                   ClipRRect(
                       borderRadius: BorderRadius.circular(12),
-                      child: const SettingsCard(title: "About us")),
+                      child: SettingsCard(
+                        title: "About us",
+                        onClick: () {
+                          context.navigateNamedTo("/about-us");
+                        },
+                      )),
                 ],
               ),
             )

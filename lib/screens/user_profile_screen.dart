@@ -5,7 +5,7 @@ import 'package:voyease_frontend/widgets/form/input_field.dart';
 import 'package:voyease_frontend/widgets/app_top_nav_bar.dart';
 import 'package:voyease_frontend/widgets/bottom_nav_bar.dart';
 import 'package:voyease_frontend/widgets/common_widgets.dart';
-import 'package:voyease_frontend/widgets/primary_button.dart';
+import 'package:voyease_frontend/widgets/buttons/primary_button.dart';
 
 @RoutePage()
 class UserProfileScreen extends StatelessWidget {

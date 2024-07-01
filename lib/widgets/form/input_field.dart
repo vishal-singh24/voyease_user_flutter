@@ -9,7 +9,8 @@ class InputField extends StatelessWidget {
       this.keyboardType = TextInputType.text,
       this.isPassword = false,
       this.couter,
-      this.placeholder});
+      this.placeholder,
+      this.lines = 1});
 
   final String value;
   final String? label;
@@ -17,6 +18,7 @@ class InputField extends StatelessWidget {
   final TextInputType keyboardType;
   final bool isPassword;
   final Widget? couter;
+  final int lines;
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +48,8 @@ class InputField extends StatelessWidget {
               ],
               borderRadius: BorderRadius.circular(8)),
           child: TextFormField(
+            minLines: lines,
+            maxLines: lines,
             obscureText: isPassword,
             initialValue: value,
             keyboardType: keyboardType,

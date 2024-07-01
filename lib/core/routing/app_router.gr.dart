@@ -15,10 +15,22 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    AboutUsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AboutUsScreen(),
+      );
+    },
     EnterOtpRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const EnterOtpScreen(),
+      );
+    },
+    FeedbackFormRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const FeedbackFormScreen(),
       );
     },
     ForgotPswdRoute.name: (routeData) {
@@ -57,6 +69,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const PreviousBookingsScreen(),
       );
     },
+    RaiseIssueRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const RaiseIssueScreen(),
+      );
+    },
     ResetDoneRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -91,6 +109,20 @@ abstract class _$AppRouter extends RootStackRouter {
 }
 
 /// generated route for
+/// [AboutUsScreen]
+class AboutUsRoute extends PageRouteInfo<void> {
+  const AboutUsRoute({List<PageRouteInfo>? children})
+      : super(
+          AboutUsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AboutUsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [EnterOtpScreen]
 class EnterOtpRoute extends PageRouteInfo<void> {
   const EnterOtpRoute({List<PageRouteInfo>? children})
@@ -100,6 +132,20 @@ class EnterOtpRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'EnterOtpRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [FeedbackFormScreen]
+class FeedbackFormRoute extends PageRouteInfo<void> {
+  const FeedbackFormRoute({List<PageRouteInfo>? children})
+      : super(
+          FeedbackFormRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'FeedbackFormRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -184,6 +230,20 @@ class PreviousBookingsRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'PreviousBookingsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [RaiseIssueScreen]
+class RaiseIssueRoute extends PageRouteInfo<void> {
+  const RaiseIssueRoute({List<PageRouteInfo>? children})
+      : super(
+          RaiseIssueRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'RaiseIssueRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

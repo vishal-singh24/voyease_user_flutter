@@ -15,11 +15,19 @@ class PreviousBookingsScreen extends StatelessWidget {
       body: SafeArea(
           child: GradientBackground(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const AppTopNavBar(),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+              child: const Text(
+                "Previous Bookings",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              ),
+            ),
             Expanded(
               child: ListView(
-                padding: const EdgeInsets.all(0),
+                padding: const EdgeInsets.symmetric(vertical: 5),
                 // shrinkWrap: true,
                 children: List.generate(
                   20,

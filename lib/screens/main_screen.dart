@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:voyease_frontend/widgets/setting_page.dart';
+import 'package:voyease_frontend/widgets/settings_page.dart';
 import 'package:voyease_frontend/widgets/bottom_nav_bar.dart';
 
 @RoutePage()

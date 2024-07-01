@@ -1,9 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:injectable/injectable.dart';
+import 'package:voyease_frontend/screens/about_us_screen.dart';
 import 'package:voyease_frontend/screens/enter_otp_screen.dart';
+import 'package:voyease_frontend/screens/feedback_form_screen.dart';
 import 'package:voyease_frontend/screens/main_screen.dart';
 import 'package:voyease_frontend/screens/password_reset_screen.dart';
 import 'package:voyease_frontend/screens/previous_bookings_screen.dart';
+import 'package:voyease_frontend/screens/raise_issue_screen.dart';
 import 'package:voyease_frontend/screens/reset_done_screen.dart';
 import 'package:voyease_frontend/screens/forgot_pswd_screen.dart';
 import 'package:voyease_frontend/screens/landing_screen.dart';
@@ -35,5 +38,8 @@ class AppRouter extends _$AppRouter {
         AutoRoute(path: "/main", page: MainRoute.page),
         AutoRoute(path: "/user-profile", page: UserProfileRoute.page),
         AutoRoute(path: "/previous-bookings", page: PreviousBookingsRoute.page),
+        AutoRoute(path: "/raise-issue", page: RaiseIssueRoute.page),
+        AutoRoute(path: "/feedback", page: FeedbackFormRoute.page),
+        AutoRoute(path: "/about-us", page: AboutUsRoute.page),
       ];
 }
