@@ -8,10 +8,12 @@ class InputField extends StatelessWidget {
       this.value = "",
       this.keyboardType = TextInputType.text,
       this.isPassword = false,
-      this.couter});
+      this.couter,
+      this.placeholder});
 
-  final String? label;
   final String value;
+  final String? label;
+  final String? placeholder;
   final TextInputType keyboardType;
   final bool isPassword;
   final Widget? couter;
@@ -52,7 +54,7 @@ class InputField extends StatelessWidget {
               fontWeight: FontWeight.w400,
             ),
             decoration: InputDecoration(
-              hintText: label,
+              hintText: placeholder ?? label,
               contentPadding:
                   const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               focusedBorder:
