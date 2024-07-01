@@ -2,9 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:voyease_frontend/configs/app_colors.dart';
 
-@RoutePage()
-class SettingScreen extends StatelessWidget {
-  const SettingScreen({super.key});
+class SettingsPage extends StatelessWidget {
+  const SettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +16,7 @@ class SettingScreen extends StatelessWidget {
           {
             "title": "Account and User details",
             "onClick": () {
-              print("Hi Naman");
+              context.navigateNamedTo("/user-profile");
             }
           }
         ]
@@ -27,6 +26,9 @@ class SettingScreen extends StatelessWidget {
         "elements": [
           {
             "title": "Previous Bookings",
+            "onClick": () {
+              context.navigateNamedTo("/previous-bookings");
+            }
           },
           {
             "title": "Upcoming Bookings",
@@ -64,71 +66,66 @@ class SettingScreen extends StatelessWidget {
       }
     ];
 
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                child: Row(
-                  children: [
-                    CircleAvatar(
-                      radius: 35 / 2,
-                      backgroundImage: AssetImage("assets/images/profile.png"),
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Text(
-                      "Hi, Aditya",
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                    )
-                  ],
-                ),
+    return SafeArea(
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    radius: 35 / 2,
+                    backgroundImage: AssetImage("assets/images/profile.png"),
+                  ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Text(
+                    "Hi, Aditya",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                  )
+                ],
               ),
-              Container(
-                width: size.width,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                decoration:
-                    const BoxDecoration(border: Border(top: BorderSide())),
-                child: Column(
-                  children: data.map(
-                    (e) {
-                      String title = e["title"];
-                      List elements = e["elements"];
-                      return SettingsSection(
-                          title: title, icon: e["icon"], elements: elements);
-                    },
-                  ).toList(),
-                ),
+            ),
+            Container(
+              width: size.width,
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              decoration:
+                  const BoxDecoration(border: Border(top: BorderSide())),
+              child: Column(
+                children: data.map(
+                  (e) {
+                    String title = e["title"];
+                    List elements = e["elements"];
+                    return SettingsSection(
+                        title: title, icon: e["icon"], elements: elements);
+                  },
+                ).toList(),
               ),
-              Container(
-                width: size.width,
-                decoration: const BoxDecoration(
-                  border: Border(top: BorderSide()),
-                ),
-                margin:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                child: Column(
-                  children: [
-                    ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
-                        child: const SettingsCard(title: "Feedback form")),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
-                        child: const SettingsCard(title: "About us")),
-                  ],
-                ),
-              )
-            ],
-          ),
+            ),
+            Container(
+              width: size.width,
+              decoration: const BoxDecoration(
+                border: Border(top: BorderSide()),
+              ),
+              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              padding: const EdgeInsets.symmetric(vertical: 20),
+              child: Column(
+                children: [
+                  ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: const SettingsCard(title: "Feedback form")),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: const SettingsCard(title: "About us")),
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );

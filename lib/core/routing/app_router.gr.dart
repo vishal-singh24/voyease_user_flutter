@@ -51,6 +51,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const PasswordResetScreen(),
       );
     },
+    PreviousBookingsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const PreviousBookingsScreen(),
+      );
+    },
     ResetDoneRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -63,12 +69,6 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const SelectLanguageScreen(),
       );
     },
-    SettingRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const SettingScreen(),
-      );
-    },
     SignUpVerifyRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -79,6 +79,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const SignupScreen(),
+      );
+    },
+    UserProfileRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const UserProfileScreen(),
       );
     },
   };
@@ -169,6 +175,20 @@ class PasswordResetRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [PreviousBookingsScreen]
+class PreviousBookingsRoute extends PageRouteInfo<void> {
+  const PreviousBookingsRoute({List<PageRouteInfo>? children})
+      : super(
+          PreviousBookingsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'PreviousBookingsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [ResetDoneScreen]
 class ResetDoneRoute extends PageRouteInfo<void> {
   const ResetDoneRoute({List<PageRouteInfo>? children})
@@ -197,20 +217,6 @@ class SelectLanguageRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [SettingScreen]
-class SettingRoute extends PageRouteInfo<void> {
-  const SettingRoute({List<PageRouteInfo>? children})
-      : super(
-          SettingRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'SettingRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
 /// [SignUpVerifyScreen]
 class SignUpVerifyRoute extends PageRouteInfo<void> {
   const SignUpVerifyRoute({List<PageRouteInfo>? children})
@@ -234,6 +240,20 @@ class SignupRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SignupRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [UserProfileScreen]
+class UserProfileRoute extends PageRouteInfo<void> {
+  const UserProfileRoute({List<PageRouteInfo>? children})
+      : super(
+          UserProfileRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'UserProfileRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
