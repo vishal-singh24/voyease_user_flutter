@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:voyease_frontend/widgets/app_top_nav_bar.dart';
 import 'package:voyease_frontend/widgets/common_widgets.dart';
 
 @RoutePage()
@@ -13,15 +14,7 @@ class SignupScreen extends StatelessWidget {
         child: SafeArea(
           child: Stack(
             children: [
-              IconButton(
-                icon: const Icon(
-                  Icons.chevron_left_sharp,
-                  size: 40,
-                ),
-                onPressed: () {
-                  context.router.back();
-                },
-              ),
+              const AppTopNavBar(),
               Center(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,

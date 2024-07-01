@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:voyease_frontend/widgets/app_top_nav_bar.dart';
 
 @RoutePage()
 class SignUpVerifyScreen extends StatelessWidget {
@@ -11,20 +12,7 @@ class SignUpVerifyScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TextButton.icon(
-                  onPressed: () {},
-                  style: TextButton.styleFrom(
-                      iconColor: const Color.fromARGB(255, 0, 0, 0)),
-                  label: const Icon(
-                    Icons.arrow_back,
-                    size: 36,
-                  ),
-                ),
-              ],
-            ),
+            const AppTopNavBar(),
             const SizedBox(height: 40),
             const Text(
               'Verify your account',
