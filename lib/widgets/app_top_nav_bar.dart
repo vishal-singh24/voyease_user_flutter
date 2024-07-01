@@ -12,7 +12,7 @@ class AppTopNavBar extends StatelessWidget {
       children: [
         IconButton(
           onPressed: () {
-            context.back();
+            context.maybePop();
           },
           icon: const Icon(Icons.arrow_back),
           iconSize: 28,
