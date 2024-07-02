@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:voyease_frontend/core/routing/app_router.dart';
 import 'package:voyease_frontend/widgets/app_top_nav_bar.dart';
 
 @RoutePage()
@@ -64,7 +65,7 @@ class ForgotPswdScreen extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50))),
                 onPressed: () {
-                  context.router.pushNamed("/enter-otp");
+                  context.router.pushNamed(EnterOtpRoute.name);
                 },
                 child: const Text(
                   'Continue',

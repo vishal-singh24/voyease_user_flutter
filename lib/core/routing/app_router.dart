@@ -36,18 +36,20 @@ class AppRouter extends _$AppRouter {
           initial: true,
           children: [
             AutoRoute(
-              path: "select-language",
+              path: SelectLanguageRoute.name,
               page: SelectLanguageRoute.page,
               initial: true,
             ),
-            AutoRoute(path: "landing", page: LandingRoute.page),
-            AutoRoute(path: "login", page: LoginRoute.page),
-            AutoRoute(path: "signup", page: SignupRoute.page),
-            AutoRoute(path: "signup-verify", page: SignUpVerifyRoute.page),
-            AutoRoute(path: "forgot-pswd", page: ForgotPswdRoute.page),
-            AutoRoute(path: "enter-otp", page: EnterOtpRoute.page),
-            AutoRoute(path: "password-reset", page: PasswordResetRoute.page),
-            AutoRoute(path: "reset-done", page: ResetDoneRoute.page),
+            AutoRoute(path: LandingRoute.name, page: LandingRoute.page),
+            AutoRoute(path: LoginRoute.name, page: LoginRoute.page),
+            AutoRoute(path: SignupRoute.name, page: SignupRoute.page),
+            AutoRoute(
+                path: SignUpVerifyRoute.name, page: SignUpVerifyRoute.page),
+            AutoRoute(path: ForgotPswdRoute.name, page: ForgotPswdRoute.page),
+            AutoRoute(path: EnterOtpRoute.name, page: EnterOtpRoute.page),
+            AutoRoute(
+                path: PasswordResetRoute.name, page: PasswordResetRoute.page),
+            AutoRoute(path: ResetDoneRoute.name, page: ResetDoneRoute.page),
           ],
         ),
         AutoRoute(

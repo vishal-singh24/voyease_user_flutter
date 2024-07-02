@@ -2,6 +2,7 @@
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:voyease_frontend/core/routing/app_router.dart';
 import 'package:voyease_frontend/widgets/app_top_nav_bar.dart';
 
 @RoutePage()
@@ -114,7 +115,7 @@ class _ForgotPswd3 extends State<PasswordResetScreen> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50))),
               onPressed: () {
-                context.router.pushNamed("/reset-done");
+                context.router.pushNamed(ResetDoneRoute.name);
               },
               child: const Text(
                 'Continue',

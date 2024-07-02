@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:voyease_frontend/core/routing/app_router.dart';
 import 'package:voyease_frontend/widgets/app_top_nav_bar.dart';
 
 @RoutePage()
@@ -45,7 +46,13 @@ class ResetDoneScreen extends StatelessWidget {
                         horizontal: 130, vertical: 10),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50))),
-                onPressed: () {},
+                onPressed: () {
+                  context.router.replaceAll([
+                    const SelectLanguageRoute(),
+                    const LandingRoute(),
+                    const LoginRoute()
+                  ]);
+                },
                 child: const Text(
                   'Login',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),

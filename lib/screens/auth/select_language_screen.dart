@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:voyease_frontend/configs/app_colors.dart';
+import 'package:voyease_frontend/core/routing/app_router.dart';
 import 'package:voyease_frontend/widgets/language_card.dart';
 import 'package:voyease_frontend/widgets/buttons/primary_button.dart';
 
@@ -88,8 +89,7 @@ class SelectLanguageScreen extends StatelessWidget {
             PrimaryButton(
               label: "Proceed",
               onClick: () {
-                context.router.pushNamed("/landing");
-                // context.router.pushNamed("/settings");
+                context.router.pushNamed(LandingRoute.name);
               },
             ),
           ],

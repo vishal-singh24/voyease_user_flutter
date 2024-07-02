@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:voyease_frontend/core/routing/app_router.dart';
 import 'package:voyease_frontend/widgets/app_top_nav_bar.dart';
 import 'package:voyease_frontend/widgets/common_widgets.dart';
 
@@ -134,7 +136,7 @@ class SignupScreen extends StatelessWidget {
                             label: 'Signup',
                             color: const Color(0xFFEF6F53),
                             onPressed: () {
-                              context.router.pushNamed("/signup-verify");
+                              context.router.pushNamed(SignUpVerifyRoute.name);
                             },
                           ),
                           const SizedBox(height: 30),
@@ -167,13 +169,13 @@ class SignupScreen extends StatelessWidget {
                               ],
                             ),
                           ),
-                          const SizedBox(
+                          SizedBox(
                             width: 250,
                             height: 19,
                             child: Text.rich(
                               TextSpan(
                                 children: [
-                                  TextSpan(
+                                  const TextSpan(
                                     text: 'Already have an account ?',
                                     style: TextStyle(
                                       color: Colors.black,
@@ -184,15 +186,19 @@ class SignupScreen extends StatelessWidget {
                                     ),
                                   ),
                                   TextSpan(
-                                    text: ' Login',
-                                    style: TextStyle(
-                                      color: Color(0xFF3366CC),
-                                      fontSize: 14,
-                                      fontFamily: 'Poppins',
-                                      fontWeight: FontWeight.w400,
-                                      height: 0,
-                                    ),
-                                  ),
+                                      text: ' Login',
+                                      style: const TextStyle(
+                                        color: Color(0xFF3366CC),
+                                        fontSize: 14,
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w400,
+                                        height: 0,
+                                      ),
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () {
+                                          context.router
+                                              .replaceNamed(LoginRoute.name);
+                                        }),
                                 ],
                               ),
                             ),
