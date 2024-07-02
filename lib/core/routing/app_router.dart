@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:injectable/injectable.dart';
+import 'package:voyease_frontend/screens/auth/auth_navigation_screen.dart';
 import 'package:voyease_frontend/screens/settings/about_us_screen.dart';
 import 'package:voyease_frontend/screens/auth/enter_otp_screen.dart';
 import 'package:voyease_frontend/screens/settings/feedback_form_screen.dart';
@@ -30,24 +31,29 @@ class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(
-          page: MainRoute.page,
           path: "/",
+          page: AuthNavigationRoute.page,
           initial: true,
           children: [
-            // AutoRoute(
-            //   path: "select-language",
-            //   page: SelectLanguageRoute.page,
-            //   // initial: true,
-            // ),
-            // AutoRoute(path: "landing", page: LandingRoute.page),
-            // AutoRoute(path: "login", page: LoginRoute.page),
-            // AutoRoute(path: "signup", page: SignupRoute.page),
-            // AutoRoute(path: "signup-verify", page: SignUpVerifyRoute.page),
-            // AutoRoute(path: "forgot-pswd", page: ForgotPswdRoute.page),
-            // AutoRoute(path: "enter-otp", page: EnterOtpRoute.page),
-            // AutoRoute(path: "password-reset", page: PasswordResetRoute.page),
-            // AutoRoute(path: "reset-done", page: ResetDoneRoute.page),
-            // AutoRoute(path: "main", page: MainRoute.page),
+            AutoRoute(
+              path: "select-language",
+              page: SelectLanguageRoute.page,
+              initial: true,
+            ),
+            AutoRoute(path: "landing", page: LandingRoute.page),
+            AutoRoute(path: "login", page: LoginRoute.page),
+            AutoRoute(path: "signup", page: SignupRoute.page),
+            AutoRoute(path: "signup-verify", page: SignUpVerifyRoute.page),
+            AutoRoute(path: "forgot-pswd", page: ForgotPswdRoute.page),
+            AutoRoute(path: "enter-otp", page: EnterOtpRoute.page),
+            AutoRoute(path: "password-reset", page: PasswordResetRoute.page),
+            AutoRoute(path: "reset-done", page: ResetDoneRoute.page),
+          ],
+        ),
+        AutoRoute(
+          page: MainRoute.page,
+          path: "/home",
+          children: [
             AutoRoute(
                 path: SettingsNavigationRoute.name,
                 page: SettingsNavigationRoute.page,
@@ -68,9 +74,9 @@ class AppRouter extends _$AppRouter {
                       page: FeedbackFormRoute.page),
                   AutoRoute(path: AboutUsRoute.name, page: AboutUsRoute.page),
                 ]),
-            AutoRoute(path: "home", page: HomeRoute.page, children: const []),
+            AutoRoute(
+                path: HomeRoute.name, page: HomeRoute.page, children: const []),
           ],
-          // initial: true,
         )
       ];
 }

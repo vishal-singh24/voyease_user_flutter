@@ -12,6 +12,7 @@ class AppColors {
 
   static Color textGray = const Color(0XFF908B8B);
   static Color textLight = Colors.white;
-  static Color textBlue = const Color(0XFF3366CC);
+  static Color textLink = const Color(0XFF3366CC);
+  static Color textBlue = const Color(0XFF285A84);
   static Color textGreen = const Color(0XFF1DAE35);
 }

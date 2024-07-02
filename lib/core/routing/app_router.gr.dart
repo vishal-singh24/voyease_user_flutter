@@ -21,6 +21,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const AboutUsScreen(),
       );
     },
+    AuthNavigationRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AuthNavigationScreen(),
+      );
+    },
     EnterOtpRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -136,6 +142,20 @@ class AboutUsRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'AboutUsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [AuthNavigationScreen]
+class AuthNavigationRoute extends PageRouteInfo<void> {
+  const AuthNavigationRoute({List<PageRouteInfo>? children})
+      : super(
+          AuthNavigationRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AuthNavigationRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

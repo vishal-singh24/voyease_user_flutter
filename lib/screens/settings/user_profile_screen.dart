@@ -90,7 +90,7 @@ class UserProfileScreen extends StatelessWidget {
                         child: Text(
                           "Change password?",
                           style: TextStyle(
-                            color: AppColors.textBlue,
+                            color: AppColors.textLink,
                             fontSize: 12,
                             fontWeight: FontWeight.w400,
                           ),
