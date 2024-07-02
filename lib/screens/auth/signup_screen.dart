@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:voyease_frontend/core/routing/app_router.dart';
 import 'package:voyease_frontend/widgets/app_top_nav_bar.dart';
 import 'package:voyease_frontend/widgets/common_widgets.dart';
+import 'package:voyease_frontend/widgets/gradient_background.dart';
 
 @RoutePage()
 class SignupScreen extends StatelessWidget {
