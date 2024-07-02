@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:voyease_frontend/configs/app_colors.dart';
 import 'package:voyease_frontend/core/routing/app_router.dart';
 import 'package:voyease_frontend/widgets/bottom_nav_item.dart';
 
@@ -25,20 +27,33 @@ class MainScreen extends StatelessWidget {
           currentIndex: tabsRouter.activeIndex,
           onTap: tabsRouter.setActiveIndex,
           items: [
-            bottomNavItem(svgSrc: "assets/icons/home.svg"),
-            bottomNavItem(svgSrc: "assets/icons/shop.svg"),
-            bottomNavItem(svgSrc: "assets/icons/person.svg")
+            bottomNavItem(
+                icon: Icon(
+              Icons.home_outlined,
+              color: AppColors.white,
+              size: 40,
+            )),
+            bottomNavItem(
+                icon: SvgPicture.asset(
+              "assets/icons/shop.svg",
+              height: 40,
+            )),
+            bottomNavItem(
+                icon: Icon(
+              Icons.person_outline_outlined,
+              color: AppColors.white,
+              size: 40,
+            ))
           ],
         );
       },
-      // bottomSheet: const MainBottomSheet(),
     );
   }
 
-  BottomNavigationBarItem bottomNavItem({svgSrc}) {
+  BottomNavigationBarItem bottomNavItem({icon}) {
     return BottomNavigationBarItem(
-      icon: BottomNavItem(svgSrc: svgSrc),
-      activeIcon: BottomNavItem(svgSrc: svgSrc, isActive: true),
+      icon: BottomNavItem(icon: icon),
+      activeIcon: BottomNavItem(icon: icon, isActive: true),
       label: "",
     );
   }
