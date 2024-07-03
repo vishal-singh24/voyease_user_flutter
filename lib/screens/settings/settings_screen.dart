@@ -67,6 +67,7 @@ class SettingsScreen extends StatelessWidget {
             "title": "Logout",
             "onClick": () {
               showModalBottomSheet(
+                  backgroundColor: AppColors.white,
                   context: context,
                   useRootNavigator: true,
                   builder: (context) {
@@ -78,6 +79,7 @@ class SettingsScreen extends StatelessWidget {
             "title": "Delete account",
             "onClick": () {
               showModalBottomSheet(
+                  backgroundColor: AppColors.white,
                   context: context,
                   useRootNavigator: true,
                   builder: (context) {

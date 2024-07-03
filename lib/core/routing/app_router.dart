@@ -1,10 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:injectable/injectable.dart';
 import 'package:voyease_frontend/screens/auth/auth_navigation_screen.dart';
+import 'package:voyease_frontend/screens/home/home_navigation_screen.dart';
 import 'package:voyease_frontend/screens/settings/about_us_screen.dart';
 import 'package:voyease_frontend/screens/auth/enter_otp_screen.dart';
 import 'package:voyease_frontend/screens/settings/feedback_form_screen.dart';
-import 'package:voyease_frontend/screens/home_page.dart';
+import 'package:voyease_frontend/screens/home/home_screen.dart';
 import 'package:voyease_frontend/screens/main_screen.dart';
 import 'package:voyease_frontend/screens/auth/password_reset_screen.dart';
 import 'package:voyease_frontend/screens/settings/previous_bookings_screen.dart';
@@ -54,30 +55,36 @@ class AppRouter extends _$AppRouter {
         ),
         AutoRoute(
           page: MainRoute.page,
-          path: "/home",
+          path: "/main",
           children: [
             AutoRoute(
-                path: SettingsNavigationRoute.name,
-                page: SettingsNavigationRoute.page,
-                children: [
-                  AutoRoute(
-                      path: SettingsRoute.name,
-                      page: SettingsRoute.page,
-                      initial: true),
-                  AutoRoute(
-                      path: UserProfileRoute.name, page: UserProfileRoute.page),
-                  AutoRoute(
-                      path: PreviousBookingsRoute.name,
-                      page: PreviousBookingsRoute.page),
-                  AutoRoute(
-                      path: RaiseIssueRoute.name, page: RaiseIssueRoute.page),
-                  AutoRoute(
-                      path: FeedbackFormRoute.name,
-                      page: FeedbackFormRoute.page),
-                  AutoRoute(path: AboutUsRoute.name, page: AboutUsRoute.page),
-                ]),
+              path: SettingsNavigationRoute.name,
+              page: SettingsNavigationRoute.page,
+              children: [
+                AutoRoute(
+                    path: SettingsRoute.name,
+                    page: SettingsRoute.page,
+                    initial: true),
+                AutoRoute(
+                    path: UserProfileRoute.name, page: UserProfileRoute.page),
+                AutoRoute(
+                    path: PreviousBookingsRoute.name,
+                    page: PreviousBookingsRoute.page),
+                AutoRoute(
+                    path: RaiseIssueRoute.name, page: RaiseIssueRoute.page),
+                AutoRoute(
+                    path: FeedbackFormRoute.name, page: FeedbackFormRoute.page),
+                AutoRoute(path: AboutUsRoute.name, page: AboutUsRoute.page),
+              ],
+            ),
             AutoRoute(
-                path: HomeRoute.name, page: HomeRoute.page, children: const []),
+              path: HomeNavigationRoute.name,
+              page: HomeNavigationRoute.page,
+              children: [
+                AutoRoute(
+                    path: HomeRoute.name, page: HomeRoute.page, initial: true),
+              ],
+            )
           ],
         )
       ];

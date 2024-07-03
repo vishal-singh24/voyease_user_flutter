@@ -45,6 +45,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ForgotPswdScreen(),
       );
     },
+    HomeNavigationRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const HomeNavigationScreen(),
+      );
+    },
     HomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -198,6 +204,20 @@ class ForgotPswdRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ForgotPswdRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [HomeNavigationScreen]
+class HomeNavigationRoute extends PageRouteInfo<void> {
+  const HomeNavigationRoute({List<PageRouteInfo>? children})
+      : super(
+          HomeNavigationRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'HomeNavigationRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
