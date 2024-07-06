@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:voyease_frontend/configs/app_colors.dart';
 
-class InputField extends StatelessWidget {
-  const InputField(
-      {super.key,
-      this.label,
-      this.value = "",
-      this.keyboardType = TextInputType.text,
-      this.isPassword = false,
-      this.couter,
-      this.placeholder,
-      this.lines = 1});
+class InputField extends StatefulWidget {
+  const InputField({
+    super.key,
+    this.label,
+    this.value = "",
+    this.keyboardType = TextInputType.text,
+    this.isPassword = false,
+    this.couter,
+    this.placeholder,
+    this.lines = 1,
+    this.prefixIcon,
+  });
 
   final String value;
   final String? label;
@@ -19,17 +21,31 @@ class InputField extends StatelessWidget {
   final bool isPassword;
   final Widget? couter;
   final int lines;
+  final Widget? prefixIcon;
+
+  @override
+  State<InputField> createState() => _InputFieldState();
+}
+
+class _InputFieldState extends State<InputField> {
+  bool isPasswordHidden = false;
+
+  @override
+  void initState() {
+    isPasswordHidden = widget.isPassword || false;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (label != null)
+        if (widget.label != null)
           Padding(
             padding: const EdgeInsets.only(left: 10, bottom: 5),
             child: Text(
-              label!,
+              widget.label!,
               style: const TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.w400,
@@ -46,31 +62,38 @@ class InputField extends StatelessWidget {
                     blurRadius: 4,
                     spreadRadius: 0)
               ],
-              borderRadius: BorderRadius.circular(8)),
+              borderRadius: BorderRadius.circular(50)),
           child: TextFormField(
-            minLines: lines,
-            maxLines: lines,
-            obscureText: isPassword,
-            initialValue: value,
-            keyboardType: keyboardType,
+            minLines: widget.lines,
+            maxLines: widget.lines,
+            obscureText: isPasswordHidden,
+            initialValue: widget.value,
+            keyboardType: widget.keyboardType,
             style: const TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.w400,
             ),
             decoration: InputDecoration(
-              hintText: placeholder ?? label,
+              prefixIcon: widget.prefixIcon,
+              hintText: widget.placeholder ?? widget.label,
               contentPadding:
-                  const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                  const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
               focusedBorder:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(50)),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(50),
               ),
-              suffixIcon: isPassword
+              suffixIcon: widget.isPassword
                   ? IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.visibility_off_outlined,
+                      onPressed: () {
+                        setState(() {
+                          isPasswordHidden = !isPasswordHidden;
+                        });
+                      },
+                      icon: Icon(
+                        isPasswordHidden
+                            ? Icons.visibility_off_outlined
+                            : Icons.visibility_outlined,
                         size: 20,
                       ),
                     )
@@ -78,11 +101,11 @@ class InputField extends StatelessWidget {
             ),
           ),
         ),
-        if (couter != null)
+        if (widget.couter != null)
           Container(
               alignment: AlignmentDirectional.centerEnd,
               margin: const EdgeInsets.only(top: 6),
-              child: couter)
+              child: widget.couter)
       ],
     );
   }

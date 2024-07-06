@@ -49,9 +49,16 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 38),
-                      const InputField(placeholder: "username"),
+                      const InputField(
+                        placeholder: "username",
+                        prefixIcon: Icon(Icons.person_outline),
+                      ),
                       const SizedBox(height: 15),
-                      const InputField(placeholder: 'Password'),
+                      const InputField(
+                        placeholder: 'Password',
+                        isPassword: true,
+                        prefixIcon: Icon(Icons.key_outlined),
+                      ),
                       const SizedBox(height: 15),
                       Flex(
                         direction: Axis.horizontal,

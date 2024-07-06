@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:voyease_frontend/configs/app_colors.dart';
-import 'package:voyease_frontend/screens/tour_guid_selection_screen.dart';
+import 'package:voyease_frontend/screens/home/tour_guid_selection_screen.dart';
 
 class MainBottomSheet extends StatelessWidget {
   const MainBottomSheet({

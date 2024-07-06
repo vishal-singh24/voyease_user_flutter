@@ -82,6 +82,7 @@ class SettingsScreen extends StatelessWidget {
                   backgroundColor: AppColors.white,
                   context: context,
                   useRootNavigator: true,
+                  isScrollControlled: true,
                   builder: (context) {
                     return const DeleteAccountSheet();
                   });

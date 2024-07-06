@@ -15,20 +15,20 @@ class DeleteAccountSheet extends StatefulWidget {
 
 class _DeleteAccoutSheetState extends State<DeleteAccountSheet> {
   int currentview = 0;
-  late List<Widget> pages;
+  late List<Widget Function()> pages;
 
   @override
   void initState() {
     pages = [
-      page1(),
-      page2(),
+      page1,
+      page2,
     ];
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return pages[currentview];
+    return pages[currentview]();
   }
 
   Widget page1() {
