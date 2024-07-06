@@ -1,7 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:voyease_frontend/configs/app_colors.dart';
 import 'package:voyease_frontend/core/routing/app_router.dart';
 import 'package:voyease_frontend/widgets/app_top_nav_bar.dart';
+import 'package:voyease_frontend/widgets/buttons/primary_button.dart';
+import 'package:voyease_frontend/widgets/gradient_background.dart';
 
 @RoutePage()
 class ResetDoneScreen extends StatelessWidget {
@@ -10,54 +13,50 @@ class ResetDoneScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            const AppTopNavBar(),
-            const SizedBox(height: 40),
-            const Icon(
-              Icons.check_circle_outline_rounded,
-              color: Color.fromRGBO(40, 90, 132, 1),
-              size: 110,
-            ),
-            const SizedBox(height: 35),
-            const Text(
-              'Password Reset Successful',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 28),
-            ),
-            const SizedBox(height: 35),
-            const Padding(
-              padding: EdgeInsets.only(right: 15, left: 15),
-              child: Text(
-                'You have successfully reset your password. Please use new password while logging in.',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 14),
+      body: GradientBackground(
+        child: SafeArea(
+          child: Column(
+            children: [
+              const AppTopNavBar(),
+              const SizedBox(height: 40),
+              Icon(
+                Icons.check_circle_outline_rounded,
+                size: 100,
+                color: AppColors.darkBlue,
               ),
-            ),
-            const SizedBox(height: 70),
-            ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromRGBO(239, 111, 83, 1),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 130, vertical: 10),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50))),
-                onPressed: () {
-                  context.router.replaceAll([
-                    const SelectLanguageRoute(),
-                    const LandingRoute(),
-                    const LoginRoute()
-                  ]);
-                },
-                child: const Text(
-                  'Login',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ))
-          ],
+              const SizedBox(height: 30),
+              const Text(
+                'Forget Password Successful',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 28),
+              ),
+              const SizedBox(height: 30),
+              const Text(
+                'You have successfully reset your password.'
+                ' Please use new password while logging in.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.black54),
+              ),
+              const SizedBox(height: 30),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                width: MediaQuery.of(context).size.width,
+                child: PrimaryButton(
+                  label: "Login",
+                  onClick: () {
+                    context.router.replaceAll([
+                      const SelectLanguageRoute(),
+                      const LandingRoute(),
+                      const LoginRoute()
+                    ]);
+                  },
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

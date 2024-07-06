@@ -15,49 +15,51 @@ class LandingScreen extends StatelessWidget {
 
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            const AppTopNavBar(),
-            const SizedBox(
-              height: 35,
-            ),
-            Lottie.asset("assets/lottie/car.json", repeat: true, height: 150),
-            const SizedBox(
-              height: 180,
-            ),
-            const Text(
-              "VoyEase",
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.w700),
-            ),
-            const Text(
-              "Trips Now Easy",
-              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            SizedBox(
-              width: size.width * .8,
-              child: PrimaryButton(
-                label: "Login",
-                onClick: () {
-                  context.router.pushNamed(LoginRoute.name);
-                },
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const AppTopNavBar(),
+              const SizedBox(
+                height: 35,
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            SizedBox(
-              width: size.width * .8,
-              child: PrimaryButton(
-                label: "Signup",
-                onClick: () {
-                  context.router.pushNamed(SignupRoute.name);
-                },
+              Lottie.asset("assets/lottie/car.json", repeat: true, height: 150),
+              const SizedBox(
+                height: 180,
               ),
-            )
-          ],
+              const Text(
+                "VoyEase",
+                style: TextStyle(fontSize: 28, fontWeight: FontWeight.w700),
+              ),
+              const Text(
+                "Trips Now Easy",
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              SizedBox(
+                width: size.width * .8,
+                child: PrimaryButton(
+                  label: "Login",
+                  onClick: () {
+                    context.router.pushNamed(LoginRoute.name);
+                  },
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                width: size.width * .8,
+                child: PrimaryButton(
+                  label: "Signup",
+                  onClick: () {
+                    context.router.pushNamed(SignupRoute.name);
+                  },
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

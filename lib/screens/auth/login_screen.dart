@@ -1,10 +1,14 @@
-// login.dart
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:voyease_frontend/configs/app_colors.dart';
 import 'package:voyease_frontend/core/routing/app_router.dart';
+import 'package:voyease_frontend/widgets/app_card.dart';
 import 'package:voyease_frontend/widgets/app_top_nav_bar.dart';
-import 'package:voyease_frontend/widgets/common_widgets.dart';
+import 'package:voyease_frontend/widgets/buttons/app_button.dart';
+import 'package:voyease_frontend/widgets/buttons/primary_button.dart';
+import 'package:voyease_frontend/widgets/form/check_box_field.dart';
+import 'package:voyease_frontend/widgets/form/input_field.dart';
 import 'package:voyease_frontend/widgets/gradient_background.dart';
 
 @RoutePage()
@@ -14,205 +18,141 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(),
       body: GradientBackground(
         child: SafeArea(
-          child: Stack(
-            children: [
-              const AppTopNavBar(),
-              Center(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const SizedBox(height: 180),
-                    Container(
-                      height: 534,
-                      width: 400,
-                      decoration: ShapeDecoration(
-                        color: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          side: const BorderSide(width: 1),
-                          borderRadius: BorderRadius.circular(20),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const AppTopNavBar(),
+                const SizedBox(height: 75),
+                AppCard(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      const SizedBox(height: 15),
+                      const Text(
+                        'Login',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30,
                         ),
-                        shadows: const [
-                          BoxShadow(
-                            color: Color(0x3F000000),
-                            blurRadius: 9.80,
-                            offset: Offset(2, 4),
-                            spreadRadius: 4,
-                          )
-                        ],
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                      Text(
+                        'Login to your account',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: AppColors.textBlue,
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 0.56,
+                        ),
+                      ),
+                      const SizedBox(height: 38),
+                      const InputField(placeholder: "username"),
+                      const SizedBox(height: 15),
+                      const InputField(placeholder: 'Password'),
+                      const SizedBox(height: 15),
+                      Flex(
+                        direction: Axis.horizontal,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const SizedBox(height: 15),
-                          const Text(
-                            'Login',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 30,
-                              fontFamily: 'Poppins',
-                              height: 0,
-                              letterSpacing: 0.80,
-                            ),
-                          ),
-                          const Text(
-                            'Login to your account',
-                            style: TextStyle(
-                              color: Color(0xFF285A84),
-                              fontSize: 14,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.bold,
-                              height: 0,
-                              letterSpacing: 0.56,
-                            ),
-                          ),
-                          const SizedBox(height: 20),
-                          const CustomInputField(
-                            label: 'Username',
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          const CustomInputField(
-                            label: 'Password',
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Checkbox(
-                                  value: true,
-                                  onChanged: (value) => {},
-                                ),
-                                const Text(
-                                  'Remember me',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 12,
-                                    fontFamily: 'Poppins',
-                                    fontWeight: FontWeight.w400,
-                                    height: 0,
-                                  ),
-                                ),
-                                const Padding(
-                                  padding: EdgeInsets.fromLTRB(100, 20, 0, 20),
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    context.router
-                                        .pushNamed(ForgotPswdRoute.name);
-                                  },
-                                  child: const Text(
-                                    'Forgot Password?',
-                                    style: TextStyle(
-                                      color: Color(0xFF3366CC),
-                                      fontSize: 12,
-                                      fontFamily: 'Poppins',
-                                      fontWeight: FontWeight.w400,
-                                      height: 0,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          CustomButton(
-                            label: 'Login',
-                            color: const Color(0xFFEF6F53),
-                            onPressed: () {
-                              context.router.replaceAll([const MainRoute()]);
-                            },
-                          ),
-                          const SizedBox(height: 10),
-                          const SizedBox(
-                            width: 277,
-                            child: Text(
-                              'By submitting, you agree to Terms and Conditions and Privacy policy.',
+                          const CheckBoxField(
+                            label: Text(
+                              "Remember me",
                               style: TextStyle(
-                                color: Color(0xFF505050),
-                                fontSize: 8,
-                                fontFamily: 'Poppins',
+                                fontSize: 12,
                                 fontWeight: FontWeight.w400,
-                                height: 0,
-                                letterSpacing: 0.01,
                               ),
                             ),
                           ),
-                          const SizedBox(height: 20),
-                          const Text(
-                            'Or login with:',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 12,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w400,
-                              height: 0,
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                SocialButton(
-                                  label: 'Microsoft',
-                                  logo: FlutterLogo(),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.fromLTRB(85, 20, 0, 20),
-                                ),
-                                SocialButton(
-                                  label: 'Google',
-                                  logo: FlutterLogo(),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            width: 236,
-                            height: 19,
-                            child: Text.rich(
-                              TextSpan(
-                                children: [
-                                  const TextSpan(
-                                    text: 'Don’t have an account ?',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 14,
-                                      fontFamily: 'Poppins',
-                                      fontWeight: FontWeight.w400,
-                                      height: 0,
-                                    ),
-                                  ),
-                                  TextSpan(
-                                      text: ' Sign up',
-                                      style: const TextStyle(
-                                        color: Color(0xFF3366CC),
-                                        fontSize: 14,
-                                        fontFamily: 'Poppins',
-                                        fontWeight: FontWeight.w400,
-                                        height: 0,
-                                      ),
-                                      recognizer: TapGestureRecognizer()
-                                        ..onTap = () {
-                                          context.router
-                                              .replaceNamed(SignupRoute.name);
-                                        }),
-                                ],
+                          InkWell(
+                            onTap: () {
+                              context.router.pushNamed(ForgotPswdRoute.name);
+                            },
+                            child: Text(
+                              'Forgot Password?',
+                              style: TextStyle(
+                                color: AppColors.textLink,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
                               ),
                             ),
                           ),
                         ],
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 25),
+                      PrimaryButton(
+                        label: 'Login',
+                        onClick: () {
+                          context.router.replaceAll([const MainRoute()]);
+                        },
+                      ),
+                      const SizedBox(height: 9),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        child: Text(
+                          'By submitting, you agree to Terms and Conditions and Privacy policy.',
+                          style: TextStyle(
+                            color: Color(0xFF505050),
+                            fontSize: 8,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 18),
+                      const Text(
+                        'Or login with:',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      AppButton(
+                          label: "Google",
+                          fontWeight: FontWeight.w500,
+                          icon: Image.asset(
+                            "assets/icons/google.png",
+                            height: 24,
+                          ),
+                          onClick: () {},
+                          backgroundColor: const Color(0XFFF5F9FE),
+                          borderSide: BorderSide.none,
+                          textColor: AppColors.textGray),
+                      const SizedBox(height: 20),
+                      Text.rich(
+                        textAlign: TextAlign.center,
+                        TextSpan(
+                          children: [
+                            const TextSpan(
+                              text: "Don\u2019t have an account? ",
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            TextSpan(
+                                text: 'Sign up',
+                                style: const TextStyle(
+                                  color: Color(0xFF3366CC),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {
+                                    context.router
+                                        .replaceNamed(SignupRoute.name);
+                                  }),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

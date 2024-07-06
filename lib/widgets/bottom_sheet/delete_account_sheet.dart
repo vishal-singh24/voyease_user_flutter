@@ -33,8 +33,8 @@ class _DeleteAccoutSheetState extends State<DeleteAccountSheet> {
 
   Widget page1() {
     return Container(
-      height: 360,
-      padding: const EdgeInsets.symmetric(horizontal: 60),
+      height: 400,
+      padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [

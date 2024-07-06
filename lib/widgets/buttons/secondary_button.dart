@@ -1,39 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:voyease_frontend/configs/app_colors.dart';
+import 'package:voyease_frontend/widgets/buttons/app_button.dart';
 
 class SecondaryButton extends StatelessWidget {
   const SecondaryButton(
-      {super.key, required this.label, this.onClick, this.isOutlined = false});
+      {super.key,
+      required this.label,
+      this.onClick,
+      this.backgroundColor,
+      this.borderSide,
+      this.textColor});
 
-  const SecondaryButton.outlined({
+  SecondaryButton.outlined({
     super.key,
-    required this.label,
     this.onClick,
-  }) : isOutlined = true;
+    required this.label,
+  })  : backgroundColor = AppColors.white,
+        borderSide = BorderSide(color: AppColors.secondary),
+        textColor = AppColors.secondary;
 
   final Function()? onClick;
   final String label;
-  final bool isOutlined;
+  final Color? backgroundColor;
+  final BorderSide? borderSide;
+  final Color? textColor;
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: onClick,
-      style: ElevatedButton.styleFrom(
-          backgroundColor: isOutlined ? AppColors.white : AppColors.darkBlue,
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(50),
-              side: isOutlined
-                  ? BorderSide(color: AppColors.textBlue)
-                  : BorderSide.none)),
-      child: Text(
-        label,
-        style: TextStyle(
-            color: isOutlined ? AppColors.darkBlue : AppColors.textLight,
-            fontSize: 20,
-            fontWeight: FontWeight.w700),
-      ),
-    );
+    return AppButton(
+        label: label,
+        onClick: onClick,
+        backgroundColor: backgroundColor ?? AppColors.secondary,
+        borderSide: borderSide ?? BorderSide.none,
+        textColor: textColor ?? AppColors.textLight);
   }
 }

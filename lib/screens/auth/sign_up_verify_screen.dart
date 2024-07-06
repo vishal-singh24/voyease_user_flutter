@@ -1,6 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:voyease_frontend/configs/app_colors.dart';
 import 'package:voyease_frontend/widgets/app_top_nav_bar.dart';
+import 'package:voyease_frontend/widgets/buttons/primary_button.dart';
+import 'package:voyease_frontend/widgets/form/input_field.dart';
+import 'package:voyease_frontend/widgets/gradient_background.dart';
 
 @RoutePage()
 class SignUpVerifyScreen extends StatelessWidget {
@@ -9,72 +13,67 @@ class SignUpVerifyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            const AppTopNavBar(),
-            const SizedBox(height: 40),
-            const Text(
-              'Verify your account',
-              style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 28),
-            ),
-            const SizedBox(height: 49),
-            const Padding(
-              padding: EdgeInsets.only(right: 15, left: 15),
-              child: Text(
-                'We sent a verification code to your registered mail id. The code will expire in 24 hours.',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 14),
-              ),
-            ),
-            const SizedBox(height: 42),
-            Padding(
-              padding: const EdgeInsets.only(left: 30, right: 30),
-              child: TextField(
-                textAlign: TextAlign.start,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(50.0),
-                  ),
-                  hintText: 'Enter verification code',
-                  prefixText: "    ",
-                  hintStyle: const TextStyle(fontSize: 12),
+      body: GradientBackground(
+        child: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const AppTopNavBar(),
+                const SizedBox(height: 50),
+                const Text(
+                  'Verify your account',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 28),
                 ),
-              ),
-            ),
-            const SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  TextButton(
-                    onPressed: () {},
-                    child: const Text('Resend code'),
+                const SizedBox(height: 55),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: Text(
+                    'We sent a verification code to your registered mail'
+                    ' id. The code will expire in 24 hours.',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0XFF423E4C)),
                   ),
-                  const Text('in 00:45'), //Timer is to be added here
-                ],
-              ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 33),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      const SizedBox(height: 42),
+                      const InputField(placeholder: "Enter verification code"),
+                      const SizedBox(height: 15),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          InkWell(
+                            onTap: () {},
+                            child: Text(
+                              'Resend code',
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.textLink),
+                            ),
+                          ),
+                          const Text(' in 00:45',
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight
+                                      .w400)), //Timer is to be added here
+                        ],
+                      ),
+                      const SizedBox(height: 35),
+                      PrimaryButton(label: "Verify", onClick: () {}),
+                    ],
+                  ),
+                )
+              ],
             ),
-            const SizedBox(
-              height: 42,
-            ),
-            ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromRGBO(239, 111, 83, 1),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 130, vertical: 10),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50))),
-                onPressed: () {},
-                child: const Text(
-                  'Verify',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ))
-          ],
+          ),
         ),
       ),
     );

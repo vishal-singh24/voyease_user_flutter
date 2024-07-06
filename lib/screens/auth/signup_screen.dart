@@ -1,9 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:voyease_frontend/configs/app_colors.dart';
 import 'package:voyease_frontend/core/routing/app_router.dart';
+import 'package:voyease_frontend/widgets/app_card.dart';
 import 'package:voyease_frontend/widgets/app_top_nav_bar.dart';
-import 'package:voyease_frontend/widgets/common_widgets.dart';
+import 'package:voyease_frontend/widgets/buttons/app_button.dart';
+import 'package:voyease_frontend/widgets/buttons/primary_button.dart';
+import 'package:voyease_frontend/widgets/form/check_box_field.dart';
+import 'package:voyease_frontend/widgets/form/input_field.dart';
 import 'package:voyease_frontend/widgets/gradient_background.dart';
 
 @RoutePage()
@@ -15,202 +20,148 @@ class SignupScreen extends StatelessWidget {
     return Scaffold(
       body: GradientBackground(
         child: SafeArea(
-          child: Stack(
-            children: [
-              const AppTopNavBar(),
-              Center(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const SizedBox(height: 50),
-                    Container(
-                      height: 784,
-                      width: 400,
-                      decoration: ShapeDecoration(
-                        color: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          side: const BorderSide(width: 1),
-                          borderRadius: BorderRadius.circular(20),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const AppTopNavBar(),
+                const SizedBox(height: 20),
+                AppCard(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      const Text(
+                        'Signup',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30,
                         ),
-                        shadows: const [
-                          BoxShadow(
-                            color: Color(0x3F000000),
-                            blurRadius: 9.80,
-                            offset: Offset(2, 4),
-                            spreadRadius: 4,
-                          )
-                        ],
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const SizedBox(height: 15),
-                          const Text(
-                            'Signup',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 30,
-                              fontFamily: 'Poppins',
-                              height: 0,
-                              letterSpacing: 0.80,
-                            ),
-                          ),
-                          const Text(
-                            'Create new account',
-                            style: TextStyle(
-                              color: Color(0xFF285A84),
-                              fontSize: 14,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.bold,
-                              height: 0,
-                              letterSpacing: 0.56,
-                            ),
-                          ),
-                          const SizedBox(height: 40),
-                          const CustomInputField(label: 'Username'),
-                          const SizedBox(height: 15),
-                          const CustomInputField(label: 'Email'),
-                          const SizedBox(height: 15),
-                          const CustomInputField(label: 'Phone Number'),
-                          const SizedBox(height: 15),
-                          const CustomInputField(label: 'Password'),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(16, 15, 20, 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
+                      Text(
+                        'Create new account',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: AppColors.textBlue,
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 0.56,
+                        ),
+                      ),
+                      const SizedBox(height: 32),
+                      const InputField(placeholder: "Username"),
+                      const SizedBox(height: 15),
+                      const InputField(
+                          placeholder: "Email",
+                          keyboardType: TextInputType.emailAddress),
+                      const SizedBox(height: 15),
+                      const InputField(
+                          placeholder: "Phone",
+                          keyboardType: TextInputType.phone),
+                      const SizedBox(height: 15),
+                      const InputField(
+                          placeholder: 'Password', isPassword: true),
+                      const SizedBox(height: 15),
+                      CheckBoxField(
+                        label: Expanded(
+                          child: Text.rich(
+                            TextSpan(
                               children: [
-                                Checkbox(
-                                  value: true,
-                                  onChanged: (value) => {},
+                                const TextSpan(
+                                  text: 'I agree to The ',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontFamily: 'Poppins',
+                                    fontWeight: FontWeight.w400,
+                                  ),
                                 ),
-                                const Text.rich(
-                                  TextSpan(
-                                    children: [
-                                      TextSpan(
-                                        text: 'I agree to The ',
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 12,
-                                          fontFamily: 'Poppins',
-                                          fontWeight: FontWeight.w400,
-                                          height: 0.15,
-                                        ),
-                                      ),
-                                      TextSpan(
-                                        text: 'Terms of Service',
-                                        style: TextStyle(
-                                          color: Color(0xFF3461FD),
-                                          fontSize: 12,
-                                          fontFamily: 'Poppins',
-                                          fontWeight: FontWeight.w400,
-                                          height: 0.15,
-                                        ),
-                                      ),
-                                      TextSpan(
-                                        text: ' and ',
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 12,
-                                          fontFamily: 'Poppins',
-                                          fontWeight: FontWeight.w400,
-                                          height: 0.15,
-                                        ),
-                                      ),
-                                      TextSpan(
-                                        text: 'Privacy Policy',
-                                        style: TextStyle(
-                                          color: Color(0xFF3461FD),
-                                          fontSize: 12,
-                                          fontFamily: 'Poppins',
-                                          fontWeight: FontWeight.w400,
-                                          height: 0.15,
-                                        ),
-                                      ),
-                                    ],
+                                TextSpan(
+                                  text: 'Terms of Service',
+                                  style: TextStyle(
+                                    color: AppColors.textLink,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                const TextSpan(
+                                  text: ' and ',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: 'Privacy Policy',
+                                  style: TextStyle(
+                                    color: AppColors.textLink,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                          CustomButton(
-                            label: 'Signup',
-                            color: const Color(0xFFEF6F53),
-                            onPressed: () {
-                              context.router.pushNamed(SignUpVerifyRoute.name);
-                            },
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      PrimaryButton(
+                          label: "Sign up",
+                          onClick: () {
+                            context.navigateNamedTo(SignUpVerifyRoute.name);
+                          }),
+                      const SizedBox(height: 20),
+                      const Text(
+                        'Or signup with:',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      AppButton(
+                          label: "Google",
+                          fontWeight: FontWeight.w500,
+                          icon: Image.asset(
+                            "assets/icons/google.png",
+                            height: 24,
                           ),
-                          const SizedBox(height: 30),
-                          const Text(
-                            'Or sign in with:',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 12,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w400,
-                              height: 0,
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.fromLTRB(20, 25, 20, 20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                SocialButton(
-                                  label: 'Microsoft',
-                                  logo: FlutterLogo(),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.fromLTRB(85, 25, 0, 20),
-                                ),
-                                SocialButton(
-                                  label: 'Google',
-                                  logo: FlutterLogo(),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            width: 250,
-                            height: 19,
-                            child: Text.rich(
-                              TextSpan(
-                                children: [
-                                  const TextSpan(
-                                    text: 'Already have an account ?',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 14,
-                                      fontFamily: 'Poppins',
-                                      fontWeight: FontWeight.w400,
-                                      height: 0,
-                                    ),
-                                  ),
-                                  TextSpan(
-                                      text: ' Login',
-                                      style: const TextStyle(
-                                        color: Color(0xFF3366CC),
-                                        fontSize: 14,
-                                        fontFamily: 'Poppins',
-                                        fontWeight: FontWeight.w400,
-                                        height: 0,
-                                      ),
-                                      recognizer: TapGestureRecognizer()
-                                        ..onTap = () {
-                                          context.router
-                                              .replaceNamed(LoginRoute.name);
-                                        }),
-                                ],
+                          onClick: () {},
+                          backgroundColor: const Color(0XFFF5F9FE),
+                          borderSide: BorderSide.none,
+                          textColor: AppColors.textGray),
+                      const SizedBox(height: 20),
+                      Text.rich(
+                        textAlign: TextAlign.center,
+                        TextSpan(
+                          children: [
+                            const TextSpan(
+                              text: "Already have an account? ",
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
                               ),
                             ),
-                          ),
-                        ],
+                            TextSpan(
+                                text: 'Login',
+                                style: TextStyle(
+                                  color: AppColors.textLink,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {
+                                    context.router
+                                        .replaceNamed(LoginRoute.name);
+                                  }),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
