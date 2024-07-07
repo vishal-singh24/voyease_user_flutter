@@ -1,6 +1,6 @@
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/material.dart';
-import 'package:voyease_frontend/widgets/shop_card.dart';
+import "package:carousel_slider/carousel_slider.dart";
+import "package:flutter/material.dart";
+import "package:voyease_frontend/widgets/shop_card.dart";
 
 class ShopSlider extends StatelessWidget {
   const ShopSlider({

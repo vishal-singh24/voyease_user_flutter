@@ -1,15 +1,15 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:voyease_frontend/configs/app_colors.dart';
-import 'package:voyease_frontend/core/routing/app_router.dart';
-import 'package:voyease_frontend/widgets/app_card.dart';
-import 'package:voyease_frontend/widgets/app_top_nav_bar.dart';
-import 'package:voyease_frontend/widgets/buttons/app_button.dart';
-import 'package:voyease_frontend/widgets/buttons/primary_button.dart';
-import 'package:voyease_frontend/widgets/form/check_box_field.dart';
-import 'package:voyease_frontend/widgets/form/input_field.dart';
-import 'package:voyease_frontend/widgets/gradient_background.dart';
+import "package:auto_route/auto_route.dart";
+import "package:flutter/gestures.dart";
+import "package:flutter/material.dart";
+import "package:voyease_frontend/configs/app_colors.dart";
+import "package:voyease_frontend/core/routing/app_router.dart";
+import "package:voyease_frontend/widgets/app_card.dart";
+import "package:voyease_frontend/widgets/app_top_nav_bar.dart";
+import "package:voyease_frontend/widgets/buttons/app_button.dart";
+import "package:voyease_frontend/widgets/buttons/primary_button.dart";
+import "package:voyease_frontend/widgets/form/check_box_field.dart";
+import "package:voyease_frontend/widgets/form/input_field.dart";
+import "package:voyease_frontend/widgets/gradient_background.dart";
 
 @RoutePage()
 class LoginScreen extends StatelessWidget {
@@ -31,7 +31,7 @@ class LoginScreen extends StatelessWidget {
                     children: [
                       const SizedBox(height: 15),
                       const Text(
-                        'Login',
+                        "Login",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -39,7 +39,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'Login to your account',
+                        "Login to your account",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: AppColors.textBlue,
@@ -55,7 +55,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 15),
                       const InputField(
-                        placeholder: 'Password',
+                        placeholder: "Password",
                         isPassword: true,
                         prefixIcon: Icon(Icons.key_outlined),
                       ),
@@ -78,7 +78,7 @@ class LoginScreen extends StatelessWidget {
                               context.router.pushNamed(ForgotPswdRoute.name);
                             },
                             child: Text(
-                              'Forgot Password?',
+                              "Forgot Password?",
                               style: TextStyle(
                                 color: AppColors.textLink,
                                 fontSize: 12,
@@ -90,7 +90,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 25),
                       PrimaryButton(
-                        label: 'Login',
+                        label: "Login",
                         onClick: () {
                           context.router.replaceAll([const MainRoute()]);
                         },
@@ -99,7 +99,7 @@ class LoginScreen extends StatelessWidget {
                       const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 20),
                         child: Text(
-                          'By submitting, you agree to Terms and Conditions and Privacy policy.',
+                          "By submitting, you agree to Terms and Conditions and Privacy policy.",
                           style: TextStyle(
                             color: Color(0xFF505050),
                             fontSize: 8,
@@ -109,7 +109,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 18),
                       const Text(
-                        'Or login with:',
+                        "Or login with:",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 12,
@@ -141,7 +141,7 @@ class LoginScreen extends StatelessWidget {
                               ),
                             ),
                             TextSpan(
-                                text: 'Sign up',
+                                text: "Sign up",
                                 style: const TextStyle(
                                   color: Color(0xFF3366CC),
                                   fontSize: 14,

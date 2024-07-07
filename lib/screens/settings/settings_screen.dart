@@ -1,9 +1,9 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart';
-import 'package:voyease_frontend/configs/app_colors.dart';
-import 'package:voyease_frontend/core/routing/app_router.dart';
-import 'package:voyease_frontend/widgets/bottom_sheet/delete_account_sheet.dart';
-import 'package:voyease_frontend/widgets/bottom_sheet/logout_sheet.dart';
+import "package:auto_route/auto_route.dart";
+import "package:flutter/material.dart";
+import "package:voyease_frontend/configs/app_colors.dart";
+import "package:voyease_frontend/core/routing/app_router.dart";
+import "package:voyease_frontend/widgets/bottom_sheet/delete_account_sheet.dart";
+import "package:voyease_frontend/widgets/bottom_sheet/logout_sheet.dart";
 
 @RoutePage()
 class SettingsScreen extends StatelessWidget {

@@ -1,30 +1,30 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:injectable/injectable.dart';
-import 'package:voyease_frontend/screens/auth/auth_navigation_screen.dart';
-import 'package:voyease_frontend/screens/home/home_navigation_screen.dart';
-import 'package:voyease_frontend/screens/settings/about_us_screen.dart';
-import 'package:voyease_frontend/screens/auth/enter_otp_screen.dart';
-import 'package:voyease_frontend/screens/settings/feedback_form_screen.dart';
-import 'package:voyease_frontend/screens/home/home_screen.dart';
-import 'package:voyease_frontend/screens/main_screen.dart';
-import 'package:voyease_frontend/screens/auth/password_reset_screen.dart';
-import 'package:voyease_frontend/screens/settings/previous_bookings_screen.dart';
-import 'package:voyease_frontend/screens/settings/raise_issue_screen.dart';
-import 'package:voyease_frontend/screens/auth/reset_done_screen.dart';
-import 'package:voyease_frontend/screens/auth/forgot_pswd_screen.dart';
-import 'package:voyease_frontend/screens/auth/landing_screen.dart';
-import 'package:voyease_frontend/screens/auth/login_screen.dart';
-import 'package:voyease_frontend/screens/auth/select_language_screen.dart';
-import 'package:voyease_frontend/screens/settings/settings_navigation_screen.dart';
-import 'package:voyease_frontend/screens/settings/settings_screen.dart';
-import 'package:voyease_frontend/screens/auth/sign_up_verify_screen.dart';
-import 'package:voyease_frontend/screens/auth/signup_screen.dart';
-import 'package:voyease_frontend/screens/settings/user_profile_screen.dart';
-import 'package:voyease_frontend/screens/shop/shop_detail_screen.dart';
-import 'package:voyease_frontend/screens/shop/shop_main_screen.dart';
-import 'package:voyease_frontend/screens/shop/shop_navigation_screen.dart';
+import "package:auto_route/auto_route.dart";
+import "package:injectable/injectable.dart";
+import "package:voyease_frontend/screens/auth/auth_navigation_screen.dart";
+import "package:voyease_frontend/screens/home/home_navigation_screen.dart";
+import "package:voyease_frontend/screens/settings/about_us_screen.dart";
+import "package:voyease_frontend/screens/auth/enter_otp_screen.dart";
+import "package:voyease_frontend/screens/settings/feedback_form_screen.dart";
+import "package:voyease_frontend/screens/home/home_screen.dart";
+import "package:voyease_frontend/screens/main_screen.dart";
+import "package:voyease_frontend/screens/auth/password_reset_screen.dart";
+import "package:voyease_frontend/screens/settings/previous_bookings_screen.dart";
+import "package:voyease_frontend/screens/settings/raise_issue_screen.dart";
+import "package:voyease_frontend/screens/auth/reset_done_screen.dart";
+import "package:voyease_frontend/screens/auth/forgot_pswd_screen.dart";
+import "package:voyease_frontend/screens/auth/landing_screen.dart";
+import "package:voyease_frontend/screens/auth/login_screen.dart";
+import "package:voyease_frontend/screens/auth/select_language_screen.dart";
+import "package:voyease_frontend/screens/settings/settings_navigation_screen.dart";
+import "package:voyease_frontend/screens/settings/settings_screen.dart";
+import "package:voyease_frontend/screens/auth/sign_up_verify_screen.dart";
+import "package:voyease_frontend/screens/auth/signup_screen.dart";
+import "package:voyease_frontend/screens/settings/user_profile_screen.dart";
+import "package:voyease_frontend/screens/shop/shop_detail_screen.dart";
+import "package:voyease_frontend/screens/shop/shop_main_screen.dart";
+import "package:voyease_frontend/screens/shop/shop_navigation_screen.dart";
 
-part 'app_router.gr.dart';
+part "app_router.gr.dart";
 
 @Singleton()
 @AutoRouterConfig()

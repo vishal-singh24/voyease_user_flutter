@@ -1,10 +1,10 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart';
-import 'package:voyease_frontend/configs/app_colors.dart';
-import 'package:voyease_frontend/widgets/app_top_nav_bar.dart';
-import 'package:voyease_frontend/widgets/buttons/primary_button.dart';
-import 'package:voyease_frontend/widgets/form/input_field.dart';
-import 'package:voyease_frontend/widgets/gradient_background.dart';
+import "package:auto_route/auto_route.dart";
+import "package:flutter/material.dart";
+import "package:voyease_frontend/configs/app_colors.dart";
+import "package:voyease_frontend/widgets/app_top_nav_bar.dart";
+import "package:voyease_frontend/widgets/buttons/primary_button.dart";
+import "package:voyease_frontend/widgets/form/input_field.dart";
+import "package:voyease_frontend/widgets/gradient_background.dart";
 
 @RoutePage()
 class SignUpVerifyScreen extends StatelessWidget {
@@ -21,7 +21,7 @@ class SignUpVerifyScreen extends StatelessWidget {
                 const AppTopNavBar(),
                 const SizedBox(height: 50),
                 const Text(
-                  'Verify your account',
+                  "Verify your account",
                   textAlign: TextAlign.center,
                   style: TextStyle(fontWeight: FontWeight.w700, fontSize: 28),
                 ),
@@ -29,8 +29,8 @@ class SignUpVerifyScreen extends StatelessWidget {
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10),
                   child: Text(
-                    'We sent a verification code to your registered mail'
-                    ' id. The code will expire in 24 hours.',
+                    "We sent a verification code to your registered mail"
+                    " id. The code will expire in 24 hours.",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontSize: 14,
@@ -52,14 +52,14 @@ class SignUpVerifyScreen extends StatelessWidget {
                           InkWell(
                             onTap: () {},
                             child: Text(
-                              'Resend code',
+                              "Resend code",
                               style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textLink),
                             ),
                           ),
-                          const Text(' in 00:45',
+                          const Text(" in 00:45",
                               style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight

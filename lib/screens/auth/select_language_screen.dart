@@ -1,9 +1,9 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart';
-import 'package:voyease_frontend/configs/app_colors.dart';
-import 'package:voyease_frontend/core/routing/app_router.dart';
-import 'package:voyease_frontend/widgets/language_card.dart';
-import 'package:voyease_frontend/widgets/buttons/primary_button.dart';
+import "package:auto_route/auto_route.dart";
+import "package:flutter/material.dart";
+import "package:voyease_frontend/configs/app_colors.dart";
+import "package:voyease_frontend/core/routing/app_router.dart";
+import "package:voyease_frontend/widgets/language_card.dart";
+import "package:voyease_frontend/widgets/buttons/primary_button.dart";
 
 @RoutePage()
 class SelectLanguageScreen extends StatelessWidget {

@@ -1,11 +1,11 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart';
-import 'package:pinput/pinput.dart';
-import 'package:voyease_frontend/configs/app_colors.dart';
-import 'package:voyease_frontend/core/routing/app_router.dart';
-import 'package:voyease_frontend/widgets/app_top_nav_bar.dart';
-import 'package:voyease_frontend/widgets/buttons/primary_button.dart';
-import 'package:voyease_frontend/widgets/gradient_background.dart';
+import "package:auto_route/auto_route.dart";
+import "package:flutter/material.dart";
+import "package:pinput/pinput.dart";
+import "package:voyease_frontend/configs/app_colors.dart";
+import "package:voyease_frontend/core/routing/app_router.dart";
+import "package:voyease_frontend/widgets/app_top_nav_bar.dart";
+import "package:voyease_frontend/widgets/buttons/primary_button.dart";
+import "package:voyease_frontend/widgets/gradient_background.dart";
 
 @RoutePage()
 class EnterOtpScreen extends StatelessWidget {
@@ -29,18 +29,18 @@ class EnterOtpScreen extends StatelessWidget {
                     color: Colors.white70,
                   ),
                   child: Image.asset(
-                    'assets/images/msg_icon.png',
+                    "assets/images/msg_icon.png",
                   ),
                 ),
                 const SizedBox(height: 30),
                 const Text(
-                  'Enter OTP',
+                  "Enter OTP",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
                 ),
                 const SizedBox(height: 30),
                 const Text(
-                  'We sent a 4 digit code to your mobile number. '
-                  'Please enter the code:',
+                  "We sent a 4 digit code to your mobile number. "
+                  "Please enter the code:",
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
                 ),
@@ -80,7 +80,7 @@ class EnterOtpScreen extends StatelessWidget {
                     InkWell(
                       onTap: () {},
                       child: Text(
-                        ' Resend OTP',
+                        " Resend OTP",
                         style:
                             TextStyle(color: AppColors.textLink, fontSize: 14),
                       ),

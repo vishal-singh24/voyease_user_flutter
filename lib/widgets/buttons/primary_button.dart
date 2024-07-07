@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:voyease_frontend/configs/app_colors.dart';
-import 'package:voyease_frontend/widgets/buttons/app_button.dart';
+import "package:flutter/material.dart";
+import "package:voyease_frontend/configs/app_colors.dart";
+import "package:voyease_frontend/widgets/buttons/app_button.dart";
 
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton(

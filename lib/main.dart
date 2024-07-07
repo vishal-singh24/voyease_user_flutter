@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:voyease_frontend/configs/theme/app_theme.dart';
-import 'package:voyease_frontend/core/routing/app_router.dart';
-import 'package:voyease_frontend/core/di/di.dart';
-import 'package:voyease_frontend/screens/splash_screen.dart';
+import "package:flutter/material.dart";
+import "package:voyease_frontend/configs/theme/app_theme.dart";
+import "package:voyease_frontend/core/routing/app_router.dart";
+import "package:voyease_frontend/core/di/di.dart";
+import "package:voyease_frontend/screens/splash_screen.dart";
 
 void main() async {
   configureDependencies();

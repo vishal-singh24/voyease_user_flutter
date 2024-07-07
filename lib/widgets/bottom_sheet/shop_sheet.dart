@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:sheet/sheet.dart';
+import "package:flutter/material.dart";
+import "package:sheet/sheet.dart";
 
 class ShopSheet extends StatelessWidget {
   const ShopSheet({
@@ -23,7 +23,7 @@ class ShopSheet extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.red,
         body: const Center(
-          child: Text('Hello'),
+          child: Text("Hello"),
         ),
         bottomNavigationBar: BottomAppBar(
           elevation: 4,

@@ -1,12 +1,12 @@
 //Password visibility state bug left to be solved
 
-import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart';
-import 'package:voyease_frontend/core/routing/app_router.dart';
-import 'package:voyease_frontend/widgets/app_top_nav_bar.dart';
-import 'package:voyease_frontend/widgets/buttons/primary_button.dart';
-import 'package:voyease_frontend/widgets/form/input_field.dart';
-import 'package:voyease_frontend/widgets/gradient_background.dart';
+import "package:auto_route/auto_route.dart";
+import "package:flutter/material.dart";
+import "package:voyease_frontend/core/routing/app_router.dart";
+import "package:voyease_frontend/widgets/app_top_nav_bar.dart";
+import "package:voyease_frontend/widgets/buttons/primary_button.dart";
+import "package:voyease_frontend/widgets/form/input_field.dart";
+import "package:voyease_frontend/widgets/gradient_background.dart";
 
 @RoutePage()
 class PasswordResetScreen extends StatelessWidget {
@@ -30,12 +30,12 @@ class PasswordResetScreen extends StatelessWidget {
                     color: Colors.white70,
                   ),
                   child: Image.asset(
-                    'assets/images/lock.png',
+                    "assets/images/lock.png",
                   ),
                 ),
                 const SizedBox(height: 30),
                 const Text(
-                  'Password Reset',
+                  "Password Reset",
                   style: TextStyle(fontWeight: FontWeight.w700, fontSize: 28),
                 ),
                 const SizedBox(height: 30),

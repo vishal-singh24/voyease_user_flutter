@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:voyease_frontend/core/di/di.dart';
-import 'package:voyease_frontend/core/routing/app_router.dart';
-import 'package:voyease_frontend/widgets/buttons/secondary_button.dart';
-import 'package:voyease_frontend/widgets/form/input_field.dart';
+import "package:flutter/material.dart";
+import "package:voyease_frontend/core/di/di.dart";
+import "package:voyease_frontend/core/routing/app_router.dart";
+import "package:voyease_frontend/widgets/buttons/secondary_button.dart";
+import "package:voyease_frontend/widgets/form/input_field.dart";
 
 class DeleteAccountSheet extends StatefulWidget {
   const DeleteAccountSheet({super.key});

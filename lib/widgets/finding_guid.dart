@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
-import 'package:voyease_frontend/configs/app_colors.dart';
+import "package:flutter/material.dart";
+import "package:lottie/lottie.dart";
+import "package:voyease_frontend/configs/app_colors.dart";
 
 class FindingGuid extends StatelessWidget {
   const FindingGuid({super.key});

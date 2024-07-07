@@ -1,15 +1,15 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:voyease_frontend/configs/app_colors.dart';
-import 'package:voyease_frontend/core/routing/app_router.dart';
-import 'package:voyease_frontend/widgets/app_card.dart';
-import 'package:voyease_frontend/widgets/app_top_nav_bar.dart';
-import 'package:voyease_frontend/widgets/buttons/app_button.dart';
-import 'package:voyease_frontend/widgets/buttons/primary_button.dart';
-import 'package:voyease_frontend/widgets/form/check_box_field.dart';
-import 'package:voyease_frontend/widgets/form/input_field.dart';
-import 'package:voyease_frontend/widgets/gradient_background.dart';
+import "package:auto_route/auto_route.dart";
+import "package:flutter/gestures.dart";
+import "package:flutter/material.dart";
+import "package:voyease_frontend/configs/app_colors.dart";
+import "package:voyease_frontend/core/routing/app_router.dart";
+import "package:voyease_frontend/widgets/app_card.dart";
+import "package:voyease_frontend/widgets/app_top_nav_bar.dart";
+import "package:voyease_frontend/widgets/buttons/app_button.dart";
+import "package:voyease_frontend/widgets/buttons/primary_button.dart";
+import "package:voyease_frontend/widgets/form/check_box_field.dart";
+import "package:voyease_frontend/widgets/form/input_field.dart";
+import "package:voyease_frontend/widgets/gradient_background.dart";
 
 @RoutePage()
 class SignupScreen extends StatelessWidget {
@@ -31,7 +31,7 @@ class SignupScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       const Text(
-                        'Signup',
+                        "Signup",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -39,7 +39,7 @@ class SignupScreen extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'Create new account',
+                        "Create new account",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: AppColors.textBlue,
@@ -65,7 +65,7 @@ class SignupScreen extends StatelessWidget {
                           keyboardType: TextInputType.phone),
                       const SizedBox(height: 15),
                       const InputField(
-                          placeholder: 'Password',
+                          placeholder: "Password",
                           prefixIcon: Icon(Icons.key_outlined),
                           isPassword: true),
                       const SizedBox(height: 15),
@@ -75,15 +75,15 @@ class SignupScreen extends StatelessWidget {
                             TextSpan(
                               children: [
                                 const TextSpan(
-                                  text: 'I agree to The ',
+                                  text: "I agree to The ",
                                   style: TextStyle(
                                     fontSize: 12,
-                                    fontFamily: 'Poppins',
+                                    fontFamily: "Poppins",
                                     fontWeight: FontWeight.w400,
                                   ),
                                 ),
                                 TextSpan(
-                                  text: 'Terms of Service',
+                                  text: "Terms of Service",
                                   style: TextStyle(
                                     color: AppColors.textLink,
                                     fontSize: 12,
@@ -91,14 +91,14 @@ class SignupScreen extends StatelessWidget {
                                   ),
                                 ),
                                 const TextSpan(
-                                  text: ' and ',
+                                  text: " and ",
                                   style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w400,
                                   ),
                                 ),
                                 TextSpan(
-                                  text: 'Privacy Policy',
+                                  text: "Privacy Policy",
                                   style: TextStyle(
                                     color: AppColors.textLink,
                                     fontSize: 12,
@@ -118,7 +118,7 @@ class SignupScreen extends StatelessWidget {
                           }),
                       const SizedBox(height: 20),
                       const Text(
-                        'Or signup with:',
+                        "Or signup with:",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 12,
@@ -150,7 +150,7 @@ class SignupScreen extends StatelessWidget {
                               ),
                             ),
                             TextSpan(
-                                text: 'Login',
+                                text: "Login",
                                 style: TextStyle(
                                   color: AppColors.textLink,
                                   fontSize: 14,

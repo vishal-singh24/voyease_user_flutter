@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:voyease_frontend/configs/app_colors.dart';
+import "package:flutter/material.dart";
+import "package:flutter_svg/svg.dart";
+import "package:voyease_frontend/configs/app_colors.dart";
 
 class SelectionButton extends StatelessWidget {
   const SelectionButton(
