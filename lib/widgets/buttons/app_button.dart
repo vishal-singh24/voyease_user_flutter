@@ -25,6 +25,7 @@ class AppButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
+      iconAlignment: IconAlignment.end,
       onPressed: onClick,
       style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor,

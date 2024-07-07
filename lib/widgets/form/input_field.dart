@@ -12,6 +12,7 @@ class InputField extends StatefulWidget {
     this.placeholder,
     this.lines = 1,
     this.prefixIcon,
+    this.suffixIcon,
   });
 
   final String value;
@@ -22,6 +23,7 @@ class InputField extends StatefulWidget {
   final Widget? couter;
   final int lines;
   final Widget? prefixIcon;
+  final Widget? suffixIcon;
 
   @override
   State<InputField> createState() => _InputFieldState();
@@ -97,7 +99,7 @@ class _InputFieldState extends State<InputField> {
                         size: 20,
                       ),
                     )
-                  : null,
+                  : widget.suffixIcon,
             ),
           ),
         ),
