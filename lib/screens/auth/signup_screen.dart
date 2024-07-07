@@ -49,18 +49,25 @@ class SignupScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 32),
-                      const InputField(placeholder: "Username"),
+                      const InputField(
+                        placeholder: "Username",
+                        prefixIcon: Icon(Icons.person_outline),
+                      ),
                       const SizedBox(height: 15),
                       const InputField(
                           placeholder: "Email",
+                          prefixIcon: Icon(Icons.mail_outline),
                           keyboardType: TextInputType.emailAddress),
                       const SizedBox(height: 15),
                       const InputField(
                           placeholder: "Phone",
+                          prefixIcon: Icon(Icons.phone_outlined),
                           keyboardType: TextInputType.phone),
                       const SizedBox(height: 15),
                       const InputField(
-                          placeholder: 'Password', isPassword: true),
+                          placeholder: 'Password',
+                          prefixIcon: Icon(Icons.key_outlined),
+                          isPassword: true),
                       const SizedBox(height: 15),
                       CheckBoxField(
                         label: Expanded(

@@ -117,6 +117,24 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const SettingsScreen(),
       );
     },
+    ShopDetailRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ShopDetailScreen(),
+      );
+    },
+    ShopMainRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ShopMainScreen(),
+      );
+    },
+    ShopNavigationRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ShopNavigationScreen(),
+      );
+    },
     SignUpVerifyRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -372,6 +390,48 @@ class SettingsRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SettingsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ShopDetailScreen]
+class ShopDetailRoute extends PageRouteInfo<void> {
+  const ShopDetailRoute({List<PageRouteInfo>? children})
+      : super(
+          ShopDetailRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ShopDetailRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ShopMainScreen]
+class ShopMainRoute extends PageRouteInfo<void> {
+  const ShopMainRoute({List<PageRouteInfo>? children})
+      : super(
+          ShopMainRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ShopMainRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ShopNavigationScreen]
+class ShopNavigationRoute extends PageRouteInfo<void> {
+  const ShopNavigationRoute({List<PageRouteInfo>? children})
+      : super(
+          ShopNavigationRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ShopNavigationRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

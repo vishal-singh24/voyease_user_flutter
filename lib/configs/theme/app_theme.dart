@@ -5,6 +5,6 @@ ThemeData appTheme() {
   return ThemeData(
     useMaterial3: true,
     fontFamily: "Poppins",
-    colorScheme: ColorScheme.fromSeed(seedColor: AppColors.white),
+    colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
   );
 }

@@ -20,6 +20,9 @@ import 'package:voyease_frontend/screens/settings/settings_screen.dart';
 import 'package:voyease_frontend/screens/auth/sign_up_verify_screen.dart';
 import 'package:voyease_frontend/screens/auth/signup_screen.dart';
 import 'package:voyease_frontend/screens/settings/user_profile_screen.dart';
+import 'package:voyease_frontend/screens/shop/shop_detail_screen.dart';
+import 'package:voyease_frontend/screens/shop/shop_main_screen.dart';
+import 'package:voyease_frontend/screens/shop/shop_navigation_screen.dart';
 
 part 'app_router.gr.dart';
 
@@ -58,6 +61,26 @@ class AppRouter extends _$AppRouter {
           path: "/main",
           children: [
             AutoRoute(
+              path: HomeNavigationRoute.name,
+              page: HomeNavigationRoute.page,
+              children: [
+                AutoRoute(
+                    path: HomeRoute.name, page: HomeRoute.page, initial: true),
+              ],
+            ),
+            AutoRoute(
+              page: ShopNavigationRoute.page,
+              path: ShopNavigationRoute.name,
+              children: [
+                AutoRoute(
+                    page: ShopMainRoute.page,
+                    path: ShopMainRoute.name,
+                    initial: true),
+                AutoRoute(
+                    page: ShopDetailRoute.page, path: ShopDetailRoute.name)
+              ],
+            ),
+            AutoRoute(
               path: SettingsNavigationRoute.name,
               page: SettingsNavigationRoute.page,
               children: [
@@ -77,14 +100,6 @@ class AppRouter extends _$AppRouter {
                 AutoRoute(path: AboutUsRoute.name, page: AboutUsRoute.page),
               ],
             ),
-            AutoRoute(
-              path: HomeNavigationRoute.name,
-              page: HomeNavigationRoute.page,
-              children: [
-                AutoRoute(
-                    path: HomeRoute.name, page: HomeRoute.page, initial: true),
-              ],
-            )
           ],
         )
       ];
