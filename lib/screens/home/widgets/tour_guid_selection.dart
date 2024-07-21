@@ -110,42 +110,42 @@ class TourGuidSelection extends StatelessWidget {
         ),
         const SectionName(
             title: "Select your guide", icon: Icon(Icons.person_pin_outlined)),
-        Container(
-          padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 27),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SelectionButton(
-                leftText: "Elite Guide",
-                rightText: "Rates",
-                iButton: true,
-                margin: EdgeInsets.only(top: 18),
-              ),
-              const SelectionButton(
-                leftText: "Permium Guide",
-                rightText: "Rates",
-                iButton: true,
-                margin: EdgeInsets.only(top: 8),
-              ),
-              const SelectionButton(
-                leftText: "Standard Guide",
-                rightText: "Rates",
-                iButton: true,
-                margin: EdgeInsets.only(top: 8, bottom: 22),
-              ),
-              Text(
-                "Recommended",
-                style: TextStyle(color: AppColors.textGray),
-              ),
-              const SelectionButton(
-                leftText: "Tour Buddy",
-                rightText: "Rates",
-                iButton: true,
-                margin: EdgeInsets.only(top: 15),
-              ),
-            ],
-          ),
-        ),
+        // Container(
+        //   padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 27),
+        //   child: Column(
+        //     crossAxisAlignment: CrossAxisAlignment.start,
+        //     children: [
+        //       const SelectionButton(
+        //         leftText: "Elite Guide",
+        //         rightText: "Rates",
+        //         iButton: true,
+        //         margin: EdgeInsets.only(top: 18),
+        //       ),
+        //       const SelectionButton(
+        //         leftText: "Permium Guide",
+        //         rightText: "Rates",
+        //         iButton: true,
+        //         margin: EdgeInsets.only(top: 8),
+        //       ),
+        //       const SelectionButton(
+        //         leftText: "Standard Guide",
+        //         rightText: "Rates",
+        //         iButton: true,
+        //         margin: EdgeInsets.only(top: 8, bottom: 22),
+        //       ),
+        //       Text(
+        //         "Recommended",
+        //         style: TextStyle(color: AppColors.textGray),
+        //       ),
+        //       const SelectionButton(
+        //         leftText: "Tour Buddy",
+        //         rightText: "Rates",
+        //         iButton: true,
+        //         margin: EdgeInsets.only(top: 15),
+        //       ),
+        //     ],
+        //   ),
+        // ),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 21),
           decoration: BoxDecoration(color: Colors.white, boxShadow: [

@@ -1,6 +1,7 @@
 import "package:auto_route/auto_route.dart";
 import "package:flutter/gestures.dart";
 import "package:flutter/material.dart";
+import "package:google_sign_in/google_sign_in.dart";
 import "package:voyease_frontend/configs/app_colors.dart";
 import "package:voyease_frontend/core/routing/app_router.dart";
 import "package:voyease_frontend/widgets/app_card.dart";
@@ -11,9 +12,57 @@ import "package:voyease_frontend/widgets/form/check_box_field.dart";
 import "package:voyease_frontend/widgets/form/input_field.dart";
 import "package:voyease_frontend/widgets/gradient_background.dart";
 
+GoogleSignIn _googleSignIn = GoogleSignIn(
+  scopes: ["openid", "email", "profile"],
+);
+
 @RoutePage()
-class SignupScreen extends StatelessWidget {
+class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
+
+  @override
+  State<SignupScreen> createState() => _SignupScreenState();
+}
+
+class _SignupScreenState extends State<SignupScreen> {
+  GoogleSignInAccount? _currentUser;
+  bool _isAuthorized = false; // has granted permissions?
+  final String _contactText = '';
+
+  @override
+  void initState() {
+    super.initState();
+
+    print(_googleSignIn.currentUser);
+
+    _googleSignIn.onCurrentUserChanged
+        .listen((GoogleSignInAccount? account) async {
+      // In mobile, being authenticated means being authorized...
+      bool isAuthorized = account != null;
+      print("is Authorized = $isAuthorized");
+
+      setState(() {
+        _currentUser = account;
+        _isAuthorized = isAuthorized;
+      });
+
+      // Now that we know that the user can access the required scopes, the app
+      // can call the REST API.
+      // if (isAuthorized) {
+      //   unawaited(_handleGetContact(account!));
+      // }
+    });
+  }
+
+  Future<void> _handleSignIn() async {
+    // _googleSignIn.disconnect();
+    try {
+      await _googleSignIn.signIn();
+    } catch (error, stack) {
+      print(error);
+      print(stack);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -133,7 +182,7 @@ class SignupScreen extends StatelessWidget {
                             "assets/icons/google.png",
                             height: 24,
                           ),
-                          onClick: () {},
+                          onClick: _handleSignIn,
                           backgroundColor: const Color(0XFFF5F9FE),
                           borderSide: BorderSide.none,
                           textColor: AppColors.textGray),
