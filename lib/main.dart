@@ -7,6 +7,7 @@ import "package:voyease_frontend/screens/splash_screen.dart";
 void main() async {
   configureDependencies();
   WidgetsFlutterBinding.ensureInitialized();
+
   runApp(const MyApp());
 }
 

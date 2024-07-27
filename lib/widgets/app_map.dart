@@ -17,8 +17,8 @@ class AppMap extends StatelessWidget {
       myLocationButtonEnabled: false,
       myLocationEnabled: true,
       initialCameraPosition: initialPosition,
-      onMapCreated: (GoogleMapController _controller) {
-        controller.complete(_controller);
+      onMapCreated: (GoogleMapController ctrl) {
+        controller.complete(ctrl);
       },
       // markers: markers,
     );

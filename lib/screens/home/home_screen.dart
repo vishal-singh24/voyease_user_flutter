@@ -2,9 +2,11 @@ import "dart:async";
 import "dart:math";
 
 import "package:auto_route/auto_route.dart";
+import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import "package:geolocator/geolocator.dart";
 import "package:google_maps_flutter/google_maps_flutter.dart";
+import "package:logging/logging.dart";
 import "package:sheet/sheet.dart";
 import "package:voyease_frontend/configs/app_colors.dart";
 import "package:voyease_frontend/screens/home/widgets/tour_guid_selection.dart";
@@ -24,6 +26,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   late SheetController _sheetController;
   late Completer<GoogleMapController> _mapController;
+  bool loading = false;
 
   static const CameraPosition _initialPosition = CameraPosition(
     target: LatLng(37.42796133580664, -122.085749655962),
@@ -45,15 +48,22 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _moveToCurrentLocation() async {
     try {
+      setState(() {
+        loading = true;
+      });
       var position = await _determinePosition();
       double lat = position.latitude;
       double long = position.longitude;
       LatLng location = LatLng(lat, long);
       GoogleMapController controller = await _mapController.future;
-      controller.animateCamera(CameraUpdate.newCameraPosition(
-          CameraPosition(target: location, zoom: 500)));
+      await controller.animateCamera(CameraUpdate.newCameraPosition(
+          CameraPosition(target: location, zoom: 20)));
     } catch (e) {
       print(e);
+    } finally {
+      setState(() {
+        loading = false;
+      });
     }
   }
 
@@ -71,6 +81,12 @@ class _HomeScreenState extends State<HomeScreen> {
               suffixIcon: Icon(Icons.mic_none_outlined),
             ),
           ),
+          if (loading)
+            Center(
+              child: CupertinoActivityIndicator(
+                radius: 30,
+              ),
+            ),
           FloatingButtons(
             controller: _sheetController,
             onClick: _moveToCurrentLocation,
@@ -232,5 +248,7 @@ Future<Position> _determinePosition() async {
 
   // When we reach here, permissions are granted and we can
   // continue accessing the position of the device.
-  return await Geolocator.getCurrentPosition();
+  return await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.bestForNavigation,
+      forceAndroidLocationManager: true);
 }
