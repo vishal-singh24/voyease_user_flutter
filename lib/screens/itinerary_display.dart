@@ -22,6 +22,7 @@ class _Itinerary extends State<Itinerary> {
     final jsonResponse = json.decode(jsonString);
     setState(() {
       _itinerary = jsonResponse['itinerary'];
+      print(_itinerary);
     });
   }
 
@@ -62,71 +63,95 @@ class _Itinerary extends State<Itinerary> {
               ),
             ),
             SliverList.builder(
-                itemCount: _itinerary.length,
-                itemBuilder: (context, index) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Column(
-                        children: [
-                          const SizedBox(height: 15),
-                          Container(
-                            width: double.infinity,
-                            decoration: const BoxDecoration(
-                                color: Color.fromRGBO(231, 231, 231, 1)),
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 15, top: 5, bottom: 5),
-                              child: Text('Day ${_itinerary[index]['day']}'),
+              itemCount: _itinerary.length,
+              itemBuilder: (context, index) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Column(
+                      children: [
+                        const SizedBox(height: 15),
+                        Container(
+                          width: double.infinity,
+                          decoration: const BoxDecoration(
+                              color: Color.fromRGBO(231, 231, 231, 1)),
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                left: 15, top: 5, bottom: 5),
+                            child: Text(
+                              'Day ${_itinerary[index]['day']}',
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold),
                             ),
                           ),
-                          const SizedBox(height: 20),
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 15),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Row(
-                                  children: [
-                                    Text(
-                                      'Best Time',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    SizedBox(
-                                      width: 60,
-                                    ),
-                                    Text(
-                                      'Place to visit',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    )
-                                  ],
-                                ),
-                                const SizedBox(height: 10),
-                                Row(
-                                  children: [
-                                    Text(
-                                      '${_itinerary[index]['best_time_to_visit']}',
-                                    ),
-                                    const SizedBox(width: 25),
-                                    const Icon(
-                                      Icons.route,
-                                      color: Color.fromRGBO(255, 116, 73, 1),
-                                    ),
-                                    const SizedBox(width: 25),
-                                    Text('${_itinerary[index]['name']}')
-                                  ],
-                                )
-                              ],
-                            ),
+                        ),
+                        const SizedBox(height: 20),
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 15),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Row(
+                                children: [
+                                  Text(
+                                    'Best Time',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    width: 122,
+                                  ),
+                                  Text(
+                                    'Place to visit',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  )
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+                              Row(
+                                children: [
+                                  Text(
+                                    '${_itinerary[index]['places_to_visit'][0]['best_time_to_visit']}',
+                                    style: const TextStyle(fontSize: 12),
+                                  ),
+                                  const SizedBox(width: 25),
+                                  const Icon(
+                                    Icons.route,
+                                    color: Color.fromRGBO(255, 116, 73, 1),
+                                  ),
+                                  const SizedBox(width: 25),
+                                  Text(
+                                    '${_itinerary[index]['places_to_visit'][0]['name']}',
+                                  )
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+                              Row(
+                                children: [
+                                  Text(
+                                      '${_itinerary[index]['places_to_visit'][1]['best_time_to_visit']}',
+                                      style: const TextStyle(fontSize: 12)),
+                                  const SizedBox(width: 25),
+                                  const Icon(
+                                    Icons.route,
+                                    color: Color.fromRGBO(255, 116, 73, 1),
+                                  ),
+                                  const SizedBox(width: 25),
+                                  Text(
+                                      '${_itinerary[index]['places_to_visit'][1]['name']}')
+                                ],
+                              )
+                            ],
                           ),
-                        ],
-                      ),
-                    ],
-                  );
-                })
+                        ),
+                      ],
+                    ),
+                  ],
+                );
+              },
+            )
           ],
         ),
       ),
