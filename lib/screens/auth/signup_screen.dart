@@ -1,3 +1,6 @@
+import "dart:convert";
+import "dart:developer";
+
 import "package:auto_route/auto_route.dart";
 import "package:flutter/gestures.dart";
 import "package:flutter/material.dart";
@@ -33,7 +36,12 @@ class _SignupScreenState extends State<SignupScreen> {
   void initState() {
     super.initState();
 
-    print(_googleSignIn.currentUser);
+    print("current user ${_googleSignIn.currentUser}");
+    _googleSignIn.currentUser?.authHeaders.then(
+      (value) {
+        print("value = $value");
+      },
+    );
 
     _googleSignIn.onCurrentUserChanged
         .listen((GoogleSignInAccount? account) async {
@@ -55,9 +63,15 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   Future<void> _handleSignIn() async {
-    // _googleSignIn.disconnect();
     try {
-      await _googleSignIn.signIn();
+      // await _googleSignIn.disconnect();
+      var res = await _googleSignIn.signIn();
+      res?.authentication.then(
+        (value) {
+          log("access token: ${value.accessToken}\n");
+          log("id token: ${value.idToken}\n\n");
+        },
+      );
     } catch (error, stack) {
       print(error);
       print(stack);
@@ -163,7 +177,8 @@ class _SignupScreenState extends State<SignupScreen> {
                       PrimaryButton(
                           label: "Sign up",
                           onClick: () {
-                            context.navigateNamedTo(SignUpVerifyRoute.name);
+                            _googleSignIn.disconnect();
+                            // context.navigateNamedTo(SignUpVerifyRoute.name);
                           }),
                       const SizedBox(height: 20),
                       const Text(

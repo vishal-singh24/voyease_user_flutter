@@ -25,6 +25,7 @@ dart run flutter_native_splash:create
 ```
 
 ```bash
-flutter packages pub run build_runner watch
+# flutter packages pub run build_runner watch
+dart run build_runner watch --delete-conflicting-outputs
 ```
 
