@@ -6,6 +6,8 @@ import 'package:voyease_frontend/models/login_model.dart';
 import 'package:voyease_frontend/models/signup_model.dart';
 import 'package:voyease_frontend/models/token_response.dart';
 
+ String baseUrl='https://voyease-backend-53aafeb3505b.herokuapp.com';
+
 class AuthClient {
   final Dio dio;
 
@@ -13,7 +15,7 @@ class AuthClient {
 
   Future<TokenResponse> signup(SignupModel data) async {
     try {
-      var res = await dio.post("/auth/signup", data: data.toJson());
+      var res = await dio.post("$baseUrl/auth/signup", data: data.toJson());
       if (res.statusCode == HttpStatus.ok) {
         return TokenResponse.fromJson(res.data);
       } else {

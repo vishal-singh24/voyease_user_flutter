@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:voyease_frontend/core/di/di.dart";
 import "package:voyease_frontend/core/routing/app_router.dart";
+import "package:voyease_frontend/utils/shared_preferences.dart";
 import "package:voyease_frontend/widgets/buttons/secondary_button.dart";
 
 class LogoutSheet extends StatelessWidget {
@@ -38,7 +39,8 @@ class LogoutSheet extends StatelessWidget {
           const SizedBox(height: 35),
           SecondaryButton(
             label: "Logout",
-            onClick: () {
+            onClick: () async{
+              await TokenStorage.deleteToken();
               Navigator.pop(context);
               getIt<AppRouter>().replaceAll([const AuthNavigationRoute()]);
             },

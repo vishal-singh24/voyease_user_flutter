@@ -54,24 +54,24 @@ class UserProfileScreen extends StatelessWidget {
                     children: [
                       const InputField(
                         label: "Name",
-                        value: "Aditya Singh",
+                        //value: "Aditya Singh",
                       ),
                       const SizedBox(height: 18),
                       const InputField(
                         label: "Email",
-                        value: "aditya.singh@gmail.com",
+                        //value: "aditya.singh@gmail.com",
                         keyboardType: TextInputType.emailAddress,
                       ),
                       const SizedBox(height: 18),
                       const InputField(
                         label: "Phone Number",
-                        value: "+919292929292",
+                       // value: "+919292929292",
                         keyboardType: TextInputType.phone,
                       ),
                       const SizedBox(height: 18),
                       InputField(
                         label: "Password",
-                        value: "password123",
+                        //value: "password123",
                         isPassword: true,
                         couter: InkWell(
                           onTap: () {},

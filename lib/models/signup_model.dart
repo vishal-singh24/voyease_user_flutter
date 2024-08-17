@@ -1,20 +1,28 @@
-import 'package:json_annotation/json_annotation.dart';
-
-part 'signup_model.g.dart';
-
-@JsonSerializable()
 class SignupModel {
-  final String name;
-  final String email;
-  final String password;
+  String? email;
+  String? name;
+  String? phone;
+  List<int>? languages;
+  String? password;
 
-  SignupModel({
-    required this.name,
-    required this.email,
-    required this.password,
-  });
+  SignupModel(
+      {this.email, this.name, this.phone, this.languages, this.password});
 
-  Map<String, dynamic> toJson() => _$SignupModelToJson(this);
-  factory SignupModel.fromJson(Map<String, dynamic> json) =>
-      _$SignupModelFromJson(json);
+  SignupModel.fromJson(Map<String, dynamic> json) {
+    email = json['email'];
+    name = json['name'];
+    phone = json['phone'];
+    languages = json['languages'].cast<int>();
+    password = json['password'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['email'] = email;
+    data['name'] = name;
+    data['phone'] = phone;
+    data['languages'] = languages;
+    data['password'] = password;
+    return data;
+  }
 }

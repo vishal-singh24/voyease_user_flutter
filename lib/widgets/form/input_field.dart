@@ -5,7 +5,6 @@ class InputField extends StatefulWidget {
   const InputField({
     super.key,
     this.label,
-    this.value = "",
     this.keyboardType = TextInputType.text,
     this.isPassword = false,
     this.couter,
@@ -13,9 +12,10 @@ class InputField extends StatefulWidget {
     this.lines = 1,
     this.prefixIcon,
     this.suffixIcon,
+     this.validator,
+     this.controller,
   });
 
-  final String value;
   final String? label;
   final String? placeholder;
   final TextInputType keyboardType;
@@ -24,6 +24,8 @@ class InputField extends StatefulWidget {
   final int lines;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
+  final String? Function(String?)? validator;
+  final TextEditingController? controller;
 
   @override
   State<InputField> createState() => _InputFieldState();
@@ -66,10 +68,11 @@ class _InputFieldState extends State<InputField> {
               ],
               borderRadius: BorderRadius.circular(50)),
           child: TextFormField(
+            controller: widget.controller,
+             validator: widget.validator,
             minLines: widget.lines,
             maxLines: widget.lines,
             obscureText: isPasswordHidden,
-            initialValue: widget.value,
             keyboardType: widget.keyboardType,
             style: const TextStyle(
               fontSize: 15,

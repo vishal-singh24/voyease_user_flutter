@@ -1,7 +1,7 @@
-import "package:carousel_slider/carousel_slider.dart";
-import "package:flutter/material.dart";
-import "package:smooth_page_indicator/smooth_page_indicator.dart";
-import "package:voyease_frontend/configs/app_colors.dart";
+import 'package:carousel_slider/carousel_slider.dart' as carousel_slider;
+import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:voyease_frontend/configs/app_colors.dart';
 
 class ItemImageSlider extends StatefulWidget {
   const ItemImageSlider({
@@ -16,7 +16,7 @@ class ItemImageSlider extends StatefulWidget {
 }
 
 class _ItemImageSliderState extends State<ItemImageSlider> {
-  final CarouselController _controller = CarouselController();
+  final carousel_slider.CarouselController _controller = carousel_slider.CarouselController();
   int _currentIndex = 0;
 
   @override
@@ -26,21 +26,22 @@ class _ItemImageSliderState extends State<ItemImageSlider> {
         Stack(
           alignment: Alignment.bottomCenter,
           children: [
-            CarouselSlider(
+            carousel_slider.CarouselSlider(
               carouselController: _controller,
               items: widget.images.map((img) {
                 return Builder(
                   builder: (BuildContext context) {
                     return SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        child: Image.asset(
-                          img,
-                          fit: BoxFit.cover,
-                        ));
+                      width: MediaQuery.of(context).size.width,
+                      child: Image.asset(
+                        img,
+                        fit: BoxFit.cover,
+                      ),
+                    );
                   },
                 );
               }).toList(),
-              options: CarouselOptions(
+              options: carousel_slider.CarouselOptions(
                 onPageChanged: (index, reason) {
                   setState(() {
                     _currentIndex = index;
@@ -57,14 +58,15 @@ class _ItemImageSliderState extends State<ItemImageSlider> {
                 activeIndex: _currentIndex,
                 count: widget.images.length,
                 effect: ExpandingDotsEffect(
-                    activeDotColor: AppColors.white,
-                    dotColor: AppColors.white,
-                    dotHeight: 6,
-                    dotWidth: 6,
-                    spacing: 3,
-                    expansionFactor: 4.5),
+                  activeDotColor: AppColors.white,
+                  dotColor: AppColors.white,
+                  dotHeight: 6,
+                  dotWidth: 6,
+                  spacing: 3,
+                  expansionFactor: 4.5,
+                ),
               ),
-            )
+            ),
           ],
         ),
         Container(
@@ -94,7 +96,7 @@ class _ItemImageSliderState extends State<ItemImageSlider> {
               );
             },
           ),
-        )
+        ),
       ],
     );
   }
