@@ -197,8 +197,7 @@ class SignupScreen extends GetView<SignupController> {
                                               ),
                                               recognizer: TapGestureRecognizer()
                                                 ..onTap = () {
-                                                  context.router.replaceNamed(
-                                                      LoginRoute.name);
+                                                  Navigator.pushReplacementNamed(context, AppRoutes.loginScreen);
                                                 }),
                                         ],
                                       ),

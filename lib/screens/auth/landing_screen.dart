@@ -42,7 +42,7 @@ class LandingScreen extends StatelessWidget {
                 child: PrimaryButton(
                   label: "Login",
                   onClick: () {
-                    context.router.pushNamed(LoginRoute.name);
+                    Navigator.pushNamed(context, AppRoutes.loginScreen);
                   },
                 ),
               ),
@@ -54,7 +54,7 @@ class LandingScreen extends StatelessWidget {
                 child: PrimaryButton(
                   label: "Signup",
                   onClick: () {
-                    context.router.pushNamed(SignupRoute.name);
+                    Navigator.pushNamed(context, AppRoutes.signUpScreen);
                   },
                 ),
               )

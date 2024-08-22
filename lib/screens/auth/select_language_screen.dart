@@ -89,7 +89,7 @@ class SelectLanguageScreen extends StatelessWidget {
             PrimaryButton(
               label: "Proceed",
               onClick: () {
-                context.router.pushNamed(LandingRoute.name);
+                Navigator.pushNamed(context, AppRoutes.landingScreen);
               },
             ),
           ],

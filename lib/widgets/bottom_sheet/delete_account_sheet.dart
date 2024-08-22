@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
-import "package:voyease_frontend/core/di/di.dart";
-import "package:voyease_frontend/core/routing/app_router.dart";
+import "package:get/get.dart";
+import "package:voyease_frontend/screens/auth/landing_screen.dart";
 import "package:voyease_frontend/widgets/buttons/secondary_button.dart";
 import "package:voyease_frontend/widgets/form/input_field.dart";
 
@@ -112,7 +112,7 @@ class _DeleteAccoutSheetState extends State<DeleteAccountSheet> {
             label: "Delete Account",
             onClick: () {
               Navigator.pop(context);
-              getIt<AppRouter>().replaceAll([const AuthNavigationRoute()]);
+              Get.offAll(()=>const LandingScreen());
             },
           ),
         ],

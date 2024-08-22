@@ -54,7 +54,7 @@ class PasswordResetScreen extends StatelessWidget {
                       PrimaryButton(
                         label: "Continue",
                         onClick: () {
-                          context.navigateNamedTo(ResetDoneRoute.name);
+                          Navigator.pushNamed(context, AppRoutes.resetDoneScreen);
                         },
                       )
                     ],

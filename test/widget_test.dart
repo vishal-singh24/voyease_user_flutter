@@ -9,11 +9,18 @@ import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
 
 import "package:voyease_frontend/main.dart";
+import "package:voyease_frontend/utils/shared_preferences.dart";
 
 void main() {
   testWidgets("Counter increments smoke test", (WidgetTester tester) async {
+    Future<bool> _checkLoginStatus() async {
+  String? token = await TokenStorage.getToken();
+  return token!=null;
+}
+    final bool isLoggedIn = await _checkLoginStatus();
+    
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget( MyApp(isLoggedIn: isLoggedIn));
 
     // Verify that our counter starts at 0.
     expect(find.text("0"), findsOneWidget);

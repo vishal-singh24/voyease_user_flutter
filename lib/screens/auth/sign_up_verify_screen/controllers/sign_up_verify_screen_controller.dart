@@ -147,9 +147,12 @@ class SignUpVerifyScreenController extends GetxController {
               Align(
                 alignment: Alignment.topRight,
                 child: IconButton(
-                  icon: const Icon(Icons.close,size: 50,),
+                  icon: const Icon(
+                    Icons.close,
+                    size: 50,
+                  ),
                   onPressed: () {
-                   context.router.pushNamed(LandingRoute.name);
+                    Navigator.pushNamed(context, AppRoutes.landingScreen);
                   },
                 ),
               ),
@@ -185,4 +188,3 @@ class SignUpVerifyScreenController extends GetxController {
     );
   }
 }
-

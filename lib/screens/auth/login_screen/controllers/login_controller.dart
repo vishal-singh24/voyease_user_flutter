@@ -51,7 +51,7 @@ class LoginController extends GetxController {
             log("Stored token: $token");
 
             // Replace the route after successful token storage
-            context.router.replaceAll([const MainRoute()]);
+            Navigator.pushReplacementNamed(context,AppRoutes.mainScreen);
             clear();
           } catch (e) {
             log("Error saving token to SharedPreferences: $e");

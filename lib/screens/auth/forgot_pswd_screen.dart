@@ -55,7 +55,7 @@ class ForgotPswdScreen extends StatelessWidget {
                       PrimaryButton(
                         label: "Continue",
                         onClick: () {
-                          context.navigateNamedTo(EnterOtpRoute.name);
+                         Navigator.pushNamed(context, AppRoutes.enterOtpScreen);
                         },
                       )
                     ],

@@ -46,7 +46,7 @@ class MainBody extends StatelessWidget {
         "image": "assets/images/hand-sandwich.png",
         "name": "Shop name",
         "onClick": () {
-          context.navigateNamedTo(ShopDetailRoute.name);
+          //context.navigateNamedTo(ShopDetailRoute.name);
         }
       },
       {

@@ -87,8 +87,7 @@ class LoginScreen extends GetView<LoginController> {
                                 // ),
                                 InkWell(
                                   onTap: () {
-                                    context.router
-                                        .pushNamed(ForgotPswdRoute.name);
+                                   Navigator.pushNamed(context, AppRoutes.forgotPswdScreen);
                                   },
                                   child: Text(
                                     "Forgot Password?",
@@ -162,8 +161,7 @@ class LoginScreen extends GetView<LoginController> {
                                       ),
                                       recognizer: TapGestureRecognizer()
                                         ..onTap = () {
-                                          context.router
-                                              .replaceNamed(SignupRoute.name);
+                                          Navigator.pushNamed(context, AppRoutes.signUpScreen);
                                         }),
                                 ],
                               ),

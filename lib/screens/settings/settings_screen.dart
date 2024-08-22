@@ -20,7 +20,7 @@ class SettingsScreen extends StatelessWidget {
           {
             "title": "Account and User details",
             "onClick": () {
-              context.navigateNamedTo(UserProfileRoute.name);
+              //context.navigateNamedTo(UserProfileRoute.name);
             }
           }
         ]
@@ -31,7 +31,7 @@ class SettingsScreen extends StatelessWidget {
           {
             "title": "Previous Bookings",
             "onClick": () {
-              context.navigateNamedTo(PreviousBookingsRoute.name);
+              //context.navigateNamedTo(PreviousBookingsRoute.name);
             }
           },
           {
@@ -49,7 +49,7 @@ class SettingsScreen extends StatelessWidget {
           {
             "title": "Raise an issue ticket",
             "onClick": () {
-              context.navigateNamedTo(RaiseIssueRoute.name);
+              //context.navigateNamedTo(RaiseIssueRoute.name);
             }
           },
           {
@@ -144,7 +144,7 @@ class SettingsScreen extends StatelessWidget {
                       child: SettingsCard(
                         title: "Feedback form",
                         onClick: () {
-                          context.navigateNamedTo(FeedbackFormRoute.name);
+                          //context.navigateNamedTo(FeedbackFormRoute.name);
                         },
                       )),
                   const SizedBox(
@@ -155,7 +155,7 @@ class SettingsScreen extends StatelessWidget {
                       child: SettingsCard(
                         title: "About us",
                         onClick: () {
-                          context.navigateNamedTo(AboutUsRoute.name);
+                         // context.navigateNamedTo(AboutUsRoute.name);
                         },
                       )),
                 ],

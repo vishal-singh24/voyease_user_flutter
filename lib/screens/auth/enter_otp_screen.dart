@@ -64,7 +64,8 @@ class EnterOtpScreen extends StatelessWidget {
                   width: MediaQuery.of(context).size.width,
                   child: PrimaryButton(
                     onClick: () {
-                      context.router.pushNamed(PasswordResetRoute.name);
+                      Navigator.pushNamed(
+                          context, AppRoutes.passwordResetScreen);
                     },
                     label: "Continue",
                   ),

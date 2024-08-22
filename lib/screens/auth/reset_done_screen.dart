@@ -2,6 +2,7 @@ import "package:auto_route/auto_route.dart";
 import "package:flutter/material.dart";
 import "package:voyease_frontend/configs/app_colors.dart";
 import "package:voyease_frontend/core/routing/app_router.dart";
+import "package:voyease_frontend/screens/auth/login_screen/view/login_screen.dart";
 import "package:voyease_frontend/widgets/app_top_nav_bar.dart";
 import "package:voyease_frontend/widgets/buttons/primary_button.dart";
 import "package:voyease_frontend/widgets/gradient_background.dart";
@@ -47,11 +48,12 @@ class ResetDoneScreen extends StatelessWidget {
                 child: PrimaryButton(
                   label: "Login",
                   onClick: () {
-                    context.router.replaceAll([
-                      const SelectLanguageRoute(),
-                      const LandingRoute(),
-                      const LoginRoute()
-                    ]);
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LoginScreen()),
+                      (Route<dynamic> route) => false,
+                    );
                   },
                 ),
               )

@@ -60,13 +60,12 @@ class SignupController extends GetxController {
     super.onClose();
   }
 
-
   void clear() {
     usernameController.clear();
     emailController.clear();
     phoneController.clear();
     passwordController.clear();
-    isChecked.value=false;
+    isChecked.value = false;
   }
 
   Future<void> handleSignIn() async {
@@ -113,10 +112,8 @@ class SignupController extends GetxController {
           log("Stored token: $token");
           clear();
 
-        context.navigateNamedTo(SignUpVerifyRoute.name);
-          
+          Navigator.pushNamed(context, AppRoutes.signUpVerifyScreen);
         }
-
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
