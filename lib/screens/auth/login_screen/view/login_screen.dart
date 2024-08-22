@@ -13,7 +13,6 @@ import "package:voyease_frontend/widgets/form/check_box_field.dart";
 import "package:voyease_frontend/widgets/form/input_field.dart";
 import "package:voyease_frontend/widgets/gradient_background.dart";
 
-
 class LoginScreen extends GetView<LoginController> {
   const LoginScreen({super.key});
 
@@ -30,7 +29,11 @@ class LoginScreen extends GetView<LoginController> {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      const AppTopNavBar(),
+                      AppTopNavBar(
+                        onPressed: () {
+                          controller.clear();
+                        },
+                      ),
                       const SizedBox(height: 75),
                       AppCard(
                         child: Column(
@@ -56,7 +59,7 @@ class LoginScreen extends GetView<LoginController> {
                               ),
                             ),
                             const SizedBox(height: 38),
-                             InputField(
+                            InputField(
                               controller: controller.emailController,
                               placeholder: "Email",
                               prefixIcon: Icon(Icons.person_outline),

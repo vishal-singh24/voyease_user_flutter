@@ -14,7 +14,7 @@ import 'package:voyease_frontend/widgets/form/input_field.dart';
 import 'package:voyease_frontend/widgets/gradient_background.dart';
 
 class SignupScreen extends GetView<SignupController> {
- const SignupScreen({super.key});
+  const SignupScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,12 @@ class SignupScreen extends GetView<SignupController> {
                       child: Obx(() => Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              const AppTopNavBar(),
+                              AppTopNavBar(
+                                onPressed: () {
+                                  controller.clear();
+                                  context.maybePop();
+                                },
+                              ),
                               const SizedBox(
                                 height: 20,
                               ),
@@ -58,26 +63,22 @@ class SignupScreen extends GetView<SignupController> {
                                     ),
                                     const SizedBox(height: 32),
                                     InputField(
-                                      controller:
-                                          controller.usernameController,
+                                      controller: controller.usernameController,
                                       placeholder: "User name",
                                       prefixIcon: Icon(Icons.person_outline),
                                     ),
                                     const SizedBox(height: 15),
                                     InputField(
-                                        controller:
-                                            controller.emailController,
+                                        controller: controller.emailController,
                                         placeholder: "Email",
                                         prefixIcon: Icon(Icons.mail_outline),
                                         keyboardType:
                                             TextInputType.emailAddress),
                                     const SizedBox(height: 15),
                                     InputField(
-                                        controller:
-                                            controller.phoneController,
+                                        controller: controller.phoneController,
                                         placeholder: "Phone",
-                                        prefixIcon:
-                                            Icon(Icons.phone_outlined),
+                                        prefixIcon: Icon(Icons.phone_outlined),
                                         keyboardType: TextInputType.phone),
                                     const SizedBox(height: 15),
                                     InputField(
@@ -142,7 +143,7 @@ class SignupScreen extends GetView<SignupController> {
                                           if (!controller.isChecked.value) {
                                             ScaffoldMessenger.of(context)
                                                 .showSnackBar(
-                                            const  SnackBar(
+                                              const SnackBar(
                                                 backgroundColor: Colors.blue,
                                                 content: Text(
                                                     'Please accept the Terms and Conditions.'),
@@ -153,54 +154,55 @@ class SignupScreen extends GetView<SignupController> {
                                             // _googleSignIn.disconnect();
                                           }
                                         }),
-                                        const SizedBox(height: 20),
-                    const Text(
-                      "Or signup with:",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    AppButton(
-                        label: "Google",
-                        fontWeight: FontWeight.w500,
-                        icon: Image.asset(
-                          "assets/icons/google.png",
-                          height: 24,
-                        ),
-                        //onClick: handleSignIn,
-                        backgroundColor: const Color(0XFFF5F9FE),
-                        borderSide: BorderSide.none,
-                        textColor: AppColors.textGray),
-                        const SizedBox(height: 20),
-                    Text.rich(
-                      textAlign: TextAlign.center,
-                      TextSpan(
-                        children: [
-                          const TextSpan(
-                            text: "Already have an account? ",
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                          TextSpan(
-                              text: "Login",
-                              style: TextStyle(
-                                color: AppColors.textLink,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                              ),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () {
-                                  context.router
-                                      .replaceNamed(LoginRoute.name);
-                                }),
-                        ],
-                      ),
-                    ),
+                                    const SizedBox(height: 20),
+                                    const Text(
+                                      "Or signup with:",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 10),
+                                    AppButton(
+                                        label: "Google",
+                                        fontWeight: FontWeight.w500,
+                                        icon: Image.asset(
+                                          "assets/icons/google.png",
+                                          height: 24,
+                                        ),
+                                        //onClick: handleSignIn,
+                                        backgroundColor:
+                                            const Color(0XFFF5F9FE),
+                                        borderSide: BorderSide.none,
+                                        textColor: AppColors.textGray),
+                                    const SizedBox(height: 20),
+                                    Text.rich(
+                                      textAlign: TextAlign.center,
+                                      TextSpan(
+                                        children: [
+                                          const TextSpan(
+                                            text: "Already have an account? ",
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                          TextSpan(
+                                              text: "Login",
+                                              style: TextStyle(
+                                                color: AppColors.textLink,
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w400,
+                                              ),
+                                              recognizer: TapGestureRecognizer()
+                                                ..onTap = () {
+                                                  context.router.replaceNamed(
+                                                      LoginRoute.name);
+                                                }),
+                                        ],
+                                      ),
+                                    ),
                                   ],
                                 ),
                               )

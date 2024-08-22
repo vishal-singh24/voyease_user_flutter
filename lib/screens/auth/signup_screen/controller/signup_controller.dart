@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:voyease_frontend/api_clients/auth_client.dart';
 import 'package:voyease_frontend/core/routing/app_router.dart';
+import 'package:voyease_frontend/utils/shared_preferences.dart';
 
 class SignupController extends GetxController {
   final TextEditingController usernameController = TextEditingController();
@@ -17,24 +18,23 @@ class SignupController extends GetxController {
   RxBool isChecked = false.obs;
   var dioClient = Dio();
 
-  GoogleSignIn _googleSignIn = GoogleSignIn(
+  GoogleSignIn googleSignIn = GoogleSignIn(
     scopes: ["openid", "email", "profile"],
   );
   RxBool isAuthorized = false.obs;
   Rx<GoogleSignInAccount?> currentUser = Rx<GoogleSignInAccount?>(null);
 
-  @override
   void initState() {
     super.onInit();
 
-    print("current user ${_googleSignIn.currentUser}");
-    _googleSignIn.currentUser?.authHeaders.then(
+    print("current user ${googleSignIn.currentUser}");
+    googleSignIn.currentUser?.authHeaders.then(
       (value) {
         print("value = $value");
       },
     );
 
-    _googleSignIn.onCurrentUserChanged
+    googleSignIn.onCurrentUserChanged
         .listen((GoogleSignInAccount? account) async {
       // In mobile, being authenticated means being authorized...
       bool isAuthorizedValue = account != null;
@@ -51,10 +51,28 @@ class SignupController extends GetxController {
     });
   }
 
-  Future<void> _handleSignIn() async {
+  @override
+  void onClose() {
+    usernameController.dispose();
+    emailController.dispose();
+    phoneController.dispose();
+    passwordController.dispose();
+    super.onClose();
+  }
+
+
+  void clear() {
+    usernameController.clear();
+    emailController.clear();
+    phoneController.clear();
+    passwordController.clear();
+    isChecked.value=false;
+  }
+
+  Future<void> handleSignIn() async {
     try {
       // await _googleSignIn.disconnect();
-      var res = await _googleSignIn.signIn();
+      var res = await googleSignIn.signIn();
       res?.authentication.then(
         (value) {
           log("access token: ${value.accessToken}\n");
@@ -87,12 +105,18 @@ class SignupController extends GetxController {
       log("signup response$response");
 
       if (response.statusCode == 200) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Account Creation successful'),
-          ),
-        );
+        if (response.data is Map<String, dynamic> &&
+            response.data.containsKey('token')) {
+          final String token = response.data['token'] as String;
+
+          await TokenStorage.saveToken(token);
+          log("Stored token: $token");
+          clear();
+
         context.navigateNamedTo(SignUpVerifyRoute.name);
+          
+        }
+
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(

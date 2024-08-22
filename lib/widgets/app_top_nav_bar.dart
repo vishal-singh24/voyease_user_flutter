@@ -5,9 +5,12 @@ class AppTopNavBar extends StatelessWidget implements PreferredSizeWidget {
   const AppTopNavBar({
     super.key,
     this.title,
+     this.onPressed,
+     
   });
 
   final Widget? title;
+   final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +18,7 @@ class AppTopNavBar extends StatelessWidget implements PreferredSizeWidget {
       title: title,
       backgroundColor: Colors.transparent,
       leading: IconButton(
-        onPressed: () {
+        onPressed:onPressed ?? () {
           context.maybePop();
         },
         icon: const Icon(Icons.arrow_back),

@@ -17,7 +17,7 @@ import "package:voyease_frontend/screens/auth/login_screen/view/login_screen.dar
 import "package:voyease_frontend/screens/auth/select_language_screen.dart";
 import "package:voyease_frontend/screens/settings/settings_navigation_screen.dart";
 import "package:voyease_frontend/screens/settings/settings_screen.dart";
-import "package:voyease_frontend/screens/auth/sign_up_verify_screen.dart";
+import "package:voyease_frontend/screens/auth/sign_up_verify_screen/views/sign_up_verify_screen.dart";
 import "package:voyease_frontend/screens/auth/signup_screen/view/signup_screen.dart";
 import "package:voyease_frontend/screens/settings/user_profile_screen.dart";
 import "package:voyease_frontend/screens/shop/shop_detail_screen.dart";
