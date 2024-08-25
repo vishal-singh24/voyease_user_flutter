@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:auto_route/auto_route.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -68,19 +67,24 @@ class SignupController extends GetxController {
     isChecked.value = false;
   }
 
-  Future<void> handleSignIn() async {
+  Future<void> handleSignIn(BuildContext context) async {
     try {
-      // await _googleSignIn.disconnect();
+      log("Initiating Google Sign-In");
       var res = await googleSignIn.signIn();
-      res?.authentication.then(
-        (value) {
-          log("access token: ${value.accessToken}\n");
-          log("id token: ${value.idToken}\n\n");
-        },
-      );
+      if (res != null) {
+        log("Google Sign-In successful: ${res.displayName}");
+        var auth = await res.authentication;
+        log("Access token: ${auth.accessToken}");
+        log("ID token: ${auth.idToken}");
+
+        // Call the signup method with the context and tokens
+        await googleSignup(context, auth.idToken!);
+      } else {
+        log("Google Sign-In canceled");
+      }
     } catch (error, stack) {
-      print(error);
-      print(stack);
+      log("Error during Google Sign-In: $error");
+      log("Stack trace: $stack");
     }
   }
 
@@ -150,5 +154,137 @@ class SignupController extends GetxController {
       update();
       log("Signup Failed: $e");
     }
+  }
+
+  Future<void> googleSignup(BuildContext context, String idToken) async {
+    final String url =
+        "$baseUrl/api/v1/auth/google-signup"; // Replace with your actual endpoint
+    try {
+      var res = await googleSignIn.signIn();
+      if (res != null) {
+        GoogleSignInAuthentication auth = await res.authentication;
+        log("Google ID token: ${auth.idToken}");
+
+        Map<String, dynamic> authData = {
+          "token": auth.idToken,
+          "phone":
+              "9026906590", //passing number just for checking
+        };
+
+        String jsonData = jsonEncode(authData);
+        final response = await dioClient.post(url, data: jsonData);
+        log("Google signup response: $response");
+
+        if (response.statusCode == 200) {
+          if (response.data is Map<String, dynamic> &&
+              response.data.containsKey('token')) {
+            final String token = response.data['token'] as String;
+
+            await TokenStorage.saveToken(token);
+            log("Stored token: $token");
+            //clear();
+            showVerificationSuccessBottomSheet(context);
+          }
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Account Creation Failed'),
+            ),
+          );
+        }
+      }
+    } on DioException catch (e) {
+      if (e.response != null && e.response?.statusCode == 400) {
+        final errorData = e.response?.data;
+        if (errorData is Map<String, dynamic> &&
+            errorData['errorMessage'] == "Record already exists") {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              backgroundColor: Colors.blue,
+              content: Text('Your account already exists. Please log in.'),
+              duration: Duration(seconds: 2),
+            ),
+          );
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Account Creation Failed'),
+            ),
+          );
+        }
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('An unexpected error occurred. Please try again.'),
+          ),
+        );
+      }
+      update();
+      log("Google Signup Failed: $e");
+    } catch (error, stack) {
+      log("Google Sign-In Failed: $error");
+      log("Stack Trace: $stack");
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Google Sign-In Failed')),
+      );
+    }
+  }
+
+  void showVerificationSuccessBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (BuildContext context) {
+        return Container(
+          color: Colors.white,
+          height: MediaQuery.of(context).size.height * 0.5,
+          padding: const EdgeInsets.all(20),
+          child: Stack(
+            children: [
+              Align(
+                alignment: Alignment.topRight,
+                child: IconButton(
+                  icon: const Icon(
+                    Icons.close,
+                    size: 50,
+                  ),
+                  onPressed: () {
+                    Navigator.pushNamed(context, AppRoutes.landingScreen);
+                  },
+                ),
+              ),
+              const Center(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      "Account Verified Successfully!",
+                      style: TextStyle(
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: 50),
+                    Text(
+                      "The account is verified successfully with the registered email id. Please login for the app services.",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.black54,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 }

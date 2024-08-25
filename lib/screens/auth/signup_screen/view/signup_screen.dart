@@ -171,7 +171,9 @@ class SignupScreen extends GetView<SignupController> {
                                           "assets/icons/google.png",
                                           height: 24,
                                         ),
-                                        //onClick: handleSignIn,
+                                        onClick: () {
+                                          controller.handleSignIn(context);
+                                        },
                                         backgroundColor:
                                             const Color(0XFFF5F9FE),
                                         borderSide: BorderSide.none,
@@ -197,7 +199,11 @@ class SignupScreen extends GetView<SignupController> {
                                               ),
                                               recognizer: TapGestureRecognizer()
                                                 ..onTap = () {
-                                                  Navigator.pushReplacementNamed(context, AppRoutes.loginScreen);
+                                                  Navigator
+                                                      .pushReplacementNamed(
+                                                          context,
+                                                          AppRoutes
+                                                              .loginScreen);
                                                 }),
                                         ],
                                       ),

@@ -6,7 +6,6 @@ import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import "package:geolocator/geolocator.dart";
 import "package:google_maps_flutter/google_maps_flutter.dart";
-import "package:logging/logging.dart";
 import "package:sheet/sheet.dart";
 import "package:voyease_frontend/configs/app_colors.dart";
 import "package:voyease_frontend/screens/home/widgets/tour_guid_selection.dart";

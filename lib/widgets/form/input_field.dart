@@ -14,6 +14,7 @@ class InputField extends StatefulWidget {
     this.suffixIcon,
      this.validator,
      this.controller,
+     this.enabled = true, 
   });
 
   final String? label;
@@ -26,6 +27,7 @@ class InputField extends StatefulWidget {
   final Widget? suffixIcon;
   final String? Function(String?)? validator;
   final TextEditingController? controller;
+  final bool enabled;
 
   @override
   State<InputField> createState() => _InputFieldState();
@@ -74,6 +76,7 @@ class _InputFieldState extends State<InputField> {
             maxLines: widget.lines,
             obscureText: isPasswordHidden,
             keyboardType: widget.keyboardType,
+             enabled: widget.enabled,
             style: const TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.w400,

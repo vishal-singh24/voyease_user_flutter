@@ -1,12 +1,14 @@
 import "package:auto_route/auto_route.dart";
 import "package:flutter/material.dart";
+import "package:get/get.dart";
 import "package:voyease_frontend/configs/app_colors.dart";
 import "package:voyease_frontend/core/routing/app_router.dart";
+import "package:voyease_frontend/screens/settings/settings_screen/controller/settings_screen_controller.dart";
 import "package:voyease_frontend/widgets/bottom_sheet/delete_account_sheet.dart";
 import "package:voyease_frontend/widgets/bottom_sheet/logout_sheet.dart";
 
 @RoutePage()
-class SettingsScreen extends StatelessWidget {
+class SettingsScreen extends GetView<SettingsScreenController> {
   const SettingsScreen({super.key});
 
   @override
@@ -20,7 +22,7 @@ class SettingsScreen extends StatelessWidget {
           {
             "title": "Account and User details",
             "onClick": () {
-              //context.navigateNamedTo(UserProfileRoute.name);
+              Navigator.pushNamed(context, AppRoutes.userProfileScreen);
             }
           }
         ]
@@ -31,7 +33,7 @@ class SettingsScreen extends StatelessWidget {
           {
             "title": "Previous Bookings",
             "onClick": () {
-              //context.navigateNamedTo(PreviousBookingsRoute.name);
+              Navigator.pushNamed(context, AppRoutes.previousBookingsScreen);
             }
           },
           {
@@ -49,7 +51,7 @@ class SettingsScreen extends StatelessWidget {
           {
             "title": "Raise an issue ticket",
             "onClick": () {
-              //context.navigateNamedTo(RaiseIssueRoute.name);
+              Navigator.pushNamed(context, AppRoutes.raiseIssueScreen);
             }
           },
           {
@@ -92,79 +94,94 @@ class SettingsScreen extends StatelessWidget {
       }
     ];
 
-    return SafeArea(
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-              child: Row(
+    return GetBuilder<SettingsScreenController>(
+        init: SettingsScreenController(),
+        initState: (_) {},
+        builder: (_) {
+          return SafeArea(
+            child: SingleChildScrollView(
+              child: Column(
                 children: [
-                  CircleAvatar(
-                    radius: 35 / 2,
-                    backgroundImage: AssetImage("assets/images/profile.png"),
+                   Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                    child: Row(
+                      children: [
+                        const CircleAvatar(
+                          radius: 35 / 2,
+                          backgroundImage:
+                              AssetImage("assets/images/profile.png"),
+                        ),
+                        const SizedBox(
+                          width: 15,
+                        ),
+                        Obx(() {
+                        // Display the user's name
+                        return Text(
+                          "Hi, ${controller.userName.value}",
+                          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                        );
+                      }),
+                      ],
+                    ),
                   ),
-                  SizedBox(
-                    width: 15,
+                  Container(
+                    width: size.width,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 10),
+                    decoration:
+                        const BoxDecoration(border: Border(top: BorderSide())),
+                    child: Column(
+                      children: data.map(
+                        (e) {
+                          String title = e["title"];
+                          List elements = e["elements"];
+                          return SettingsSection(
+                              title: title,
+                              icon: e["icon"],
+                              elements: elements);
+                        },
+                      ).toList(),
+                    ),
                   ),
-                  Text(
-                    "Hi, Aditya",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                  Container(
+                    width: size.width,
+                    decoration: const BoxDecoration(
+                      border: Border(top: BorderSide()),
+                    ),
+                    margin: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 10),
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    child: Column(
+                      children: [
+                        ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: SettingsCard(
+                              title: "Feedback form",
+                              onClick: () {
+                                Navigator.pushNamed(
+                                    context, AppRoutes.feedbackFormScreen);
+                              },
+                            )),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: SettingsCard(
+                              title: "About us",
+                              onClick: () {
+                                Navigator.pushNamed(
+                                    context, AppRoutes.aboutUsScreen);
+                              },
+                            )),
+                      ],
+                    ),
                   )
                 ],
               ),
             ),
-            Container(
-              width: size.width,
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              decoration:
-                  const BoxDecoration(border: Border(top: BorderSide())),
-              child: Column(
-                children: data.map(
-                  (e) {
-                    String title = e["title"];
-                    List elements = e["elements"];
-                    return SettingsSection(
-                        title: title, icon: e["icon"], elements: elements);
-                  },
-                ).toList(),
-              ),
-            ),
-            Container(
-              width: size.width,
-              decoration: const BoxDecoration(
-                border: Border(top: BorderSide()),
-              ),
-              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              padding: const EdgeInsets.symmetric(vertical: 20),
-              child: Column(
-                children: [
-                  ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
-                      child: SettingsCard(
-                        title: "Feedback form",
-                        onClick: () {
-                          //context.navigateNamedTo(FeedbackFormRoute.name);
-                        },
-                      )),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
-                      child: SettingsCard(
-                        title: "About us",
-                        onClick: () {
-                         // context.navigateNamedTo(AboutUsRoute.name);
-                        },
-                      )),
-                ],
-              ),
-            )
-          ],
-        ),
-      ),
-    );
+          );
+        });
   }
 }
 

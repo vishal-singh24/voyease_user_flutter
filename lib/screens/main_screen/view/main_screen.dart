@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:voyease_frontend/screens/home/home_screen.dart';
 import 'package:voyease_frontend/screens/main_screen/controllers/main_screen_controller.dart';
-import 'package:voyease_frontend/screens/settings/settings_screen.dart';
+import 'package:voyease_frontend/screens/settings/settings_screen/view/settings_screen.dart';
 import 'package:voyease_frontend/screens/shop/shop_main_screen.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:voyease_frontend/configs/app_colors.dart';
@@ -13,7 +13,6 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Initialize the controller
     final MainScreenController controller = Get.put(MainScreenController());
 
     return Scaffold(
@@ -21,9 +20,9 @@ class MainScreen extends StatelessWidget {
         return IndexedStack(
           index: controller.currentIndex.value,
           children: const [
-            HomeScreen(), // Your home screen widget
-            ShopMainScreen(), // Your shop screen widget
-            SettingsScreen(), // Your settings screen widget
+            HomeScreen(), 
+            ShopMainScreen(), 
+            SettingsScreen(), 
           ],
         );
       }),

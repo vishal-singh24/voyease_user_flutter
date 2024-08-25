@@ -1,14 +1,12 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:auto_route/auto_route.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:voyease_frontend/api_clients/auth_client.dart';
 import 'package:voyease_frontend/core/routing/app_router.dart';
 import 'package:voyease_frontend/utils/shared_preferences.dart';
-import 'package:voyease_frontend/widgets/buttons/primary_button.dart';
 
 class SignUpVerifyScreenController extends GetxController {
   final TextEditingController otpController = TextEditingController();

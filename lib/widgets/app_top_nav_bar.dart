@@ -1,5 +1,5 @@
-import "package:auto_route/auto_route.dart";
 import "package:flutter/material.dart";
+import "package:get/get.dart";
 
 class AppTopNavBar extends StatelessWidget implements PreferredSizeWidget {
   const AppTopNavBar({
@@ -19,7 +19,7 @@ class AppTopNavBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.transparent,
       leading: IconButton(
         onPressed:onPressed ?? () {
-          context.maybePop();
+         Get.back();
         },
         icon: const Icon(Icons.arrow_back),
         iconSize: 28,

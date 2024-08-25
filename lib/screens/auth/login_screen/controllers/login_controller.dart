@@ -1,13 +1,12 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:auto_route/auto_route.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:voyease_frontend/api_clients/auth_client.dart';
 import 'package:voyease_frontend/core/routing/app_router.dart';
-import 'package:voyease_frontend/models/token_response.dart';
+import 'package:voyease_frontend/models/user_profile_model.dart';
 import 'package:voyease_frontend/utils/shared_preferences.dart';
 
 class LoginController extends GetxController {
@@ -49,9 +48,18 @@ class LoginController extends GetxController {
             await TokenStorage.saveToken(token);
 
             log("Stored token: $token");
+            UserProfileModel userProfile = await getProfile(token);
 
-            // Replace the route after successful token storage
-            Navigator.pushReplacementNamed(context,AppRoutes.mainScreen);
+            //if (userProfile.emailVerified == true) {
+              // Navigate to the main screen if email is verified
+              Navigator.pushReplacementNamed(context, AppRoutes.mainScreen);
+            // } else {
+            //   // Navigate to the signup verify screen if email is not verified
+            //   String? authToken = await TokenStorage.getToken();
+            //   resendOtp(context, authToken);
+            //   Navigator.pushReplacementNamed(
+            //       context, AppRoutes.signUpVerifyScreen);
+            // }
             clear();
           } catch (e) {
             log("Error saving token to SharedPreferences: $e");

@@ -1,4 +1,3 @@
-import "package:auto_route/auto_route.dart";
 import "package:flutter/gestures.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
@@ -9,7 +8,6 @@ import "package:voyease_frontend/widgets/app_card.dart";
 import "package:voyease_frontend/widgets/app_top_nav_bar.dart";
 import "package:voyease_frontend/widgets/buttons/app_button.dart";
 import "package:voyease_frontend/widgets/buttons/primary_button.dart";
-import "package:voyease_frontend/widgets/form/check_box_field.dart";
 import "package:voyease_frontend/widgets/form/input_field.dart";
 import "package:voyease_frontend/widgets/gradient_background.dart";
 
