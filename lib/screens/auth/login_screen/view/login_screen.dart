@@ -17,7 +17,7 @@ class LoginScreen extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     Get.put(LoginController());
-    return GetBuilder(
+    return GetBuilder<LoginController>(
         init: LoginController(),
         initState: (_) {},
         builder: (_) {
