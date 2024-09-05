@@ -1,5 +1,6 @@
 import "package:auto_route/auto_route.dart";
 import "package:flutter/material.dart";
+import "package:get/get.dart";
 import "package:lottie/lottie.dart";
 import "package:voyease_frontend/core/routing/app_router.dart";
 import "package:voyease_frontend/widgets/app_top_nav_bar.dart";
@@ -18,7 +19,11 @@ class LandingScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const AppTopNavBar(),
+              AppTopNavBar(
+                onPressed: () {
+                  Get.back();
+                },
+              ),
               const SizedBox(
                 height: 35,
               ),

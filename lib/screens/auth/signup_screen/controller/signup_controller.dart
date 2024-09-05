@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:country_picker/country_picker.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -22,6 +23,18 @@ class SignupController extends GetxController {
   );
   RxBool isAuthorized = false.obs;
   Rx<GoogleSignInAccount?> currentUser = Rx<GoogleSignInAccount?>(null);
+  Rx<Country> selectedCountry = Country(
+          phoneCode: "91",
+          countryCode: "IN",
+          e164Sc: 0,
+          geographic: true,
+          level: 1,
+          name: "India",
+          example: "India",
+          displayName: "India",
+          displayNameNoCountryCode: "IN",
+          e164Key: "")
+      .obs;
 
   void initState() {
     super.onInit();
@@ -67,6 +80,17 @@ class SignupController extends GetxController {
     isChecked.value = false;
   }
 
+  void showcountryPicker(BuildContext context) {
+    showCountryPicker(
+      context: context,
+      countryListTheme: const CountryListThemeData(bottomSheetHeight: 600),
+      onSelect: (Country value) {
+        selectedCountry.value = value;
+        log("Selected country: ${value.displayName}");
+      },
+    );
+  }
+
   Future<void> handleSignIn(BuildContext context) async {
     try {
       log("Initiating Google Sign-In");
@@ -93,12 +117,23 @@ class SignupController extends GetxController {
     log("ischecked value: $isChecked");
   }
 
-  Future<void> signup(BuildContext context) async {
+  String formatPhoneNumber(String phoneNumber, String countryCode) {
+    // Remove all non-numeric characters, just in case
+    phoneNumber = phoneNumber.replaceAll(RegExp(r'[^0-9]'), '');
+
+    // Add the + and country code
+    log('Numberwith country code: +$countryCode$phoneNumber');
+    return '+$countryCode$phoneNumber';
+  }
+  
+
+  Future<void> signup(
+      BuildContext context, String email, String phoneNo) async {
     final String url = "$baseUrl/api/v1/auth/signup";
     Map<String, dynamic> authData = {
       "email": emailController.text,
       "name": usernameController.text,
-      "phone": phoneController.text,
+      "phone":phoneNo,
       "languages": [0],
       "password": passwordController.text
     };
@@ -116,7 +151,8 @@ class SignupController extends GetxController {
           log("Stored token: $token");
           clear();
 
-          Navigator.pushNamed(context, AppRoutes.signUpVerifyScreen);
+          Navigator.pushNamed(context, AppRoutes.signUpVerifyScreen,
+              arguments: {'email': email, 'phoneNo': phoneNo});
         }
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -167,8 +203,7 @@ class SignupController extends GetxController {
 
         Map<String, dynamic> authData = {
           "token": auth.idToken,
-          "phone":
-              "9026906590", //passing number just for checking
+          "phone": "9026906590", //passing number just for checking
         };
 
         String jsonData = jsonEncode(authData);

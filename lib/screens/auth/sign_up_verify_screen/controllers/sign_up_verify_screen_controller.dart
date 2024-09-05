@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:voyease_frontend/api_clients/auth_client.dart';
@@ -18,7 +20,7 @@ class SignUpVerifyScreenController extends GetxController {
     super.onClose();
   }
 
-  Future<void> validateOtp(BuildContext context) async {
+  Future<void> validateOtp(BuildContext context, String phoneNo) async {
     String? authToken = await TokenStorage.getToken();
 
     if (authToken == null || authToken.isEmpty) {
@@ -64,7 +66,25 @@ class SignUpVerifyScreenController extends GetxController {
       if (response.statusCode == 200) {
         log("OTP authentication successful $response");
         await TokenStorage.deleteToken();
-        showVerificationSuccessBottomSheet(context);
+        // Navigator.pushNamed(context, AppRoutes.enterMobileNoOtpScreen,
+        // arguments: phoneNo);
+        await FirebaseAuth.instance.verifyPhoneNumber(
+            verificationCompleted: (PhoneAuthCredential credential) {},
+            verificationFailed: (FirebaseAuthException ex) {
+              log("Firebase verication failed: $ex");
+            },
+            codeSent: (String verificationid, int? resendtoken) {
+              Navigator.pushNamed(context, AppRoutes.enterMobileNoOtpScreen,
+                  arguments: {
+                    "phoneNo": phoneNo,
+                    "verificationid": verificationid
+                  });
+            },
+            codeAutoRetrievalTimeout: (e) {
+              log("Firebase timeout: $e");
+            },
+            phoneNumber: phoneNo);
+        //showVerificationSuccessBottomSheet(context);
 
         // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         //   backgroundColor: Colors.blue,

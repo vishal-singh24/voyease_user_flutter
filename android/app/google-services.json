@@ -1,167 +1,26 @@
 {
   "project_info": {
-    "project_number": "330280379544",
-    "project_id": "quiz-b755b",
-    "storage_bucket": "quiz-b755b.appspot.com"
+    "project_number": "6149966850",
+    "project_id": "voyease-83b9b",
+    "storage_bucket": "voyease-83b9b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:330280379544:android:2c50ea31d891ef3e3ddced",
-        "android_client_info": {
-          "package_name": "com.example.firebasemessenging"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "330280379544-8tlos8eqg51qkb7t0oiell7skr8t90v0.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAd1Lk_2g24Ujj7daVVJUlMmwIbPfPRWZs"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "330280379544-8tlos8eqg51qkb7t0oiell7skr8t90v0.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "330280379544-71tqt4ml2g7a91n0gf13haqill4ggefn.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.voyeaseFrontend"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:330280379544:android:dd6c22b292af69813ddced",
-        "android_client_info": {
-          "package_name": "com.example.myfcm"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "330280379544-8tlos8eqg51qkb7t0oiell7skr8t90v0.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAd1Lk_2g24Ujj7daVVJUlMmwIbPfPRWZs"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "330280379544-8tlos8eqg51qkb7t0oiell7skr8t90v0.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "330280379544-71tqt4ml2g7a91n0gf13haqill4ggefn.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.voyeaseFrontend"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:330280379544:android:066dbf5dbf82e3a93ddced",
-        "android_client_info": {
-          "package_name": "com.example.quizapp"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "330280379544-ivfsv3mtc8cgpldgutll26s3f76bhq04.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.quizapp",
-            "certificate_hash": "473b8c0df0f168b2c24d1d6676165c2461e4d18b"
-          }
-        },
-        {
-          "client_id": "330280379544-8tlos8eqg51qkb7t0oiell7skr8t90v0.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAd1Lk_2g24Ujj7daVVJUlMmwIbPfPRWZs"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "330280379544-8tlos8eqg51qkb7t0oiell7skr8t90v0.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "330280379544-71tqt4ml2g7a91n0gf13haqill4ggefn.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.voyeaseFrontend"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:330280379544:android:03863327c5443a013ddced",
+        "mobilesdk_app_id": "1:6149966850:android:a7887290d69202cbfceb1b",
         "android_client_info": {
           "package_name": "com.example.voyease_frontend"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "330280379544-8adhr7a2cf3ga0jq0r7jbdqgpp5517hl.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.voyease_frontend",
-            "certificate_hash": "a23740ae3d301507ac809b9b60f42192c9b5a3e6"
-          }
-        },
-        {
-          "client_id": "330280379544-8tlos8eqg51qkb7t0oiell7skr8t90v0.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAd1Lk_2g24Ujj7daVVJUlMmwIbPfPRWZs"
+          "current_key": "AIzaSyDpiLaWgifh2NTuzMbCyD4CY3SjEmJHmhs"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "330280379544-8tlos8eqg51qkb7t0oiell7skr8t90v0.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "330280379544-71tqt4ml2g7a91n0gf13haqill4ggefn.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.voyeaseFrontend"
-              }
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

@@ -1,7 +1,9 @@
+import "package:firebase_core/firebase_core.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:voyease_frontend/configs/theme/app_theme.dart";
 import "package:voyease_frontend/core/routing/app_router.dart";
+import "package:voyease_frontend/firebase_options.dart";
 import "package:voyease_frontend/screens/auth/landing_screen.dart";
 import "package:voyease_frontend/screens/main_screen/view/main_screen.dart";
 import "package:voyease_frontend/screens/splash_screen.dart";
@@ -10,15 +12,19 @@ import "package:voyease_frontend/utils/shared_preferences.dart";
 void main() async {
   //configureDependencies();
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  
   final bool isLoggedIn = await _checkLoginStatus();
 
- runApp(MyApp(isLoggedIn: isLoggedIn));
-}
-Future<bool> _checkLoginStatus() async {
-  String? token = await TokenStorage.getToken();
-  return token!=null;
+  runApp(MyApp(isLoggedIn: isLoggedIn));
 }
 
+Future<bool> _checkLoginStatus() async {
+  String? token = await TokenStorage.getToken();
+  return token != null;
+}
 
 class MyApp extends StatelessWidget {
   final bool isLoggedIn;
@@ -32,8 +38,7 @@ class MyApp extends StatelessWidget {
       builder: appBuilder,
       routes: AppRoutes.routes,
       home: SplashScreen(
-        nextScreen: isLoggedIn?const MainScreen():const LandingScreen()
-      ),
+          nextScreen: isLoggedIn ? const MainScreen() : const LandingScreen()),
     );
   }
 

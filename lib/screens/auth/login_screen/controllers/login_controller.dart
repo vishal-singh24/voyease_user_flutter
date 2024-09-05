@@ -50,8 +50,8 @@ class LoginController extends GetxController {
             log("Stored token: $token");
             UserProfileModel userProfile = await getProfile(token);
 
-            //if (userProfile.emailVerified == true) {
-              // Navigate to the main screen if email is verified
+            // if (userProfile.emailVerified == true) {
+              //Navigate to the main screen if email is verified
               Navigator.pushReplacementNamed(context, AppRoutes.mainScreen);
             // } else {
             //   // Navigate to the signup verify screen if email is not verified

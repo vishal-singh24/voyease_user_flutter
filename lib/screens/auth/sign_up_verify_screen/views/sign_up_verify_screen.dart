@@ -12,6 +12,10 @@ class SignUpVerifyScreen extends GetView<SignUpVerifyScreenController> {
 
   @override
   Widget build(BuildContext context) {
+    final Map<String, String> args =
+        ModalRoute.of(context)!.settings.arguments as Map<String, String>;
+    final String email = args['email']!;
+    final String phoneNo = args['phoneNo']!;
     Get.put(SignUpVerifyScreenController());
     return GetBuilder(
       init: SignUpVerifyScreenController(),
@@ -32,13 +36,13 @@ class SignUpVerifyScreen extends GetView<SignUpVerifyScreenController> {
                           TextStyle(fontWeight: FontWeight.w700, fontSize: 28),
                     ),
                     const SizedBox(height: 55),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
+                     Padding(
+                      padding:const  EdgeInsets.symmetric(horizontal: 10),
                       child: Text(
-                        "We sent a verification code to your registered mail"
-                        " id. The code will expire in 24 hours.",
+                        "We sent a verification code to your registered mail $email"
+                        " The code will expire in 15 minutes",
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
                             color: Color(0XFF423E4C)),
@@ -80,7 +84,7 @@ class SignUpVerifyScreen extends GetView<SignUpVerifyScreenController> {
                           PrimaryButton(
                               label: "Verify",
                               onClick: () {
-                                controller.validateOtp(context);
+                                controller.validateOtp(context,phoneNo);
                               }),
                         ],
                       ),

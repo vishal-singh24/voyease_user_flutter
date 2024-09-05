@@ -3,6 +3,7 @@ import 'package:voyease_frontend/screens/auth/enter_otp_screen/view/enter_otp_sc
 import 'package:voyease_frontend/screens/auth/forgot_pswd_screen/view/forgot_pswd_screen.dart';
 import 'package:voyease_frontend/screens/auth/landing_screen.dart';
 import 'package:voyease_frontend/screens/auth/login_screen/view/login_screen.dart';
+import 'package:voyease_frontend/screens/auth/mobile_no_otp_screen/view/mobile_no_otp_screen.dart';
 import 'package:voyease_frontend/screens/auth/password_reset_screen/view/password_reset_screen.dart';
 import 'package:voyease_frontend/screens/auth/reset_done_screen.dart';
 import 'package:voyease_frontend/screens/auth/select_language_screen.dart';
@@ -35,6 +36,7 @@ class AppRoutes {
   static const raiseIssueScreen = '/raiseIssueScreen';
   static const feedbackFormScreen = '/feedbackFromScreen';
   static const aboutUsScreen = '/aboutUsScreen';
+  static const enterMobileNoOtpScreen='/enterMobileNoOtpScreen';
   static Map<String, WidgetBuilder> routes = {
     loginScreen: (context) => const LoginScreen(),
     signUpVerifyScreen: (context) => const SignUpVerifyScreen(),
@@ -53,6 +55,7 @@ class AppRoutes {
     raiseIssueScreen: (context) => const RaiseIssueScreen(),
     feedbackFormScreen: (context) => const FeedbackFormScreen(),
     aboutUsScreen: (context) => const AboutUsScreen(),
+    enterMobileNoOtpScreen:(context)=> const EnterMobileNoOtpScreen(),
   };
   
 }
