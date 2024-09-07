@@ -6,6 +6,7 @@ import 'package:voyease_frontend/api_clients/network_client.dart';
 import 'package:voyease_frontend/models/user_profile_model.dart';
 
 String baseUrl = 'https://voyease-backend-53aafeb3505b.herokuapp.com';
+const String dateformat = 'dd-MM-yyyy';
 var dioClient = Dio();
 Future<UserProfileModel> getProfile(String? authToken) async {
   try {

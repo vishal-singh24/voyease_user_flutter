@@ -1,11 +1,15 @@
+import "dart:io";
+
 import "package:auto_route/auto_route.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:voyease_frontend/configs/app_colors.dart";
 import "package:voyease_frontend/screens/settings/settings_screen/controller/settings_screen_controller.dart";
 import "package:voyease_frontend/screens/settings/user_profile_screen/controller/user_profile_screen_controller.dart";
+import "package:voyease_frontend/utils/shared_preferences.dart";
 import "package:voyease_frontend/widgets/app_card.dart";
 import "package:voyease_frontend/widgets/buttons/secondary_button.dart";
+import "package:voyease_frontend/widgets/form/custom_dropdown.dart";
 import "package:voyease_frontend/widgets/form/input_field.dart";
 import "package:voyease_frontend/widgets/app_top_nav_bar.dart";
 import "package:voyease_frontend/widgets/gradient_background.dart";
@@ -16,6 +20,8 @@ class UserProfileScreen extends GetView<UserProfileScreenController> {
 
   @override
   Widget build(BuildContext context) {
+    List<String> gender = ["Male", "Female", "Others"];
+
     return GetBuilder<UserProfileScreenController>(
         init: UserProfileScreenController(),
         initState: (_) {
@@ -36,10 +42,43 @@ class UserProfileScreen extends GetView<UserProfileScreenController> {
                 child: Column(
                   children: [
                     const AppTopNavBar(),
-                    const CircleAvatar(
-                      backgroundImage: AssetImage("assets/images/profile.png"),
-                      radius: 72 / 2,
-                    ),
+                    Stack(children: [
+                      CircleAvatar(
+                        radius: 50,
+                        backgroundImage: controller.imageUrl.value != null
+                            ? NetworkImage(controller.imageUrl.value!) // Display image from URL
+                            : controller.pickedPImageFile != null
+                                ? FileImage(controller
+                                    .pickedPImageFile!) // Display image from file
+                                : const AssetImage("assets/images/profile.png")
+                      ),
+                      controller.isEditing
+                          ? Positioned(
+                              bottom: 5,
+                              right: 15,
+                              child: Container(
+                                width: 30,
+                                height: 30,
+                                decoration: const BoxDecoration(
+                                  color: Colors.white,
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Center(
+                                  child: IconButton(
+                                    icon: const Icon(
+                                      Icons.edit,
+                                      size: 16,
+                                      color: Colors.black,
+                                    ),
+                                    onPressed: () {
+                                      controller.pickProfileImage();
+                                    },
+                                  ),
+                                ),
+                              ),
+                            )
+                          : const SizedBox.shrink(), //
+                    ]),
                     const SizedBox(
                       height: 8,
                     ),
@@ -72,41 +111,117 @@ class UserProfileScreen extends GetView<UserProfileScreenController> {
                             children: [
                               InputField(
                                 label: "Name",
-                                controller:controller.name ,
+                                controller: controller.name,
                                 enabled: controller.isEditing,
                               ),
                               const SizedBox(height: 18),
-                              InputField(
-                                label: "Email",
-                                controller: controller.email,
-                                enabled: controller.isEditing,
-                                keyboardType: TextInputType.emailAddress,
+                              Container(
+                                  padding: const EdgeInsets.only(
+                                      left: 10, bottom: 5),
+                                  child: const Text(
+                                    "Gender",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w400),
+                                  )),
+                              Visibility(
+                                visible: !controller.isEditing,
+                                child: Container(
+                                  height: 50,
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 5),
+                                  alignment: Alignment.centerLeft,
+                                  decoration: BoxDecoration(
+                                      color: AppColors.white,
+                                      boxShadow: const [
+                                        BoxShadow(
+                                            offset: Offset(-1, 4),
+                                            color: Color(0x60000000),
+                                            blurRadius: 6,
+                                            spreadRadius: 0)
+                                      ],
+                                      borderRadius: BorderRadius.circular(50)),
+                                  child: Text(
+                                    "${controller.userprofile[0].gender ?? "Not Selected"}",
+                                    style: TextStyle(
+                                        color: Colors.black.withOpacity(0.4)),
+                                  ),
+                                ),
+                              ),
+                              Visibility(
+                                visible: controller.isEditing,
+                                child: CustomDropDownWidget(
+                                    items: gender.map((String value) {
+                                      return DropdownMenuItem<String>(
+                                        value: value,
+                                        child: Text(value,
+                                            style: const TextStyle(
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.w400)),
+                                      );
+                                    }).toList(),
+                                    onChanged: (String? newValue) {
+                                      if (newValue != null) {
+                                        controller.selectedValue!.value =
+                                            newValue;
+                                      }
+                                    },
+                                    hintText: "select_gender"),
                               ),
                               const SizedBox(height: 18),
                               InputField(
-                                label: "Phone Number",
-                                controller: controller.phone,
+                                label: "Date of Birth",
+                                controller: controller.dateController.value,
                                 enabled: controller.isEditing,
                                 keyboardType: TextInputType.phone,
-                              ),
-                              const SizedBox(height: 18),
-                              InputField(
-                                label: "Password",
-                                controller: controller.password,
-                                enabled: controller.isEditing,
-                                isPassword: true,
-                                couter: InkWell(
-                                  onTap: () {},
-                                  child: Visibility(
-                                    visible: controller.isEditing,
-                                    child: Text(
-                                      "Change password?",
-                                      style: TextStyle(
-                                        color: AppColors.textLink,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w400,
-                                      ),
-                                    ),
+                                placeholder: controller.userprofile[0].dob ??
+                                    "Not Given",
+                                suffixIcon: InkWell(
+                                  onTap: () async {
+                                    await showDatePicker(
+                                        context: context,
+                                        initialDate: DateTime.now(),
+                                        firstDate: DateTime(1950),
+                                        lastDate: DateTime(2101),
+                                        builder: (BuildContext context,
+                                            Widget? child) {
+                                          return Theme(
+                                              data: ThemeData.light().copyWith(
+                                                colorScheme:
+                                                    const ColorScheme.dark(
+                                                  primary: Color.fromARGB(
+                                                      255, 171, 2, 58),
+                                                  // Header and selected day color
+                                                  onPrimary: Color.fromARGB(
+                                                      255, 247, 244, 244),
+                                                  // Header text and selected day text color
+                                                  surface: Color.fromARGB(
+                                                      255, 239, 224, 202),
+                                                  // Calendar background color
+                                                  onSurface: Color.fromARGB(
+                                                      255,
+                                                      12,
+                                                      12,
+                                                      12), // Calendar text color
+                                                ),
+                                                dialogBackgroundColor:
+                                                    const Color.fromARGB(
+                                                        255, 231, 142, 142),
+                                              ),
+                                              child: child!);
+                                        }).then((pickedDate) {
+                                      if (pickedDate != null) {
+                                        final formattedDate = controller
+                                            .formatDateDDMMYYYY(pickedDate);
+                                        controller.dateController.value.text =
+                                            formattedDate;
+                                        controller.update();
+                                      }
+                                    });
+                                  },
+                                  child: const Icon(
+                                    Icons.calendar_month,
+                                    size: 22,
                                   ),
                                 ),
                               ),
