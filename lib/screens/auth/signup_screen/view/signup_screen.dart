@@ -65,27 +65,27 @@ class SignupScreen extends GetView<SignupController> {
                                     InputField(
                                       controller: controller.usernameController,
                                       placeholder: "User name",
-                                      prefixIcon: Icon(Icons.person_outline),
+                                      prefixIcon: const Icon(Icons.person_outline),
                                     ),
                                     const SizedBox(height: 15),
                                     InputField(
                                         controller: controller.emailController,
                                         placeholder: "Email",
-                                        prefixIcon: Icon(Icons.mail_outline),
+                                        prefixIcon:const  Icon(Icons.mail_outline),
                                         keyboardType:
                                             TextInputType.emailAddress),
                                     const SizedBox(height: 15),
                                     InputField(
                                         controller: controller.phoneController,
                                         placeholder: "Phone",
-                                        prefixIcon: Icon(Icons.phone_outlined),
+                                        prefixIcon:const  Icon(Icons.phone_outlined),
                                         keyboardType: TextInputType.phone),
                                     const SizedBox(height: 15),
                                     InputField(
                                         controller:
                                             controller.passwordController,
                                         placeholder: "Password",
-                                        prefixIcon: Icon(Icons.key_outlined),
+                                        prefixIcon:const Icon(Icons.key_outlined),
                                         isPassword: true),
                                     const SizedBox(height: 15),
                                     CheckBoxField(

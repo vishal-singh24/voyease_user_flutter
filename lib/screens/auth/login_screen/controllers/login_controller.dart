@@ -29,7 +29,7 @@ class LoginController extends GetxController {
   Future<void> login(BuildContext context) async {
     final String url = "$baseUrl/api/v1/auth/login";
     Map<String, dynamic> authData = {
-      "email": emailController.text,
+      "username": emailController.text,
       "password": passwordController.text
     };
 
