@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:voyease_frontend/screens/home/home_screen.dart';
+import 'package:voyease_frontend/screens/home/home_screen/view/home_screen.dart';
 import 'package:voyease_frontend/screens/main_screen/controllers/main_screen_controller.dart';
 import 'package:voyease_frontend/screens/settings/settings_screen/view/settings_screen.dart';
 import 'package:voyease_frontend/screens/shop/shop_main_screen.dart';

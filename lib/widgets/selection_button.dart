@@ -8,58 +8,67 @@ class SelectionButton extends StatelessWidget {
       required this.leftText,
       this.rightText,
       this.iButton,
-      this.margin});
+      this.margin,
+      this.isSelected = false, 
+    this.onClick,});
 
   final String leftText;
   final String? rightText;
   final bool? iButton;
   final EdgeInsetsGeometry? margin;
+  final bool isSelected; 
+  final VoidCallback? onClick;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: margin,
-      height: 35,
-      child: Row(
-        children: [
-          Container(
-            width: 2,
-            decoration: BoxDecoration(
-                color: AppColors.darkBlue,
-                borderRadius: BorderRadius.circular(10)),
-          ),
-          Container(
-            width: 320,
-            padding: const EdgeInsets.symmetric(vertical: 7.5, horizontal: 10),
-            margin: const EdgeInsets.only(left: 10),
-            decoration: BoxDecoration(
-                border: Border.all(width: 0.25),
-                borderRadius: BorderRadius.circular(4)),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  leftText,
-                  style: const TextStyle(
-                      fontSize: 12, fontWeight: FontWeight.w500),
-                ),
-                if (rightText != null)
-                  Text(
-                    rightText!,
-                    style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.lightGreen),
-                  )
-              ],
-            ),
-          ),
-          if (iButton != null)
+    return GestureDetector(
+      onTap: onClick,
+      child: Container(
+        margin: margin,
+        height: 35,
+        child: Row(
+          children: [
             Container(
-              padding: const EdgeInsets.only(left: 8),
-              child: SvgPicture.asset("assets/icons/ibutton.svg"),
-            )
-        ],
+              width: 2,
+              decoration: BoxDecoration(
+                  color: AppColors.darkBlue,
+                  borderRadius: BorderRadius.circular(10)),
+            ),
+            Container(
+              width: 320,
+              padding: const EdgeInsets.symmetric(vertical: 7.5, horizontal: 10),
+              margin: const EdgeInsets.only(left: 10),
+              decoration: BoxDecoration(
+                  border: Border.all(width: 0.25,color: isSelected?Colors.blue:Colors.black),
+                  borderRadius: BorderRadius.circular(4),
+                  color: isSelected ? AppColors.secondary: Colors.white),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    leftText,
+                    style:  TextStyle(
+                        fontSize: 12, fontWeight: FontWeight.w500,
+                        color: isSelected ? Colors.white : Colors.black),
+                  ),
+                  if (rightText != null)
+                    Text(
+                      rightText!,
+                      style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.lightGreen),
+                    )
+                ],
+              ),
+            ),
+            if (iButton != null)
+              Container(
+                padding: const EdgeInsets.only(left: 8),
+                child: SvgPicture.asset("assets/icons/ibutton.svg"),
+              )
+          ],
+        ),
       ),
     );
   }
