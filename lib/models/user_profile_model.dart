@@ -6,6 +6,7 @@ class UserProfileModel {
   String? phone;
   bool? phoneVerified;
   String? dob;
+  String? profile;
   List<Languages>? languages;
   String? gender;
   String? createdAt;
@@ -19,6 +20,7 @@ class UserProfileModel {
       this.phone,
       this.phoneVerified,
       this.dob,
+      this.profile,
       this.languages,
       this.gender,
       this.createdAt,
@@ -39,6 +41,7 @@ class UserProfileModel {
       });
     }
     gender = json['gender'];
+    profile=json['profile'];
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
   }
@@ -56,6 +59,7 @@ class UserProfileModel {
       data['languages'] = languages!.map((v) => v.toJson()).toList();
     }
     data['gender'] = gender;
+    data['profile']=profile;
     data['createdAt'] = createdAt;
     data['updatedAt'] = updatedAt;
     return data;

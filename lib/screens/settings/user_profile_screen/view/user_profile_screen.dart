@@ -6,7 +6,6 @@ import "package:get/get.dart";
 import "package:voyease_frontend/configs/app_colors.dart";
 import "package:voyease_frontend/screens/settings/settings_screen/controller/settings_screen_controller.dart";
 import "package:voyease_frontend/screens/settings/user_profile_screen/controller/user_profile_screen_controller.dart";
-import "package:voyease_frontend/utils/shared_preferences.dart";
 import "package:voyease_frontend/widgets/app_card.dart";
 import "package:voyease_frontend/widgets/buttons/secondary_button.dart";
 import "package:voyease_frontend/widgets/form/custom_dropdown.dart";
@@ -44,14 +43,16 @@ class UserProfileScreen extends GetView<UserProfileScreenController> {
                     const AppTopNavBar(),
                     Stack(children: [
                       CircleAvatar(
-                        radius: 50,
-                        backgroundImage: controller.imageUrl.value != null
-                            ? NetworkImage(controller.imageUrl.value!) // Display image from URL
-                            : controller.pickedPImageFile != null
-                                ? FileImage(controller
-                                    .pickedPImageFile!) // Display image from file
-                                : const AssetImage("assets/images/profile.png")
-                      ),
+                          radius: 50,
+                          backgroundImage: controller.userprofile[0].profile !=
+                                  null
+                              ? NetworkImage(controller.userprofile[0]
+                                  .profile!) // Display image from URL
+                              : controller.pickedPImageFile != null
+                                  ? FileImage(controller
+                                      .pickedPImageFile!) // Display image from file
+                                  : const AssetImage(
+                                      "assets/images/profile.png")),
                       controller.isEditing
                           ? Positioned(
                               bottom: 5,
@@ -166,7 +167,8 @@ class UserProfileScreen extends GetView<UserProfileScreenController> {
                                             newValue;
                                       }
                                     },
-                                    hintText: "select_gender"),
+                                    hintText: "${controller.userprofile[0].gender ?? "Select Gender"}"
+                                    ),
                               ),
                               const SizedBox(height: 18),
                               InputField(
@@ -174,8 +176,7 @@ class UserProfileScreen extends GetView<UserProfileScreenController> {
                                 controller: controller.dateController.value,
                                 enabled: controller.isEditing,
                                 keyboardType: TextInputType.phone,
-                                placeholder: controller.userprofile[0].dob ??
-                                    "Not Given",
+                                placeholder: controller.stringformatDateDDMMYYYY(controller.userprofile[0].dob),
                                 suffixIcon: InkWell(
                                   onTap: () async {
                                     await showDatePicker(
@@ -230,7 +231,9 @@ class UserProfileScreen extends GetView<UserProfileScreenController> {
                                 visible: controller.isEditing,
                                 child: SecondaryButton(
                                   label: "Save Changes",
-                                  onClick: () {},
+                                  onClick: () {
+                                    controller.postProfile(context);
+                                  },
                                 ),
                               )
                             ],
