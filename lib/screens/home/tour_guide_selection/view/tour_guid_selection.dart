@@ -323,32 +323,32 @@ class TourGuidSelection extends GetView<TourGuideSelectionController> {
                       child: SecondaryButton(
                           label: "Book Now",
                           onClick: () async {
-                            // DateTime now = DateTime.now();
-                            // DateTime fourPM =
-                            //     DateTime(now.year, now.month, now.day, 16, 0);
-                            // if (now.isAfter(fourPM)) {
-                            //   showDialog(
-                            //     context: context,
-                            //     builder: (BuildContext context) {
-                            //       return AlertDialog(
-                            //         title: const Text(
-                            //           "Booking Unavailable",
-                            //           style: TextStyle(color: Colors.red),
-                            //         ),
-                            //         content: const Text(
-                            //             "You cannot book for today. Booking is available for tomorrow only."),
-                            //         actions: <Widget>[
-                            //           TextButton(
-                            //             child: const Text("OK"),
-                            //             onPressed: () {
-                            //               Navigator.of(context).pop();
-                            //             },
-                            //           ),
-                            //         ],
-                            //       );
-                            //     },
-                            //   );
-                            // } else {
+                            DateTime now = DateTime.now();
+                            DateTime fourPM =
+                                DateTime(now.year, now.month, now.day, 16, 0);
+                            if (now.isAfter(fourPM)) {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title: const Text(
+                                      "Booking Unavailable",
+                                      style: TextStyle(color: Colors.red),
+                                    ),
+                                    content: const Text(
+                                        "You cannot book for today. Booking is available for tomorrow only."),
+                                    actions: <Widget>[
+                                      TextButton(
+                                        child: const Text("OK"),
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            } else {
                             if (controller.selectedOption.isEmpty) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
@@ -394,7 +394,7 @@ class TourGuidSelection extends GetView<TourGuideSelectionController> {
                                 await Geolocator.getCurrentPosition();
                             controller.postBooking(position.latitude,
                                 position.longitude, true, context);
-                            //}
+                            }
                           }),
                     ),
                     Visibility(
