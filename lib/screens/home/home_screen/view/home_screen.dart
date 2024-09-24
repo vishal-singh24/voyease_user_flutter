@@ -27,12 +27,19 @@ class HomeScreen extends GetView<HomeScreenController> {
                   initialPosition: HomeScreenController.initialPosition,
                   markers: controller.markers,
                 ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 30, horizontal: 40),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 30, horizontal: 40),
                   child: InputField(
+                    controller: controller.searchController,
                     placeholder: "Search",
-                    prefixIcon: Icon(Icons.search_outlined),
-                    suffixIcon: Icon(Icons.mic_none_outlined),
+                    prefixIcon: const Icon(Icons.search_outlined),
+                    suffixIcon: const Icon(Icons.mic_none_outlined),
+                    onChanged: (value) {
+                      if (value.isNotEmpty) {
+                        controller.searchPlace(value); 
+                      }
+                    },
                   ),
                 ),
                 controller.loading.value
@@ -41,7 +48,7 @@ class HomeScreen extends GetView<HomeScreenController> {
                     : const SizedBox.shrink(),
                 FloatingButtons(
                   controller: controller.sheetController,
-                  onClick: () => controller.startLocationUpdates(),
+                  onClick: () => controller.getCurrentLocation(),
                 ),
                 GuideSelectionSheet(
                   controller: Get.find<HomeScreenController>(),

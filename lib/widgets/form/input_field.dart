@@ -15,6 +15,7 @@ class InputField extends StatefulWidget {
      this.validator,
      this.controller,
      this.enabled = true, 
+     this.onChanged,
   });
 
   final String? label;
@@ -28,6 +29,7 @@ class InputField extends StatefulWidget {
   final String? Function(String?)? validator;
   final TextEditingController? controller;
   final bool enabled;
+  final Function(String)? onChanged;
 
   @override
   State<InputField> createState() => _InputFieldState();
@@ -70,6 +72,7 @@ class _InputFieldState extends State<InputField> {
               ],
               borderRadius: BorderRadius.circular(50)),
           child: TextFormField(
+             onChanged: widget.onChanged,
             controller: widget.controller,
              validator: widget.validator,
             minLines: widget.lines,
