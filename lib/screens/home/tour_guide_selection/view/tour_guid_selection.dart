@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_svg/svg.dart";
 import "package:geolocator/geolocator.dart";
 import "package:get/get.dart";
+import "package:intl/intl.dart";
 import "package:voyease_frontend/configs/app_colors.dart";
 import "package:voyease_frontend/screens/home/tour_guide_selection/controller/tour_guide_selection_controller.dart";
 import "package:voyease_frontend/widgets/buttons/secondary_button.dart";
@@ -12,20 +13,17 @@ class TourGuidSelection extends GetView<TourGuideSelectionController> {
 
   @override
   Widget build(BuildContext context) {
+    final DateTime now = DateTime.now();
     final TourGuideSelectionController controller =
         Get.put(TourGuideSelectionController());
-    var groupSizes = ["1-5", "6-14", "15+"];
-    var timeSlots = ["7am-9am", "9am-11am", "11am-1pm"];
+    var groupSizes = ["1-3", "4-5", "6-14"];
+    var timeSlots = ["5am-7am", "7am-9am", "9am-11am", "11am-1pm"];
 
     return GetBuilder<TourGuideSelectionController>(
         init: TourGuideSelectionController(),
         initState: (_) {},
         builder: (_) {
-          if (controller == null) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          } else if (controller.languages.isEmpty) {
+          if (controller.languages.isEmpty) {
             return const Center(
               child: CircularProgressIndicator(),
             );
@@ -151,6 +149,94 @@ class TourGuidSelection extends GetView<TourGuideSelectionController> {
                 ),
               ),
               Visibility(
+                visible: controller.isInRange(now, 4, 14),
+                child: const SectionName(
+                  title: "Select your type",
+                  icon: Icon(Icons.route_outlined),
+                ),
+              ),
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 18, horizontal: 27),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Visibility(
+                      visible: controller.isInRange(now, 4, 14),
+                      child: GestureDetector(
+                        onTap: () => controller
+                            .selectTourType("Hald Day Varanasi Explorer"),
+                        child: SelectionButton(
+                          leftText: "Hald Day Varanasi Explorer",
+                          leftTextColor: Colors.green,
+                          containerBackground: Colors.green,
+                          rightIcon: const Icon(
+                            Icons.energy_savings_leaf_outlined,
+                            color: Colors.green,
+                          ),
+                          iButton: true,
+                          margin: const EdgeInsets.only(top: 4, bottom: 10),
+                          isSelected: controller.tourTypeSelection.value ==
+                              "Hald Day Varanasi Explorer",
+                        ),
+                      ),
+                    ),
+                    Visibility(
+                      visible: controller.isInRange(now, 4, 13),
+                      child: GestureDetector(
+                        onTap: () => controller
+                            .selectTourType("Full Day Varanasi Explorer"),
+                        child: SelectionButton(
+                          leftText: "Full Day Varanasi Explorer",
+                          leftTextColor: Colors.green,
+                          containerBackground: Colors.green,
+                          rightIcon: const Icon(
+                            Icons.energy_savings_leaf_outlined,
+                            color: Colors.green,
+                          ),
+                          iButton: true,
+                          margin: const EdgeInsets.only(top: 4, bottom: 10),
+                          isSelected: controller.tourTypeSelection.value ==
+                              "Full Day Varanasi Explorer",
+                        ),
+                      ),
+                    ),
+                    Visibility(
+                      visible: controller.selectedGroupSize.value != "6-14" &&
+                          controller.isInRange(now, 4, 14),
+                      child: GestureDetector(
+                        onTap: () => controller.selectTourType(
+                            "Hald Day Varanasi tour with premium car"),
+                        child: SelectionButton(
+                          leftText: "Hald Day Varanasi tour with premium car",
+                          iButton: true,
+                          containerBackground: Colors.green,
+                          margin: const EdgeInsets.only(top: 4, bottom: 10),
+                          isSelected: controller.tourTypeSelection.value ==
+                              "Hald Day Varanasi tour with premium car",
+                        ),
+                      ),
+                    ),
+                    Visibility(
+                      visible: controller.selectedGroupSize.value != "6-14" &&
+                          controller.isInRange(now, 4, 13),
+                      child: GestureDetector(
+                        onTap: () => controller.selectTourType(
+                            "Full Day Varanasi tour with premium car"),
+                        child: SelectionButton(
+                          leftText: "Full Day Varanasi tour with premium car",
+                          iButton: true,
+                          containerBackground: Colors.green,
+                          margin: const EdgeInsets.only(top: 4, bottom: 10),
+                          isSelected: controller.tourTypeSelection.value ==
+                              "Full Day Varanasi tour with premium car",
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Visibility(
                 visible: controller.selectedOption.value == "Tour Guide",
                 child: const SectionName(
                     title: "Select your guide",
@@ -164,18 +250,18 @@ class TourGuidSelection extends GetView<TourGuideSelectionController> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      GestureDetector(
-                        onTap: () =>
-                            controller.selectTourGuide("PREMIUM_GUIDE"),
-                        child: SelectionButton(
-                          leftText: "PREMIUM GUIDE",
-                          rightText: "Rates",
-                          iButton: true,
-                          margin: const EdgeInsets.only(top: 8),
-                          isSelected: controller.tourGuideSelection.value ==
-                              "PREMIUM_GUIDE",
-                        ),
-                      ),
+                      // GestureDetector(
+                      //   onTap: () =>
+                      //       controller.selectTourGuide("PREMIUM_GUIDE"),
+                      //   child: SelectionButton(
+                      //     leftText: "PREMIUM GUIDE",
+                      //     rightText: "Rates",
+                      //     iButton: true,
+                      //     margin: const EdgeInsets.only(top: 8),
+                      //     isSelected: controller.tourGuideSelection.value ==
+                      //         "PREMIUM_GUIDE",
+                      //   ),
+                      // ),
                       GestureDetector(
                         onTap: () =>
                             controller.selectTourGuide("STANDARD_GUIDE"),
@@ -222,11 +308,11 @@ class TourGuidSelection extends GetView<TourGuideSelectionController> {
                 child: GridView.count(
                   physics: const NeverScrollableScrollPhysics(),
                   padding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 24),
+                      const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
                   crossAxisCount: 3,
                   childAspectRatio: 2.5,
                   mainAxisSpacing: 25,
-                  crossAxisSpacing: 40,
+                  crossAxisSpacing: 20,
                   shrinkWrap: true,
                   children: List.generate(
                     timeSlots.length,
@@ -234,25 +320,47 @@ class TourGuidSelection extends GetView<TourGuideSelectionController> {
                       final timeslot = timeSlots[index];
                       final isSelected =
                           controller.selectedTimeSlot.value == timeslot;
-                      return GestureDetector(
-                        onTap: () => controller.timeSlotSelection(timeslot),
-                        child: Container(
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            border: Border.all(width: 0.25),
-                            borderRadius: BorderRadius.circular(4),
-                            color:
-                                isSelected ? AppColors.secondary : Colors.white,
-                          ),
-                          child: Text(
-                            timeSlots[index],
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                              color: isSelected ? Colors.white : Colors.black,
+
+                      return Column(
+                        children: [
+                          GestureDetector(
+                            onTap: () => controller.timeSlotSelection(timeslot),
+                            child: Container(
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                border: Border.all(width: .25),
+                                borderRadius: BorderRadius.circular(4),
+                                color: isSelected
+                                    ? AppColors.secondary
+                                    : Colors.white,
+                              ),
+                              child: SizedBox(
+                                height: 35,
+                                child: Center(
+                                  child: Text(
+                                    timeslot,
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w600,
+                                      color:
+                                          isSelected ? Colors.white : Colors.black,
+                                    ),
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
-                        ),
+                          const SizedBox(height: 1),
+                          Text(
+                            DateFormat('dd-MM-yyyy').format(
+                                DateTime.now().add(const Duration(days: 1))),
+                            style: const TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
                       );
                     },
                   ),
@@ -321,79 +429,79 @@ class TourGuidSelection extends GetView<TourGuideSelectionController> {
                     Visibility(
                       visible: controller.showAdditionalButtons.value == false,
                       child: SecondaryButton(
+                          backgroundColor: controller.isInRange(now, 4, 14)
+                              ? AppColors.secondary
+                              : Colors.blue[200],
                           label: "Book Now",
                           onClick: () async {
-                            DateTime now = DateTime.now();
-                            DateTime fourPM =
-                                DateTime(now.year, now.month, now.day, 16, 0);
-                            if (now.isAfter(fourPM)) {
+                            if (controller.isInRange(now, 4, 14) == false) {
                               showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
                                   return AlertDialog(
-                                    title: const Text(
-                                      "Booking Unavailable",
-                                      style: TextStyle(color: Colors.red),
+                                    title: Text(
+                                      'Booking Unavailable',
+                                      style: TextStyle(color: Colors.red[900]),
                                     ),
                                     content: const Text(
-                                        "You cannot book for today. Booking is available for tomorrow only."),
+                                        'Real time booking will start from 4AM in morning, you can use book for tomorrow'),
                                     actions: <Widget>[
                                       TextButton(
-                                        child: const Text("OK"),
                                         onPressed: () {
                                           Navigator.of(context).pop();
                                         },
+                                        child: const Text('OK'),
                                       ),
                                     ],
                                   );
                                 },
                               );
                             } else {
-                            if (controller.selectedOption.isEmpty) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text(
-                                      "Please choose one either Tour Guide or Tour Buddy"),
-                                  backgroundColor: Colors.red,
-                                ),
-                              );
-                              return;
-                            }
-                            if (controller.selectedLanguages.isEmpty) {
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(const SnackBar(
-                                content:
-                                    Text("Please select one or more languages"),
-                                backgroundColor: Colors.red,
-                              ));
-                              return;
-                            }
-                            if (controller.selectedGroupSize.isEmpty) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content:
-                                      Text("Please Select Your Group Size"),
-                                  backgroundColor: Colors.red,
-                                ),
-                              );
-                              return;
-                            }
-
-                            if (controller.selectedOption.value ==
-                                "Tour Guide") {
-                              if (controller.tourGuideSelection.isEmpty) {
+                              if (controller.selectedOption.isEmpty) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text(
+                                        "Please choose one either Tour Guide or Tour Buddy"),
+                                    backgroundColor: Colors.red,
+                                  ),
+                                );
+                                return;
+                              }
+                              if (controller.selectedLanguages.isEmpty) {
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(const SnackBar(
-                                  content: Text("Please Select Guide Type"),
+                                  content: Text(
+                                      "Please select one or more languages"),
                                   backgroundColor: Colors.red,
                                 ));
                                 return;
                               }
-                            }
-                            Position position =
-                                await Geolocator.getCurrentPosition();
-                            controller.postBooking(position.latitude,
-                                position.longitude, true, context);
+                              if (controller.selectedGroupSize.isEmpty) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content:
+                                        Text("Please Select Your Group Size"),
+                                    backgroundColor: Colors.red,
+                                  ),
+                                );
+                                return;
+                              }
+
+                              if (controller.selectedOption.value ==
+                                  "Tour Guide") {
+                                if (controller.tourGuideSelection.isEmpty) {
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(const SnackBar(
+                                    content: Text("Please Select Guide Type"),
+                                    backgroundColor: Colors.red,
+                                  ));
+                                  return;
+                                }
+                              }
+                              Position position =
+                                  await Geolocator.getCurrentPosition();
+                              controller.postBooking(position.latitude,
+                                  position.longitude, true, context);
                             }
                           }),
                     ),
