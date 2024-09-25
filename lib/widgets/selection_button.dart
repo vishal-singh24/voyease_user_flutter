@@ -7,6 +7,9 @@ class SelectionButton extends StatelessWidget {
       {super.key,
       required this.leftText,
       this.rightText,
+      this.rightIcon,
+       this.leftTextColor, 
+       this.containerBackground,
       this.iButton,
       this.margin,
       this.isSelected = false, 
@@ -14,6 +17,9 @@ class SelectionButton extends StatelessWidget {
 
   final String leftText;
   final String? rightText;
+  final Widget? rightIcon;
+  final Color? leftTextColor;
+  final Color? containerBackground;
   final bool? iButton;
   final EdgeInsetsGeometry? margin;
   final bool isSelected; 
@@ -31,7 +37,7 @@ class SelectionButton extends StatelessWidget {
             Container(
               width: 2,
               decoration: BoxDecoration(
-                  color: AppColors.darkBlue,
+                  color: leftTextColor?? AppColors.darkBlue,
                   borderRadius: BorderRadius.circular(10)),
             ),
             Container(
@@ -39,9 +45,9 @@ class SelectionButton extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 7.5, horizontal: 10),
               margin: const EdgeInsets.only(left: 10),
               decoration: BoxDecoration(
-                  border: Border.all(width: 0.25,color: isSelected?Colors.blue:Colors.black),
+                  border: Border.all(width: 0.25,color: isSelected?Colors.blue:containerBackground?? Colors.black),
                   borderRadius: BorderRadius.circular(4),
-                  color: isSelected ? AppColors.secondary: Colors.white),
+                  color: isSelected ? containerBackground?? AppColors.secondary: Colors.white),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -49,7 +55,7 @@ class SelectionButton extends StatelessWidget {
                     leftText,
                     style:  TextStyle(
                         fontSize: 12, fontWeight: FontWeight.w500,
-                        color: isSelected ? Colors.white : Colors.black),
+                        color: isSelected ? Colors.white : leftTextColor?? Colors.black),
                   ),
                   if (rightText != null)
                     Text(
@@ -59,6 +65,8 @@ class SelectionButton extends StatelessWidget {
                           fontWeight: FontWeight.w500,
                           color: AppColors.lightGreen),
                     )
+                     else if (rightIcon != null)  
+                    rightIcon!,
                 ],
               ),
             ),

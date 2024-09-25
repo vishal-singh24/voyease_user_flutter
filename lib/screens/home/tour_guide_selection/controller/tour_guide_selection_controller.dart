@@ -17,11 +17,17 @@ class TourGuideSelectionController extends GetxController {
   var selectedTimeSlot = ''.obs;
   var showAdditionalButtons = false.obs;
   var tourGuideSelection = ''.obs;
+  var tourTypeSelection = ''.obs;
 
   @override
   void onInit() {
     super.onInit();
     fetchLanguages();
+  }
+
+//------------------------Function to check whether "Book now and Tour type" should work or not----------------------//
+  bool isInRange(DateTime now, int startHour, int endHour) {
+    return now.hour >= startHour && now.hour < endHour;
   }
 
 //----------------------condition to show Time slot and (Back and Book Trip) Button after selecting Book for tomorrow--------------------//
@@ -33,6 +39,12 @@ class TourGuideSelectionController extends GetxController {
 //-------------------Function for selection of guide type after selecting Tour guide-------------//
   void selectTourGuide(String guideType) {
     tourGuideSelection.value = guideType;
+    update();
+  }
+
+//---------------------Function for the selection of the type(select your type)------------------//
+  void selectTourType(String tourType) {
+    tourTypeSelection.value = tourType;
     update();
   }
 
@@ -72,15 +84,19 @@ class TourGuideSelectionController extends GetxController {
 
     DateTime tomorrow = DateTime(now.year, now.month, now.day + 1);
 
-    if (selectedTimeSlot.startsWith('7')) {
-      return DateFormat("yyyy-MM-dd'T'HH:mm:ss").format(
-          DateTime(tomorrow.year, tomorrow.month, tomorrow.day, 7, 0));
-    } else if (selectedTimeSlot.startsWith('9')) {
-      return DateFormat("yyyy-MM-dd'T'HH:mm:ss").format(
-          DateTime(tomorrow.year, tomorrow.month, tomorrow.day, 9, 0));
+    if (selectedTimeSlot.startsWith('5')) {
+      return DateFormat("yyyy-MM-dd'T'HH:mm:ss")
+          .format(DateTime(tomorrow.year, tomorrow.month, tomorrow.day, 5, 0));
+    } else if (selectedTimeSlot.startsWith('7')) {
+      return DateFormat("yyyy-MM-dd'T'HH:mm:ss")
+          .format(DateTime(tomorrow.year, tomorrow.month, tomorrow.day, 7, 0));
+    }
+    else if (selectedTimeSlot.startsWith('9')) {
+      return DateFormat("yyyy-MM-dd'T'HH:mm:ss")
+          .format(DateTime(tomorrow.year, tomorrow.month, tomorrow.day, 9, 0));
     } else if (selectedTimeSlot.startsWith('11')) {
-      return DateFormat("yyyy-MM-dd'T'HH:mm:ss").format(
-          DateTime(tomorrow.year, tomorrow.month, tomorrow.day, 11, 0));
+      return DateFormat("yyyy-MM-dd'T'HH:mm:ss")
+          .format(DateTime(tomorrow.year, tomorrow.month, tomorrow.day, 11, 0));
     } else {
       return null;
     }
@@ -149,8 +165,6 @@ class TourGuideSelectionController extends GetxController {
   int getSelectedGroupSize(String groupSize) {
     if (groupSize.contains('-')) {
       return int.parse(groupSize.split('-').last);
-    } else if (groupSize.endsWith('+')) {
-      return int.parse(groupSize.replaceAll('+', ''));
     } else {
       throw const FormatException("Invalid Group Size");
     }
