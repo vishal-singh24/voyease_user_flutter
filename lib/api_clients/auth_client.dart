@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:voyease_frontend/api_clients/network_client.dart';
 import 'package:voyease_frontend/models/user_profile_model.dart';
 
-String baseUrl = 'https://voyease-backend-53aafeb3505b.herokuapp.com';
+String baseUrl ="http://ec2-13-127-182-19.ap-south-1.compute.amazonaws.com:8080";
 const String dateformat = 'dd-MM-yyyy';
 var dioClient = Dio();
 

@@ -6,7 +6,7 @@ import 'package:voyease_frontend/models/user_profile_model.dart';
 import 'package:voyease_frontend/utils/shared_preferences.dart';
 
 class SettingsScreenController extends GetxController {
-  RxString userName = ''.obs;
+  List<UserProfileModel> userprofile = [];
   @override
   void onInit() {
     super.onInit();
@@ -15,15 +15,13 @@ class SettingsScreenController extends GetxController {
 
   Future<void> fetchUserProfile() async {
     try {
-      String? authToken = await TokenStorage.getToken(); 
+      String? authToken = await TokenStorage.getToken();
 
       if (authToken != null) {
-        UserProfileModel profile =
-            await getProfile(authToken); 
-            log("profile: $profile");
-
-        userName.value = profile.name!;
-        log("userNmae: ${userName.value}");
+        UserProfileModel profile = await getProfile(authToken);
+        log("profile: $profile");
+        userprofile=[profile];
+        update();
       } else {
         log("No token found");
       }

@@ -4,6 +4,7 @@ import "package:voyease_frontend/configs/theme/app_theme.dart";
 import "package:voyease_frontend/core/routing/app_router.dart";
 import "package:voyease_frontend/screens/auth/landing_screen.dart";
 import "package:voyease_frontend/screens/main_screen/view/main_screen.dart";
+import "package:voyease_frontend/screens/settings/settings_screen/view/settings_screen.dart";
 import "package:voyease_frontend/screens/splash_screen.dart";
 import "package:voyease_frontend/utils/shared_preferences.dart";
 
@@ -32,7 +33,8 @@ class MyApp extends StatelessWidget {
       builder: appBuilder,
       routes: AppRoutes.routes,
       home: SplashScreen(
-        nextScreen: isLoggedIn?const MainScreen():const LandingScreen()
+        nextScreen:
+        isLoggedIn?const MainScreen():const LandingScreen()
       ),
     );
   }

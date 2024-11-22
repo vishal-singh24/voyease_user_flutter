@@ -102,34 +102,60 @@ class SettingsScreen extends GetView<SettingsScreenController> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: AppColors.white,
+                    ),
+                    // width: size.width,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 15),
                     child: Row(
                       children: [
-                        const CircleAvatar(
-                          radius: 35 / 2,
-                          backgroundImage:
-                              AssetImage("assets/images/profile.png"),
+                        Stack(
+                          children: [
+                            Container(
+                              height: 93,
+                              width: 74,
+                              decoration: BoxDecoration(
+                                  color: AppColors.secondary,
+                                  borderRadius: const BorderRadius.only(
+                                      bottomLeft: Radius.circular(40),
+                                      bottomRight: Radius.circular(40))),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 8, top: 22),
+                              child: CircleAvatar(
+                                radius: 29,
+                                backgroundImage: controller
+                                            .userprofile[0].profile !=
+                                        null
+                                    ? NetworkImage(
+                                        controller.userprofile[0].profile!)
+                                    : const AssetImage("assets/images/profile.png"),
+                              ),
+                            )
+                          ],
                         ),
                         const SizedBox(
-                          width: 15,
+                          width: 45,
                         ),
-                        Obx(() {
+
                         // Display the user's name
-                        return Text(
-                          "Hi, ${controller.userName.value}",
-                          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                        );
-                      }),
+                        Text(
+                          "${controller.userprofile[0].name}",
+                          style: const TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.w500),
+                        )
                       ],
                     ),
                   ),
                   Container(
+                    decoration: BoxDecoration(
+                      color: AppColors.white,
+                    ),
                     width: size.width,
                     padding: const EdgeInsets.symmetric(
                         horizontal: 20, vertical: 10),
-                    decoration:
-                        const BoxDecoration(border: Border(top: BorderSide())),
                     child: Column(
                       children: data.map(
                         (e) {
@@ -145,23 +171,21 @@ class SettingsScreen extends GetView<SettingsScreenController> {
                   ),
                   Container(
                     width: size.width,
-                    decoration: const BoxDecoration(
-                      border: Border(top: BorderSide()),
+                    decoration: BoxDecoration(
+                      color: AppColors.white,
                     ),
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 10),
-                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 10),
                     child: Column(
                       children: [
                         ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
                             child: SettingsCard(
-                              title: "Feedback form",
-                              onClick: () {
-                                Navigator.pushNamed(
-                                    context, AppRoutes.feedbackFormScreen);
-                              },
-                            )),
+                          title: "Feedback form",
+                          onClick: () {
+                            Navigator.pushNamed(
+                                context, AppRoutes.feedbackFormScreen);
+                          },
+                        )),
                         const SizedBox(
                           height: 10,
                         ),
@@ -219,7 +243,7 @@ class SettingsSection extends StatelessWidget {
             height: 10,
           ),
           ClipRRect(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.zero,
             child: Column(
               children: elements
                   .map(
@@ -253,24 +277,20 @@ class SettingsCard extends StatelessWidget {
       onTap: onClick,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-        color: AppColors.darkBlue,
+        color: AppColors.white,
         child: Flex(
           direction: Axis.horizontal,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               title,
-              style: TextStyle(
-                  color: AppColors.textLight,
+              style: const TextStyle(
+                  color: Colors.black,
                   fontSize: 16,
                   fontWeight: FontWeight.w500),
             ),
-            CircleAvatar(
-              radius: 25 / 2,
-              backgroundColor: AppColors.primaryLight,
-              child: const Icon(
-                Icons.chevron_right_rounded,
-              ),
+            const Icon(
+              Icons.chevron_right_rounded,
             )
           ],
         ),

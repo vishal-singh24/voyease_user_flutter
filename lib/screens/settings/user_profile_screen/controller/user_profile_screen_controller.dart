@@ -131,7 +131,7 @@ String formatDateYYYYMMDD(String dateString) {
   
   // Ensure that we have exactly three parts
   if (parts.length != 3) {
-    throw FormatException('Invalid date format. Expected DD-MM-YYYY.');
+    throw const FormatException('Invalid date format. Expected DD-MM-YYYY.');
   }
 
   // Parse the parts into integers
